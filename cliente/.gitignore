@@ -1,0 +1,10 @@
+# archivos de generados automaticamente
+/target/
+
+# archivos de compilación
+*.o
+*.out
+*.exe
+
+# archivos de configuración local
+/.vscode/
