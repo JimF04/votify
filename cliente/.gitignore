@@ -6,5 +6,5 @@
 *.out
 *.exe
 
-# archivos de configuración local
-/.vscode/
+
+Cargo.lock
