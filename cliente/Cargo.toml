@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 slint = "1.4.1"
+gtk = "0.18.1"
+gio = "0.19.2"

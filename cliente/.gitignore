@@ -1,10 +1,5 @@
 # archivos de generados automaticamente
 /target/
 
-# archivos de compilación
-*.o
-*.out
-*.exe
-
 
 Cargo.lock

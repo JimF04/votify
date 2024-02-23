@@ -1,53 +1,31 @@
-static window_size: i32 = 800;
-
-fn crear_cancion(){
-
-
-
-
-
-}
-
-slint::slint! {
-    import { Button, VerticalBox, HorizontalBox } from "std-widgets.slint";
-
-
-
-    component Cancion inherits VerticalLayout {
-
-            HorizontalLayout {
-            Text {
-        text: "cancion";
-                }
-
-            Rectangle {
-        width: 400px;
-        height: 50px;
-        background: red;
-                }
-
-
-}
-
-}
-
-    component MainWindow inherits Window {
-        width: 800px;
-        title: "VOTIFY";
-        background: #FB88B4;
-
-
-
-
-
-        Cancion{}
-
-
-
-    }
-}
+extern crate gtk;
+use gtk::prelude::*;
+use gtk::{Label, Window, WindowType};
 
 fn main() {
-    MainWindow::new().unwrap().run().unwrap();
+    // Initialize GTK
+    gtk::init().expect("Failed to initialize GTK.");
 
+    // Create a new top-level window
+    let window = Window::new(WindowType::Toplevel);
+    window.set_title("Hello GTK");
+    window.set_default_size(300, 200);
+
+    // Create a label
+    let label = Label::new(Some("Hello, GTK!"));
+
+    // Add the label to the window
+    window.add(&label);
+
+    // Handle the destroy event
+    window.connect_destroy(|_| {
+        // Terminate the GTK main loop
+        gtk::main_quit();
+    });
+
+    // Show all components in the window
+    window.show_all();
+
+    // Start the GTK main loop
+    gtk::main();
 }
