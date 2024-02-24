@@ -55,6 +55,12 @@ build CMakeFiles/votify.dir/main.cpp.o: CXX_COMPILER__votify_unscanned_Debug /ho
   OBJECT_DIR = CMakeFiles/votify.dir
   OBJECT_FILE_DIR = CMakeFiles/votify.dir
 
+build CMakeFiles/votify.dir/server.cpp.o: CXX_COMPILER__votify_unscanned_Debug /home/gabrielvb/VotifyClone/votify/server.cpp || cmake_object_order_depends_target_votify
+  DEP_FILE = CMakeFiles/votify.dir/server.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/votify.dir
+  OBJECT_FILE_DIR = CMakeFiles/votify.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target votify
@@ -63,7 +69,7 @@ build CMakeFiles/votify.dir/main.cpp.o: CXX_COMPILER__votify_unscanned_Debug /ho
 #############################################
 # Link the executable votify
 
-build votify: CXX_EXECUTABLE_LINKER__votify_Debug CMakeFiles/votify.dir/main.cpp.o
+build votify: CXX_EXECUTABLE_LINKER__votify_Debug CMakeFiles/votify.dir/main.cpp.o CMakeFiles/votify.dir/server.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/votify.dir
   POST_BUILD = :
