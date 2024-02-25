@@ -1,13 +1,20 @@
+use gtk::gdk::keys::constants::CD;
 use gtk::prelude::*;
 use gtk::{Application, ApplicationWindow, Button,Label,Box};
+use std::sync::{Arc, Mutex};
 
 
 
 
 fn main() {
 
-    let cacion1 =0;
-    let cancion2 =0;
+
+   
+
+
+
+
+
 
 
 
@@ -23,21 +30,21 @@ fn main() {
             .default_height(400)
             .build();
 
-        // let button = Button::with_label("Click me!");
+
         // 
         let container = Box::new(gtk::Orientation::Vertical,0);
 
         let label = Label::new (Some("Lista de canciones"));
         
         label.set_size_request(100,50);
-        container.pack_start(&label, false, false, 0);
+        container.pack_start(&label, false, false, 5);
 
 
         crear_songs(&window, &container);
 
 
         window.add(&container);
-        // window.add(&button);
+
 
         window.show_all();
     });
@@ -47,8 +54,11 @@ fn main() {
 
 fn crear_songs(ventana: &ApplicationWindow,caja: &Box) {
 
-    for i in 0..2{
-        let label_text = format!("Cancion {}",i+1);
+
+    let votos = Arc::new(Mutex::new(Vec::new()));
+
+    for n in 0..2{
+        let label_text = format!("Cancion {}",n+1);
 
         let filas = Box::new(gtk::Orientation::Horizontal,0);
         let label = Label::new (Some(&label_text));
@@ -57,9 +67,17 @@ fn crear_songs(ventana: &ApplicationWindow,caja: &Box) {
 
         let like = Button::with_label("👍");
         like.set_size_request(50,50);
+
+        
+
+
         like.connect_clicked(move |_| {
-            let valor = i+1;
-            eprintln!("like cancion {}", valor);  
+            
+            let valor = n+1;
+            votos.lock().unwrap().push(n+1);
+            println!("{:?}", votos);
+            
+
         });
 
 
