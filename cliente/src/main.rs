@@ -1,7 +1,16 @@
 use gtk::prelude::*;
 use gtk::{Application, ApplicationWindow, Button,Label,Box};
 
+
+
+
 fn main() {
+
+    let cacion1 =0;
+    let cancion2 =0;
+
+
+
     let application = Application::builder()
         .application_id("com.example.FirstGtkApp")
         .build();
@@ -38,32 +47,32 @@ fn main() {
 
 fn crear_songs(ventana: &ApplicationWindow,caja: &Box) {
 
-    for i in 0..4{
+    for i in 0..2{
         let label_text = format!("Cancion {}",i+1);
 
         let filas = Box::new(gtk::Orientation::Horizontal,0);
-  
-
         let label = Label::new (Some(&label_text));
         label.set_halign(gtk::Align::Start);
         label.set_size_request(200,50);
 
         let like = Button::with_label("👍");
         like.set_size_request(50,50);
+        like.connect_clicked(move |_| {
+            let valor = i+1;
+            eprintln!("like cancion {}", valor);  
+        });
+
+
 
         let dislike = Button::with_label("👎");
         dislike.set_size_request(50,50);
 
 
-
         filas.pack_start(&label, false, false, 0);
         filas.pack_start(&like, false, false, 0);
         filas.pack_start(&dislike, false, false, 0);
-
         caja.pack_start(&filas, false, false, 0);
-
-
-
+        
 
     }
     
