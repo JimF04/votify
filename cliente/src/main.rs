@@ -1,31 +1,56 @@
-extern crate gtk;
 use gtk::prelude::*;
-use gtk::{Label, Window, WindowType};
+use gtk::{Application, ApplicationWindow, Button,Label,Box};
 
 fn main() {
-    // Initialize GTK
-    gtk::init().expect("Failed to initialize GTK.");
+    let application = Application::builder()
+        .application_id("com.example.FirstGtkApp")
+        .build();
 
-    // Create a new top-level window
-    let window = Window::new(WindowType::Toplevel);
-    window.set_title("Hello GTK");
-    window.set_default_size(300, 200);
+    application.connect_activate(|app| {
+        let window = ApplicationWindow::builder()
+            .application(app)
+            .title("Votify")
+            .default_width(350)
+            .default_height(350)
+            .build();
 
-    // Create a label
-    let label = Label::new(Some("Hello, GTK!"));
+        // let button = Button::with_label("Click me!");
+        // 
+        let container = Box::new(gtk::Orientation::Vertical,0);
 
-    // Add the label to the window
-    window.add(&label);
+        let label = Label::new (Some("Lista de canciones"));
+        label.set_size_request(100,50);
+        container.pack_start(&label, false, false, 0);
 
-    // Handle the destroy event
-    window.connect_destroy(|_| {
-        // Terminate the GTK main loop
-        gtk::main_quit();
+
+        crear_songs(&window, &container);
+
+
+        window.add(&container);
+        // window.add(&button);
+
+        window.show_all();
     });
 
-    // Show all components in the window
-    window.show_all();
+    application.run();
+}
 
-    // Start the GTK main loop
-    gtk::main();
+fn crear_songs(ventana: &ApplicationWindow,caja: &Box) {
+
+    for i in 0..4{
+        let label_text = format!("Cnacion {}",i+1);
+        let buttoni = Button::with_label(&label_text);
+        buttoni.set_size_request(100,50);
+        caja.pack_start(&buttoni, false, false, 0);
+        buttoni.connect_clicked(|_| {
+            eprintln!("Clicked!");
+        });
+    }
+    
+
+
+    
+
+
+
 }
