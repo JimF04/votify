@@ -11,7 +11,7 @@ fn main() {
             .application(app)
             .title("Votify")
             .default_width(350)
-            .default_height(350)
+            .default_height(400)
             .build();
 
         // let button = Button::with_label("Click me!");
@@ -19,6 +19,7 @@ fn main() {
         let container = Box::new(gtk::Orientation::Vertical,0);
 
         let label = Label::new (Some("Lista de canciones"));
+        
         label.set_size_request(100,50);
         container.pack_start(&label, false, false, 0);
 
@@ -38,15 +39,35 @@ fn main() {
 fn crear_songs(ventana: &ApplicationWindow,caja: &Box) {
 
     for i in 0..4{
-        let label_text = format!("Cnacion {}",i+1);
-        let buttoni = Button::with_label(&label_text);
-        buttoni.set_size_request(100,50);
-        caja.pack_start(&buttoni, false, false, 0);
-        buttoni.connect_clicked(|_| {
-            eprintln!("Clicked!");
-        });
+        let label_text = format!("Cancion {}",i+1);
+
+        let filas = Box::new(gtk::Orientation::Horizontal,0);
+  
+
+        let label = Label::new (Some(&label_text));
+        label.set_halign(gtk::Align::Start);
+        label.set_size_request(200,50);
+
+        let like = Button::with_label("👍");
+        like.set_size_request(50,50);
+
+        let dislike = Button::with_label("👎");
+        dislike.set_size_request(50,50);
+
+
+
+        filas.pack_start(&label, false, false, 0);
+        filas.pack_start(&like, false, false, 0);
+        filas.pack_start(&dislike, false, false, 0);
+
+        caja.pack_start(&filas, false, false, 0);
+
+
+
+
     }
     
+
 
 
     
