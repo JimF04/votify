@@ -68,14 +68,14 @@ fn crear_songs(ventana: &ApplicationWindow,caja: &Box) {
         let like = Button::with_label("👍");
         like.set_size_request(50,50);
 
-        
 
+        let votos_ref = Arc::clone(&votos);
 
         like.connect_clicked(move |_| {
             
-            let valor = n+1;
-            votos.lock().unwrap().push(n+1);
-            println!("{:?}", votos);
+            let valor = n + 1;
+            votos_ref.lock().unwrap().push(valor);
+            println!("{:?}", votos_ref.lock().unwrap());
             
 
         });
