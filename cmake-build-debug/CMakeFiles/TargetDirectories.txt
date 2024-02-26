@@ -1,0 +1,3 @@
+/home/jose/votify/cmake-build-debug/CMakeFiles/votify.dir
+/home/jose/votify/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/jose/votify/cmake-build-debug/CMakeFiles/rebuild_cache.dir
