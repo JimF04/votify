@@ -1,0 +1,11 @@
+/home/jose/votify/cliente/target/debug/deps/codemap_diagnostic-9a76c71da88d2cd4.rmeta: /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/lib.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/lock.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/snippet.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/styled_buffer.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/emitter.rs
+
+/home/jose/votify/cliente/target/debug/deps/libcodemap_diagnostic-9a76c71da88d2cd4.rlib: /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/lib.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/lock.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/snippet.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/styled_buffer.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/emitter.rs
+
+/home/jose/votify/cliente/target/debug/deps/codemap_diagnostic-9a76c71da88d2cd4.d: /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/lib.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/lock.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/snippet.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/styled_buffer.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/emitter.rs
+
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/lib.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/lock.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/snippet.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/styled_buffer.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/codemap-diagnostic-0.1.2/src/emitter.rs:

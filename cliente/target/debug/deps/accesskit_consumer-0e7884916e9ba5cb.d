@@ -1,0 +1,10 @@
+/home/jose/votify/cliente/target/debug/deps/accesskit_consumer-0e7884916e9ba5cb.rmeta: /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/lib.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/tree.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/node.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/filters.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/iterators.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/text.rs
+
+/home/jose/votify/cliente/target/debug/deps/accesskit_consumer-0e7884916e9ba5cb.d: /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/lib.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/tree.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/node.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/filters.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/iterators.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/text.rs
+
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/lib.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/tree.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/node.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/filters.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/iterators.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/accesskit_consumer-0.17.0/src/text.rs:

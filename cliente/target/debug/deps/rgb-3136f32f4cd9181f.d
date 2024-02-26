@@ -1,0 +1,13 @@
+/home/jose/votify/cliente/target/debug/deps/rgb-3136f32f4cd9181f.rmeta: /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/lib.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/convert/mod.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/convert/array.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/convert/tuple.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/ops.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/pixel.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/rgb.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/rgba.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/alt.rs
+
+/home/jose/votify/cliente/target/debug/deps/rgb-3136f32f4cd9181f.d: /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/lib.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/convert/mod.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/convert/array.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/convert/tuple.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/ops.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/pixel.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/rgb.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/rgba.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/alt.rs
+
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/lib.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/convert/mod.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/convert/array.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/convert/tuple.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/ops.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/pixel.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/rgb.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/internal/rgba.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rgb-0.8.37/src/alt.rs:

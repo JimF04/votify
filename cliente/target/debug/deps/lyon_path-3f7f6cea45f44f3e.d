@@ -1,0 +1,13 @@
+/home/jose/votify/cliente/target/debug/deps/lyon_path-3f7f6cea45f44f3e.rmeta: /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/lib.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/builder.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/commands.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/events.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/iterator.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/path.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/path_buffer.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/polygon.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/private.rs
+
+/home/jose/votify/cliente/target/debug/deps/lyon_path-3f7f6cea45f44f3e.d: /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/lib.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/builder.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/commands.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/events.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/iterator.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/path.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/path_buffer.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/polygon.rs /home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/private.rs
+
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/lib.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/builder.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/commands.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/events.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/iterator.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/path.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/path_buffer.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/polygon.rs:
+/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lyon_path-1.0.4/src/private.rs:

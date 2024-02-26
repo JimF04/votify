@@ -1,0 +1,2 @@
+cargo:rerun-if-changed=/home/jose/.cargo/registry/src/index.crates.io-6f17d22bba15001f/i-slint-compiler-1.4.1/widgets
+cargo:rustc-env=SLINT_WIDGETS_LIBRARY=/home/jose/votify/cliente/target/debug/build/i-slint-compiler-7d4656fd2c875cd6/out/included_library.rs
