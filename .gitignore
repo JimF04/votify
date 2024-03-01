@@ -1,9 +1,9 @@
 # Ignorar archivos compilados de Rust
-/target/
+/cliente/target/
 Cargo.lock
 
 # Ignorar archivos compilados de C++
-/cmake-build-debug/
+/servidor/cmake-build-debug/
 
 # Ignorar archivos temporales y generados
 *.rs.bk
