@@ -1,5 +1,5 @@
 # archivos de generados automaticamente
 /target/
-
-
 Cargo.lock
+
+/cmake-build-debug/
