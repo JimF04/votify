@@ -1,5 +1,61 @@
-# archivos de generados automaticamente
+# Ignorar archivos compilados de Rust
 /target/
-Cargo.lock
 
+# Ignorar archivos compilados de C++
 /cmake-build-debug/
+
+# Ignorar archivos temporales y generados
+*.rs.bk
+*.o
+*.obj
+*.a
+*.exe
+*.out
+*.dll
+*.so
+*.dylib
+*.lib
+*.pdb
+*.class
+*.jar
+*.war
+*.zip
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.tar.lzma
+*.tar.Z
+*.tar
+*.gz
+*.xz
+*.bz2
+*.lzma
+*.Z
+*.zipx
+*.ipch
+*.suo
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.sdfbak
+*.tlog
+*.idb
+*.ilk
+*.pdb
+*.ipdb
+*.pch
+*.obj
+*.res
+*.sbr
+*.sln.docstates
+*.sdf
+*.ipch
+*.swp
+*.swo
+*.bak
+*.pyc
+*.pyo
+*.DS_Store
+Thumbs.db
+Desktop.ini
