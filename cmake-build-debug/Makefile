@@ -117,24 +117,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named votify
+# Target rules for targets named votify_main
 
 # Build rule for target.
-votify: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 votify
-.PHONY : votify
+votify_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 votify_main
+.PHONY : votify_main
 
 # fast build rule for target.
-votify/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/build
-.PHONY : votify/fast
+votify_main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/build
+.PHONY : votify_main/fast
+
+#=============================================================================
+# Target rules for targets named votify_server
+
+# Build rule for target.
+votify_server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 votify_server
+.PHONY : votify_server
+
+# fast build rule for target.
+votify_server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_server.dir/build.make CMakeFiles/votify_server.dir/build
+.PHONY : votify_server/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -142,7 +155,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -150,7 +163,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 server.o: server.cpp.o
@@ -158,7 +171,8 @@ server.o: server.cpp.o
 
 # target to build an object file
 server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/server.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/server.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_server.dir/build.make CMakeFiles/votify_server.dir/server.cpp.o
 .PHONY : server.cpp.o
 
 server.i: server.cpp.i
@@ -166,7 +180,8 @@ server.i: server.cpp.i
 
 # target to preprocess a source file
 server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/server.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/server.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_server.dir/build.make CMakeFiles/votify_server.dir/server.cpp.i
 .PHONY : server.cpp.i
 
 server.s: server.cpp.s
@@ -174,7 +189,8 @@ server.s: server.cpp.s
 
 # target to generate assembly for a file
 server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/server.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/server.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_server.dir/build.make CMakeFiles/votify_server.dir/server.cpp.s
 .PHONY : server.cpp.s
 
 # Help Target
@@ -185,7 +201,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... votify"
+	@echo "... votify_main"
+	@echo "... votify_server"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

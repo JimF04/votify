@@ -17,8 +17,8 @@
 					<DistClean command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="votify">
-				<Option output="/home/gabrielvb/VotifyClone/votify/cmake-build-debug/votify" prefix_auto="0" extension_auto="0"/>
+			<Target title="votify_main">
+				<Option output="/home/gabrielvb/VotifyClone/votify/cmake-build-debug/votify_main" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/gabrielvb/VotifyClone/votify/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -33,14 +33,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 votify"/>
+					<Build command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 votify_main"/>
 					<CompileFile command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="votify/fast">
-				<Option output="/home/gabrielvb/VotifyClone/votify/cmake-build-debug/votify" prefix_auto="0" extension_auto="0"/>
+			<Target title="votify_main/fast">
+				<Option output="/home/gabrielvb/VotifyClone/votify/cmake-build-debug/votify_main" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/gabrielvb/VotifyClone/votify/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -55,7 +55,51 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 votify/fast"/>
+					<Build command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 votify_main/fast"/>
+					<CompileFile command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="votify_server">
+				<Option output="/home/gabrielvb/VotifyClone/votify/cmake-build-debug/votify_server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/gabrielvb/VotifyClone/votify/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 votify_server"/>
+					<CompileFile command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="votify_server/fast">
+				<Option output="/home/gabrielvb/VotifyClone/votify/cmake-build-debug/votify_server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/gabrielvb/VotifyClone/votify/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 votify_server/fast"/>
 					<CompileFile command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/gmake -j3 -f &quot;/home/gabrielvb/VotifyClone/votify/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -83,13 +127,14 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/gabrielvb/VotifyClone/votify/main.cpp">
-			<Option target="votify"/>
+			<Option target="votify_main"/>
 		</Unit>
 		<Unit filename="/home/gabrielvb/VotifyClone/votify/server.cpp">
-			<Option target="votify"/>
+			<Option target="votify_main"/>
+			<Option target="votify_server"/>
 		</Unit>
 		<Unit filename="/home/gabrielvb/VotifyClone/votify/server.h">
-			<Option target="votify"/>
+			<Option target="votify_main"/>
 		</Unit>
 		<Unit filename="/home/gabrielvb/VotifyClone/votify/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

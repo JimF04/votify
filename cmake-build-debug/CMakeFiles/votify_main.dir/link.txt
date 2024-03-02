@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/votify_main.dir/main.cpp.o CMakeFiles/votify_main.dir/server.cpp.o -o votify_main 

@@ -1,81 +1,75 @@
-
 #include <iostream>
-#include<string.h>
-#include<sys/types.h>
-#include<sys/socket.h>
-#include<netinet/in.h>
-#include<arpa/inet.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include<netdb.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <jsoncpp/json/value.h>
+
 
 using namespace std;
 
-int main_server (){
-
-    int client,server;
-    int portNum = 1500; //Note the server and clients IP are the same
-    bool isExit = false;
+int main() {
+    int server, client;
+    int portNum = 1500;
     int bufsize = 1024;
     char buffer[bufsize];
-    char *ip = "127.0.0.1";
 
     struct sockaddr_in server_addr;
 
-    //init socket
-
-    client = socket(AF_INET,SOCK_STREAM,0);
-    if(client <0){
-        cout<<"Error creating socket..."<<endl;
+    // Crear el socket del servidor
+    server = socket(AF_INET, SOCK_STREAM, 0);
+    if (server < 0) {
+        cout << "Error creando conexión..." << endl;
         exit(1);
     }
-    cout<<"Client Socket created"<<endl;
+    cout << "Servidor: Conexión creada" << endl;
 
     server_addr.sin_family = AF_INET;
+    server_addr.sin_addr.s_addr = htons(INADDR_ANY);
     server_addr.sin_port = htons(portNum);
 
-    //connecting socket server
-
-    if (connect(client,(struct sockaddr*)&server_addr,sizeof(server_addr))==0){
-
-        cout<<"Connecting socket to server.."<<endl;
+    // Enlazar el socket del servidor
+    if (bind(server, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0) {
+        cout << "Error enlazando socket..." << endl;
+        exit(1);
     }
-    recv(client,buffer,bufsize,0);
-    cout<<"Conection confirmed"<<endl;
+    cout << "Servidor: Enlace completado" << endl;
 
-    cout<<"Enter # to end the connection"<<endl;
+    // Escuchar conexiones entrantes
+    listen(server, 1);
 
-    do{
-        cout<<"Client: ";
-        do{
-            cin>>buffer;
-            send(client,buffer,bufsize,0);
-            if (*buffer == '#'){
-                send(client,buffer,bufsize,0);
-                *buffer = '*';
-                isExit = true;
-            }
-        }while (*buffer !=42);
-        cout<<"Server: ";
-        do{
-            recv(client,buffer,bufsize,0);
-            cout<<buffer<<" ";
-            if(*buffer!='#'){
-                *buffer = '*';
-                isExit = true;
-            }
-        }while(*buffer!=42);
-        cout<<endl;
-    }while(!isExit);
-    cout<<"Connection terminated..."<<endl;
-    cout<<"Goodbye"<<endl;
+    // Aceptar una conexión entrante
+    socklen_t size = sizeof(server_addr);
+    client = accept(server, (struct sockaddr *) &server_addr, &size);
+    if (client < 0) {
+        cout << "Error aceptando conexión..." << endl;
+        exit(1);
+    }
+    cout << "Servidor: Conexión aceptada" << endl;
 
+    // Comunicación bidireccional
+    bool isExit = false;
+    while (!isExit) {
+        recv(client, buffer, bufsize, 0);
+        cout << "Cliente: " << buffer << endl;
+        if (*buffer == '#') {
+            isExit = true;
+        }
 
+        cout << "Servidor: ";
+        cin.getline(buffer, bufsize);
+        send(client, buffer, bufsize, 0);
+        if (*buffer == '#') {
+            isExit = true;
+        }
+    }
+
+    // Cerrar la conexión del servidor
     close(client);
-
-
-
+    close(server);
+    cout << "Servidor: Conexión terminada..." << endl;
 
     return 0;
 }
-

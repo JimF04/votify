@@ -63,7 +63,8 @@ CMAKE_BINARY_DIR = /home/gabrielvb/VotifyClone/votify/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/votify.dir/all
+all: CMakeFiles/votify_main.dir/all
+all: CMakeFiles/votify_server.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +72,61 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/votify.dir/clean
+clean: CMakeFiles/votify_main.dir/clean
+clean: CMakeFiles/votify_server.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/votify.dir
+# Target rules for target CMakeFiles/votify_main.dir
 
 # All Build rule for target.
-CMakeFiles/votify.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target votify"
-.PHONY : CMakeFiles/votify.dir/all
+CMakeFiles/votify_main.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target votify_main"
+.PHONY : CMakeFiles/votify_main.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/votify.dir/rule: cmake_check_build_system
+CMakeFiles/votify_main.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/votify.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/votify_main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/votify.dir/rule
+.PHONY : CMakeFiles/votify_main.dir/rule
 
 # Convenience name for target.
-votify: CMakeFiles/votify.dir/rule
-.PHONY : votify
+votify_main: CMakeFiles/votify_main.dir/rule
+.PHONY : votify_main
 
 # clean rule for target.
-CMakeFiles/votify.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify.dir/build.make CMakeFiles/votify.dir/clean
-.PHONY : CMakeFiles/votify.dir/clean
+CMakeFiles/votify_main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_main.dir/build.make CMakeFiles/votify_main.dir/clean
+.PHONY : CMakeFiles/votify_main.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/votify_server.dir
+
+# All Build rule for target.
+CMakeFiles/votify_server.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_server.dir/build.make CMakeFiles/votify_server.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_server.dir/build.make CMakeFiles/votify_server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles --progress-num=4,5 "Built target votify_server"
+.PHONY : CMakeFiles/votify_server.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/votify_server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/votify_server.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/votify_server.dir/rule
+
+# Convenience name for target.
+votify_server: CMakeFiles/votify_server.dir/rule
+.PHONY : votify_server
+
+# clean rule for target.
+CMakeFiles/votify_server.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_server.dir/build.make CMakeFiles/votify_server.dir/clean
+.PHONY : CMakeFiles/votify_server.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
