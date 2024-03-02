@@ -7,12 +7,11 @@
 #include<arpa/inet.h>
 #include<stdlib.h>
 #include<unistd.h>
-#include "server.h"
 #include<netdb.h>
 
 using namespace std;
 
-int main_server(){
+int main_server (){
 
     int client,server;
     int portNum = 1500; //Note the server and clients IP are the same

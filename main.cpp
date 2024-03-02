@@ -91,7 +91,7 @@ int main() {
                 recv(server,buffer,bufsize,0);
                 cout<<buffer<<" ";
                 if (*buffer =='#'){
-                    *buffer == '*';
+                    *buffer = '*';
                     isExit = true;
                 }
             }while(*buffer != '*');
