@@ -8,3 +8,4 @@ add_executable(votify_main main.cpp
         server.cpp)
 
 add_executable(votify_server server.cpp)
+

@@ -15,6 +15,7 @@ int main() {
     int portNum = 1500;
     int bufsize = 1024;
     char buffer[bufsize];
+    
 
     struct sockaddr_in server_addr;
 
