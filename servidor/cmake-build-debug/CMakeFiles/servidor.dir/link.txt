@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/servidor.dir/main.cpp.o -o servidor 
+/usr/bin/c++ -g CMakeFiles/servidor.dir/main.cpp.o CMakeFiles/servidor.dir/playlist.cpp.o -o servidor  -ltag -luuid /usr/lib/x86_64-linux-gnu/libjsoncpp.so.1.9.5 

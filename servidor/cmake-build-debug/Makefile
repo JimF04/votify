@@ -153,6 +153,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+playlist.o: playlist.cpp.o
+.PHONY : playlist.o
+
+# target to build an object file
+playlist.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/playlist.cpp.o
+.PHONY : playlist.cpp.o
+
+playlist.i: playlist.cpp.i
+.PHONY : playlist.i
+
+# target to preprocess a source file
+playlist.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/playlist.cpp.i
+.PHONY : playlist.cpp.i
+
+playlist.s: playlist.cpp.s
+.PHONY : playlist.s
+
+# target to generate assembly for a file
+playlist.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/playlist.cpp.s
+.PHONY : playlist.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... playlist.o"
+	@echo "... playlist.i"
+	@echo "... playlist.s"
 .PHONY : help
 
 

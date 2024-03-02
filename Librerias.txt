@@ -1,0 +1,25 @@
+
+// Instalar esto primero
+sudo apt-get install cmake libtool zlib1g-dev libflac-dev libogg-dev libvorbis-dev libopus-dev libmp3lame-dev libmad0-dev
+sudo apt-get install cmake libtool autoconf automake libboost-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-test-dev
+
+// Librerria jsoncpp
+// junto
+git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
+./bootstrap-vcpkg.sh
+./vcpkg integrate install
+./vcpkg install jsoncpp
+
+// libreria id3v2lib
+// Cada uno por separado
+https://github.com/taglib/taglib.git
+cd taglib
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+
+
+

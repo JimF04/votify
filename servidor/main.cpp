@@ -1,6 +1,15 @@
 #include <iostream>
+#include "playlist.h"
+
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    insert_songs();
+    insert_songs();
+
+    cout << "\n";
+
+    display();
+
     return 0;
 }
