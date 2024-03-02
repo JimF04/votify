@@ -1,0 +1,3 @@
+/home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles/votify_gui.dir
+/home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/gabrielvb/VotifyClone/votify/cmake-build-debug/CMakeFiles/rebuild_cache.dir

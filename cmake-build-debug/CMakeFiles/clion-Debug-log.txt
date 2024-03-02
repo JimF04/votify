@@ -8,12 +8,9 @@ CMake Deprecation Warning:
   use the cmake-file-api(7) to view CMake-generated project build trees.
 
 
-CMake Error at /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
-  Could NOT find PkgConfig (missing: PKG_CONFIG_EXECUTABLE)
-Call Stack (most recent call first):
-  /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake:600 (_FPHSA_FAILURE_MESSAGE)
-  /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPkgConfig.cmake:99 (find_package_handle_standard_args)
-  CMakeLists.txt:6 (find_package)
-
-
--- Configuring incomplete, errors occurred!
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+-- Checking for module 'gtk+-3.0'
+--   Found gtk+-3.0, version 3.24.33
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/gabrielvb/VotifyClone/votify/cmake-build-debug
