@@ -10,6 +10,8 @@ include_directories(${GTK3_INCLUDE_DIRS})
 link_directories(${GTK3_LIBRARY_DIRS})
 add_definitions(${GTK3_CFLAGS_OTHER})
 
-add_executable(votify_gui ServerGui.cpp)
+add_executable(votify_gui ServerGui.cpp
+        ServerGui.cpp
+        ServerGui.cpp)
 
 target_link_libraries(votify_gui ${GTK3_LIBRARIES})
