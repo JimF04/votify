@@ -14,6 +14,15 @@
 # EXTERNAL cache entries
 ########################
 
+//Path to a library.
+AVCODEC_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libavcodec.so
+
+//Path to a library.
+AVFORMAT_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libavformat.so
+
+//Path to a library.
+AVUTIL_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libavutil.so
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -226,11 +235,26 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//The directory containing a CMake configuration file for FFmpeg.
+FFmpeg_DIR:PATH=FFmpeg_DIR-NOTFOUND
+
+//Path to a library.
+ID3LIB_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libid3.so
+
+//Path to a library.
+IDV2LIB:FILEPATH=IDV2LIB-NOTFOUND
+
 //Path to a program.
 ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
+
+//Path to a library.
+SWRESAMPLE_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libswresample.so
+
+//Path to a library.
+SWSCALE_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libswscale.so
 
 //The directory containing a CMake configuration file for Taglib.
 Taglib_DIR:PATH=Taglib_DIR-NOTFOUND
@@ -246,6 +270,9 @@ servidor_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 servidor_SOURCE_DIR:STATIC=/home/jimmy/Documents/GitHub/votify/servidor
+
+//The directory containing a CMake configuration file for uuid.
+uuid_DIR:PATH=uuid_DIR-NOTFOUND
 
 
 ########################

@@ -20,7 +20,7 @@ struct nodo {
     nodo* prev;
 };
 
-void insert_songs();
+void insert_songs(const std::string& file_path);
 void display();
 
 #endif

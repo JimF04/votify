@@ -4,37 +4,41 @@
 
 #include "playlist.h"
 #include <iostream>
+#include <filesystem>
 #include <uuid/uuid.h>
 
 using namespace std;
+namespace fs = std::filesystem;
 
 nodo *head = NULL;
 nodo *tail = NULL;
 
-void insert_songs() {
+void insert_songs(const string& file_path) {
     nodo *new_nodo = new nodo;
 
+    // Generar un UUID para el nodo
     uuid_t uuid;
     uuid_generate_random(uuid);
     char uuid_str[37];
     uuid_unparse(uuid, uuid_str);
     new_nodo->id = string(uuid_str);
 
-    cout << "Ingrese el nombre de la cancion: ";
-    cin >> new_nodo->name;
-    cout << "Ingrese el nombre del artista: ";
-    cin >> new_nodo->artist;
-    cout << "Ingrese el nombre del album: ";
-    cin >> new_nodo->album;
-    cout << "Ingrese el genero de la cancion: ";
-    cin >> new_nodo->genre;
+    // Falta por agregar por medio de metadata
+    fs::path path(file_path);
+    new_nodo->name = path.filename().string();
 
+    new_nodo->artist = "";
+    new_nodo->album = "";
+    new_nodo->genre = "pop";
+
+    // Inicializar votos en 0
     new_nodo->up_votes = 0;
     new_nodo->down_votes = 0;
 
-    cout << "Ingrese la ruta del archivo: ";
-    cin >> new_nodo->file_path;
+    // Asignar la ruta del archivo al nodo
+    new_nodo->file_path = file_path;
 
+    // Insertar el nuevo nodo en la lista
     if (head == NULL) {
         head = new_nodo;
         head->next = head;
