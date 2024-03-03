@@ -7,20 +7,23 @@
 
 #include <string>
 
+using namespace std;
+
 struct nodo {
-    std::string id;
-    std::string name;
-    std::string artist;
-    std::string album;
-    std::string genre;
+    string id;
+    string name;
+    string artist;
+    string album;
+    string genre;
     int up_votes;
     int down_votes;
-    std::string file_path;
+    string file_path;
     nodo* next;
     nodo* prev;
 };
 
-void insert_songs(const std::string& file_path);
+void insert_songs(const string& file_path);
 void display();
+void savePlaylistToJson(const string& jsonFilePath);
 
 #endif
