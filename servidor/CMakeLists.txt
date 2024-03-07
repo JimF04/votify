@@ -3,12 +3,11 @@ project(servidor)
 
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(jsoncpp CONFIG REQUIRED)
-
-
 add_executable(servidor main.cpp
         playlist.cpp
         playlist.h
+        server.cpp
+        server.h
 )
 
-target_link_libraries(servidor PRIVATE JsonCpp::JsonCpp uuid)
+target_link_libraries(servidor PRIVATE uuid)

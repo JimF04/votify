@@ -5,7 +5,7 @@
 		<Option title="servidor"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\;"/>
+		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug"/>
@@ -24,7 +24,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/jsoncpp"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -47,7 +46,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/jsoncpp"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -93,23 +91,14 @@
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/playlist.h">
 			<Option target="servidor"/>
 		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/server.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/server.h">
+			<Option target="servidor"/>
+		</Unit>
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-namespaced-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets-none.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

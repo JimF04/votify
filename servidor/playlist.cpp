@@ -6,8 +6,8 @@
 #include <iostream>
 #include <filesystem>
 #include <uuid/uuid.h>
-#include <json/json.h>
-#include <fstream>
+//#include <json/json.h>
+//#include <fstream>
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -75,37 +75,37 @@ void display() {
     }
 }
 
-void savePlaylistToJson(const string& jsonFilePath) {
-    Json::Value playlistJson(Json::arrayValue); // Array JSON para almacenar los nodos
-
-    nodo* temp = head;
-    if (head != NULL) {
-        do {
-            // Crear un objeto JSON para el nodo actual
-            Json::Value nodeJson;
-            nodeJson["id"] = temp->id;
-            nodeJson["name"] = temp->name;
-            nodeJson["artist"] = temp->artist;
-            nodeJson["album"] = temp->album;
-            nodeJson["genre"] = temp->genre;
-            nodeJson["up_votes"] = temp->up_votes;
-            nodeJson["down_votes"] = temp->down_votes;
-            nodeJson["file_path"] = temp->file_path;
-
-            // Agregar el objeto JSON del nodo al array JSON de la playlist
-            playlistJson.append(nodeJson);
-
-            temp = temp->next;
-        } while (temp != head);
-    }
-
-    // Guardar el Json en un archivo
-    ofstream outputFile(jsonFilePath);
-    if (outputFile.is_open()) {
-        outputFile << playlistJson;
-        outputFile.close();
-        cout << "Se guardo correctamente" << endl;
-    } else {
-        cerr << "No se pudo guardar" << endl;
-    }
-}
+//void savePlaylistToJson(const string& jsonFilePath) {
+//    Json::Value playlistJson(Json::arrayValue); // Array JSON para almacenar los nodos
+//
+//    nodo* temp = head;
+//    if (head != NULL) {
+//        do {
+//            // Crear un objeto JSON para el nodo actual
+//            Json::Value nodeJson;
+//            nodeJson["id"] = temp->id;
+//            nodeJson["name"] = temp->name;
+//            nodeJson["artist"] = temp->artist;
+//            nodeJson["album"] = temp->album;
+//            nodeJson["genre"] = temp->genre;
+//            nodeJson["up_votes"] = temp->up_votes;
+//            nodeJson["down_votes"] = temp->down_votes;
+//            nodeJson["file_path"] = temp->file_path;
+//
+//            // Agregar el objeto JSON del nodo al array JSON de la playlist
+//            playlistJson.append(nodeJson);
+//
+//            temp = temp->next;
+//        } while (temp != head);
+//    }
+//
+//    // Guardar el Json en un archivo
+//    ofstream outputFile(jsonFilePath);
+//    if (outputFile.is_open()) {
+//        outputFile << playlistJson;
+//        outputFile.close();
+//        cout << "Se guardo correctamente" << endl;
+//    } else {
+//        cerr << "No se pudo guardar" << endl;
+//    }
+//}

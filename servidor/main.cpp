@@ -1,6 +1,7 @@
 #include <iostream>
 #include <filesystem>
 #include "playlist.h"
+#include "server.h"
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -23,7 +24,14 @@ int main() {
 
     display();
 
-    savePlaylistToJson("playlist.json");
+//    savePlaylistToJson("playlist.json");
+
+    string ipAddress = "127.0.0.1";
+    int portNum = 1500;
+    int bufsize = 1024;
+
+    server server(ipAddress, portNum, bufsize);
+    server.start();
 
     return 0;
 }

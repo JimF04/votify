@@ -32,11 +32,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/ProcessorCount.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-namespaced-targets.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets-none.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfig.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfigVersion.cmake"
   )
 
 # The corresponding makefile is:

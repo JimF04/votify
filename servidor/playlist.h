@@ -24,6 +24,6 @@ struct nodo {
 
 void insert_songs(const string& file_path);
 void display();
-void savePlaylistToJson(const string& jsonFilePath);
+//void savePlaylistToJson(const string& jsonFilePath);
 
 #endif

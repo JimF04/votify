@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jimmy/Documents/GitHub/votify/servidor/main.cpp" "CMakeFiles/servidor.dir/main.cpp.o" "gcc" "CMakeFiles/servidor.dir/main.cpp.o.d"
   "/home/jimmy/Documents/GitHub/votify/servidor/playlist.cpp" "CMakeFiles/servidor.dir/playlist.cpp.o" "gcc" "CMakeFiles/servidor.dir/playlist.cpp.o.d"
+  "/home/jimmy/Documents/GitHub/votify/servidor/server.cpp" "CMakeFiles/servidor.dir/server.cpp.o" "gcc" "CMakeFiles/servidor.dir/server.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
