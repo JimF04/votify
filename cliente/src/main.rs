@@ -1,21 +1,12 @@
+mod cliente_Server;
+
 use gtk::gdk::keys::constants::CD;
 use gtk::prelude::*;
 use gtk::{Application, ApplicationWindow, Button,Label,Box};
 use std::sync::{Arc, Mutex};
 
 
-
-
 fn main() {
-
-
-   
-
-
-
-
-
-
 
 
     let application = Application::builder()
