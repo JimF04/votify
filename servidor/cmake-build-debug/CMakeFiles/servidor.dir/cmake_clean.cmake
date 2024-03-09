@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/main.cpp.o"
+  "CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/main.cpp.o.d"
   "CMakeFiles/servidor.dir/main.cpp.o"
   "CMakeFiles/servidor.dir/main.cpp.o.d"
   "CMakeFiles/servidor.dir/playlist.cpp.o"

@@ -8,6 +8,8 @@ add_executable(servidor main.cpp
         playlist.h
         server.cpp
         server.h
+        ../paginated_list/main.cpp
+        ../paginated_list/PaginatedList.h
 )
 
 target_link_libraries(servidor PRIVATE uuid)
