@@ -27,7 +27,7 @@ int main() {
 //    savePlaylistToJson("playlist.json");
 
     string ipAddress = "127.0.0.1";
-    int portNum = 1500;
+    int portNum = 50000;
     int bufsize = 1024;
 
     server server(ipAddress, portNum, bufsize);
