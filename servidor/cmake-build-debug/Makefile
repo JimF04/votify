@@ -129,6 +129,30 @@ servidor/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/build
 .PHONY : servidor/fast
 
+home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.o: home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.o
+.PHONY : home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.o
+
+# target to build an object file
+home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.o
+.PHONY : home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.o
+
+home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.i: home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.i
+.PHONY : home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.i
+
+# target to preprocess a source file
+home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.i
+.PHONY : home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.i
+
+home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.s: home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.s
+.PHONY : home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.s
+
+# target to generate assembly for a file
+home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.s
+.PHONY : home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.s
+
 home/gabrielvb/VotifyClone/votify/paginated_list/main.o: home/gabrielvb/VotifyClone/votify/paginated_list/main.cpp.o
 .PHONY : home/gabrielvb/VotifyClone/votify/paginated_list/main.o
 
@@ -234,6 +258,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... servidor"
+	@echo "... home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.o"
+	@echo "... home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.i"
+	@echo "... home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.s"
 	@echo "... home/gabrielvb/VotifyClone/votify/paginated_list/main.o"
 	@echo "... home/gabrielvb/VotifyClone/votify/paginated_list/main.i"
 	@echo "... home/gabrielvb/VotifyClone/votify/paginated_list/main.s"

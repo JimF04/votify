@@ -10,6 +10,7 @@ add_executable(servidor main.cpp
         server.h
         ../paginated_list/main.cpp
         ../paginated_list/PaginatedList.h
+        ../paginated_list/PaginatedList.cpp
 )
 
 target_link_libraries(servidor PRIVATE uuid)

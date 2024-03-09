@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp" "CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.o" "gcc" "CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.o.d"
   "/home/gabrielvb/VotifyClone/votify/paginated_list/main.cpp" "CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/main.cpp.o" "gcc" "CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/main.cpp.o.d"
   "/home/gabrielvb/VotifyClone/votify/servidor/main.cpp" "CMakeFiles/servidor.dir/main.cpp.o" "gcc" "CMakeFiles/servidor.dir/main.cpp.o.d"
   "/home/gabrielvb/VotifyClone/votify/servidor/playlist.cpp" "CMakeFiles/servidor.dir/playlist.cpp.o" "gcc" "CMakeFiles/servidor.dir/playlist.cpp.o.d"
