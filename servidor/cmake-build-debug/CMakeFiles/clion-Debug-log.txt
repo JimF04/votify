@@ -1,23 +1,27 @@
-/snap/clion/265/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/jimmy/Documents/GitHub/votify/servidor -B /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug
-CMake Deprecation Warning:
-  Support for "Extra Generators" like
-
-    CodeBlocks
-
-  is deprecated and will be removed from a future version of CMake.  IDEs may
-  use the cmake-file-api(7) to view CMake-generated project build trees.
-
-
-CMake Deprecation Warning at /usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfig.cmake:2 (cmake_policy):
+/snap/clion/265/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=/home/ahenao/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake -S "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor" -B "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug"
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Deprecation Warning at /home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfig.cmake:2 (cmake_policy):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
 
   Update the VERSION argument <min> value or use a ...<max> suffix to tell
   CMake that the project does not need compatibility with older versions.
 Call Stack (most recent call first):
+  /home/ahenao/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake:859 (_find_package)
   CMakeLists.txt:6 (find_package)
 
 
--- Configuring done (0.0s)
+-- Configuring done (2.3s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug
+-- Build files have been written to: /home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug

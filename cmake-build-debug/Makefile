@@ -57,10 +57,10 @@ RM = /snap/clion/265/bin/cmake/linux/x64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor"
+CMAKE_SOURCE_DIR = "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug"
+CMAKE_BINARY_DIR = "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/CMakeFiles" "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/cmake-build-debug/CMakeFiles" "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/cmake-build-debug//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -117,65 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named servidor
+# Target rules for targets named votify_gui
 
 # Build rule for target.
-servidor: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 servidor
-.PHONY : servidor
+votify_gui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 votify_gui
+.PHONY : votify_gui
 
 # fast build rule for target.
-servidor/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/build
-.PHONY : servidor/fast
+votify_gui/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_gui.dir/build.make CMakeFiles/votify_gui.dir/build
+.PHONY : votify_gui/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/main.cpp.s
-.PHONY : main.cpp.s
-
-playlist.o: playlist.cpp.o
-.PHONY : playlist.o
+ServerGui.o: ServerGui.cpp.o
+.PHONY : ServerGui.o
 
 # target to build an object file
-playlist.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/playlist.cpp.o
-.PHONY : playlist.cpp.o
+ServerGui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_gui.dir/build.make CMakeFiles/votify_gui.dir/ServerGui.cpp.o
+.PHONY : ServerGui.cpp.o
 
-playlist.i: playlist.cpp.i
-.PHONY : playlist.i
+ServerGui.i: ServerGui.cpp.i
+.PHONY : ServerGui.i
 
 # target to preprocess a source file
-playlist.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/playlist.cpp.i
-.PHONY : playlist.cpp.i
+ServerGui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_gui.dir/build.make CMakeFiles/votify_gui.dir/ServerGui.cpp.i
+.PHONY : ServerGui.cpp.i
 
-playlist.s: playlist.cpp.s
-.PHONY : playlist.s
+ServerGui.s: ServerGui.cpp.s
+.PHONY : ServerGui.s
 
 # target to generate assembly for a file
-playlist.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/playlist.cpp.s
-.PHONY : playlist.cpp.s
+ServerGui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/votify_gui.dir/build.make CMakeFiles/votify_gui.dir/ServerGui.cpp.s
+.PHONY : ServerGui.cpp.s
 
 # Help Target
 help:
@@ -185,13 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... servidor"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... playlist.o"
-	@echo "... playlist.i"
-	@echo "... playlist.s"
+	@echo "... votify_gui"
+	@echo "... ServerGui.o"
+	@echo "... ServerGui.i"
+	@echo "... ServerGui.s"
 .PHONY : help
 
 
