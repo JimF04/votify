@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/servidor.dir/main.cpp.o CMakeFiles/servidor.dir/playlist.cpp.o CMakeFiles/servidor.dir/server.cpp.o CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/main.cpp.o CMakeFiles/servidor.dir/home/gabrielvb/VotifyClone/votify/paginated_list/PaginatedList.cpp.o -o servidor  -luuid 
