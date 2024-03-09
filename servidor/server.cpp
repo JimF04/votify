@@ -51,12 +51,12 @@ void server::start() {
             isExit = true;
         }
 
-        std::cout << "Servidor: ";
-        std::cin.getline(buffer, buffer_size);
-        send(client_socket, buffer, buffer_size, 0);
-        if (*buffer == '#') {
-            isExit = true;
-        }
+//        std::cout << "Servidor: ";
+//        std::cin.getline(buffer, buffer_size);
+//        send(client_socket, buffer, buffer_size, 0);
+//        if (*buffer == '#') {
+//            isExit = true;
+//        }
     }
 
     // Cerrar la conexión del servidor
