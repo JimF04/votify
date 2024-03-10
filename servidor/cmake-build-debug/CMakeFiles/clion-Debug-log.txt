@@ -1,16 +1,4 @@
 /snap/clion/265/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=/home/ahenao/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake -S "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor" -B "/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug"
--- The C compiler identification is GNU 11.4.0
--- The CXX compiler identification is GNU 11.4.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
 CMake Deprecation Warning at /home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfig.cmake:2 (cmake_policy):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -22,6 +10,6 @@ Call Stack (most recent call first):
   CMakeLists.txt:6 (find_package)
 
 
--- Configuring done (2.3s)
+-- Configuring done (0.1s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug
