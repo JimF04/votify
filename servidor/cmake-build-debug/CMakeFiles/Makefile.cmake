@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
+  "/home/jose/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake"
   "/home/jose/votify/servidor/CMakeLists.txt"
   "CMakeFiles/3.27.8/CMakeCCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"
@@ -19,6 +20,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake"
   "/opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake"
   "/opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCompilerIdDetection.cmake"
+  "/opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDependentOption.cmake"
   "/opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake"
   "/opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake"
   "/opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompileFeatures.cmake"

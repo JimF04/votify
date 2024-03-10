@@ -5,7 +5,7 @@
 		<Option title="servidor"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\.vcpkg-clion\;CMake Files\..\..\.vcpkg-clion\vcpkg\;CMake Files\..\..\.vcpkg-clion\vcpkg\scripts\;CMake Files\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/jose/votify/servidor/cmake-build-debug"/>
@@ -99,6 +99,9 @@
 		</Unit>
 		<Unit filename="/home/jose/votify/servidor/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/jose/votify/servidor/../../.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake">
+			<Option virtualFolder="CMake Files\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

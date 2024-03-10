@@ -2,11 +2,33 @@
 #include <filesystem>
 #include "playlist.h"
 #include "server.h"
+#include <cstdlib>
 
 using namespace std;
 namespace fs = std::filesystem;
 
 int main() {
+
+    const char* soundFilePath = "/home/jose/Downloads/PlayList/Baby-Chinese.mp3";
+
+    // Construct the command to play the MP3 file using mpg123
+    const char* command = "mpg123 %s";
+    char fullCommand[200];  // Adjust the size based on your needs
+    sprintf(fullCommand, command, soundFilePath);
+
+    // Use system() to execute the command
+    int result = system(fullCommand);
+
+    // Check the result to handle any errors
+    if (result != 0) {
+        // Handle the error (e.g., print an error message)
+        printf("Error playing sound\n");
+    }
+
+
+
+
+
     // Ruta de las canciones
     string folder_path = "/home/" + string(getenv("USER")) + "/Downloads/PlayList";
 
