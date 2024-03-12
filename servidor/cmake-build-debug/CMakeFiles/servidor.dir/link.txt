@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/servidor.dir/main.cpp.o CMakeFiles/servidor.dir/playlist.cpp.o -o servidor  -luuid /usr/lib/x86_64-linux-gnu/libjsoncpp.so.1.9.5 
+/usr/bin/c++ -g CMakeFiles/servidor.dir/main.cpp.o CMakeFiles/servidor.dir/playlist.cpp.o -o servidor  -Wl,-rpath,/usr/local/lib /usr/local/lib/libglog.so.0.8.0 -luuid /usr/lib/x86_64-linux-gnu/libjsoncpp.so.1.9.5 

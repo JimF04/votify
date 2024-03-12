@@ -8,14 +8,33 @@
 #include <uuid/uuid.h>
 #include <json/json.h>
 #include <fstream>
+#include <glog/logging.h>
 
 using namespace std;
 namespace fs = std::filesystem;
 
-nodo *head = NULL;
-nodo *tail = NULL;
+Playlist::Playlist() {
+    head = nullptr;
+    tail = nullptr;
+}
 
-void insert_songs(const string& file_path) {
+nodo* Playlist::getHead() const {
+    return head;
+}
+
+nodo* Playlist::getTail() const {
+    return tail;
+}
+
+void Playlist::setHead(nodo* newHead) {
+    head = newHead;
+}
+
+void Playlist::setTail(nodo* newTail) {
+    tail = newTail;
+}
+
+void Playlist::insert_songs(const string& file_path) {
     nodo *new_nodo = new nodo;
 
     // Generar un UUID para el nodo
@@ -41,7 +60,7 @@ void insert_songs(const string& file_path) {
     new_nodo->file_path = file_path;
 
     // Insertar el nuevo nodo en la lista
-    if (head == NULL) {
+    if (head == nullptr) {
         head = new_nodo;
         head->next = head;
         head->prev = head;
@@ -55,9 +74,9 @@ void insert_songs(const string& file_path) {
     }
 }
 
-void display() {
+void Playlist::display() {
     nodo *temp = head;
-    if (head != NULL) {
+    if (head != nullptr) {
         do {
             cout << "Id: " << temp->id << endl;
             cout << "Nombre: " << temp->name << endl;
@@ -71,15 +90,15 @@ void display() {
             temp = temp->next;
         } while (temp != head);
     } else {
-        cout << "PlayList vacio" << endl;
+        LOG(FATAL) << "PlayList vacio";
     }
 }
 
-void savePlaylistToJson(const string& jsonFilePath) {
+void Playlist::savePlaylistToJson(const string& jsonFilePath) {
     Json::Value playlistJson(Json::arrayValue); // Array JSON para almacenar los nodos
 
     nodo* temp = head;
-    if (head != NULL) {
+    if (head != nullptr) {
         do {
             // Crear un objeto JSON para el nodo actual
             Json::Value nodeJson;
@@ -104,8 +123,8 @@ void savePlaylistToJson(const string& jsonFilePath) {
     if (outputFile.is_open()) {
         outputFile << playlistJson;
         outputFile.close();
-        cout << "Se guardo correctamente" << endl;
+        LOG(INFO) << "Se guardo playlist en json correctamente";
     } else {
-        cerr << "No se pudo guardar" << endl;
+        LOG(ERROR) << "No se pudo guardar playlist en json";
     }
 }

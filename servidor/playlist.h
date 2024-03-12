@@ -22,8 +22,20 @@ struct nodo {
     nodo* prev;
 };
 
-void insert_songs(const string& file_path);
-void display();
-void savePlaylistToJson(const string& jsonFilePath);
+class Playlist {
+public:
+    Playlist();
+    void insert_songs(const string& file_path);
+    void display();
+    void savePlaylistToJson(const string& jsonFilePath);
+private:
+nodo* head;
+nodo* tail;
+
+void setHead(nodo* newHead);
+void setTail(nodo* newTail);
+[[nodiscard]] nodo* getHead() const;
+[[nodiscard]] nodo* getTail() const;
+};
 
 #endif
