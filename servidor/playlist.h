@@ -22,6 +22,10 @@ struct nodo {
     nodo* prev;
 };
 
+nodo* getCurrentSong();
+nodo* getNextSong();
+nodo* getPreviousSong();
+
 void insert_songs(const string& file_path);
 void display();
 void savePlaylistToJson(const string& jsonFilePath);

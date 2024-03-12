@@ -12,8 +12,8 @@
 using namespace std;
 namespace fs = std::filesystem;
 
-nodo *head = NULL;
-nodo *tail = NULL;
+nodo *head = nullptr;
+nodo *tail = nullptr;
 
 void insert_songs(const string& file_path) {
     nodo *new_nodo = new nodo;
@@ -41,7 +41,7 @@ void insert_songs(const string& file_path) {
     new_nodo->file_path = file_path;
 
     // Insertar el nuevo nodo en la lista
-    if (head == NULL) {
+    if (head == nullptr) {
         head = new_nodo;
         head->next = head;
         head->prev = head;
@@ -55,9 +55,31 @@ void insert_songs(const string& file_path) {
     }
 }
 
+nodo* getCurrentSong() {
+    return head;
+}
+
+nodo* getNextSong() {
+    if (head != nullptr) {
+        head = head->next;
+        return head;
+    } else {
+        return nullptr;
+    }
+}
+
+nodo* getPreviousSong() {
+    if (head != nullptr) {
+        head = head->prev;
+        return head;
+    } else {
+        return nullptr;
+    }
+}
+
 void display() {
     nodo *temp = head;
-    if (head != NULL) {
+    if (head != nullptr) {
         do {
             cout << "Id: " << temp->id << endl;
             cout << "Nombre: " << temp->name << endl;
@@ -79,7 +101,7 @@ void savePlaylistToJson(const string& jsonFilePath) {
     Json::Value playlistJson(Json::arrayValue); // Array JSON para almacenar los nodos
 
     nodo* temp = head;
-    if (head != NULL) {
+    if (head != nullptr) {
         do {
             // Crear un objeto JSON para el nodo actual
             Json::Value nodeJson;

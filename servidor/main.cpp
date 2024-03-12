@@ -2,9 +2,13 @@
 #include <filesystem>
 #include "playlist.h"
 #include <gtk/gtk.h>
+#include <thread>
+#include <cstdlib>
 
 using namespace std;
 namespace fs = std::filesystem;
+
+bool isPlaying = false;
 
 class PCGUI {
 public:
@@ -106,18 +110,53 @@ private:
 
     static void on_previous_button_clicked(GtkWidget *widget, gpointer data) {
         g_print("Previous\n");
+
+        nodo* previousSong = getPreviousSong();
+
+        thread songThread(playSong, previousSong->file_path);
+
+        songThread.detach();
+
+        isPlaying = true;
+
+        PCGUI *pc_gui = static_cast<PCGUI *>(data);
+        pc_gui->updateSongLabels(previousSong->name, previousSong->artist);
     }
 
     static void on_play_button_clicked(GtkWidget *widget, gpointer data) {
         g_print("Play\n");
+
+        nodo* currentSong = getCurrentSong();
+
+        thread songThread(playSong, currentSong->file_path);
+
+        songThread.detach();
+
+        isPlaying = true;
+
+        PCGUI *pc_gui = static_cast<PCGUI *>(data);
+        pc_gui->updateSongLabels(currentSong->name, currentSong->artist);
     }
 
     static void on_stop_button_clicked(GtkWidget *widget, gpointer data) {
         g_print("Stop\n");
+
+        system("killall -9 mpg123");
     }
 
     static void on_next_button_clicked(GtkWidget *widget, gpointer data) {
         g_print("Next\n");
+
+        nodo* nextSong = getNextSong();
+
+        thread songThread(playSong, nextSong->file_path);
+
+        songThread.detach();
+
+        isPlaying = true;
+
+        PCGUI *pc_gui = static_cast<PCGUI *>(data);
+        pc_gui->updateSongLabels(nextSong->name, nextSong->artist);
     }
 
     static void on_page_button_toggled(GtkWidget *widget, gpointer data) {
@@ -126,6 +165,28 @@ private:
         } else {
             g_print("Modo paginado desactivado\n");
         }
+    }
+
+    static void playSong(const string& filePath) {
+
+        if (isPlaying) {
+            system("killall -9 mpg123");
+        }
+
+        string command = "mpg123 " + filePath;
+
+        int result = std::system(command.c_str());
+
+        if (result != 0) {
+            cerr << "Error reproduciendo la canción" << std::endl;
+        }
+
+        isPlaying = false;
+    }
+
+    void updateSongLabels(const string& songName, const string& artistName) {
+        gtk_label_set_text(GTK_LABEL(songLabel), ("Canción: " + songName).c_str());
+        gtk_label_set_text(GTK_LABEL(artistLabel), ("Artista: " + artistName).c_str());
     }
 };
 
