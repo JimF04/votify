@@ -42,6 +42,7 @@ int main() {
         }
     }
 
+    
     cout << "\n";
 
     display();
