@@ -1,14 +1,48 @@
+#define MINIAUDIO_IMPLEMENTATION
 #include <iostream>
 #include <filesystem>
 #include "playlist.h"
 #include <gtk/gtk.h>
 #include <thread>
 #include <cstdlib>
+#include "miniaudio.h"
+#include <stdio.h>
 
 using namespace std;
 namespace fs = std::filesystem;
 
 bool isPlaying = false;
+
+ma_decoder decoder;
+ma_device device;
+ma_result result;
+ma_device_config deviceConfig;
+
+ma_uint64 currentPosition = 0;
+
+void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
+{
+    ma_decoder* pDecoder = (ma_decoder*)pDevice->pUserData;
+    if (pDecoder == NULL) {
+        return;
+    }
+
+    ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, NULL);
+
+    (void)pInput;
+}
+
+ma_uint64 getCurrentPositionInSeconds(ma_decoder* pDecoder) {
+    ma_uint64 currentFrame;
+    ma_result result = ma_decoder_get_cursor_in_pcm_frames(pDecoder, &currentFrame);
+    if (result != MA_SUCCESS) {
+        printf("Error al obtener la posición actual.\n");
+        return 0;
+    }
+
+    ma_uint64 sampleRate = pDecoder->outputSampleRate;
+    return currentFrame / sampleRate;
+}
 
 class PCGUI {
 public:
@@ -111,9 +145,19 @@ private:
     static void on_previous_button_clicked(GtkWidget *widget, gpointer data) {
         g_print("Previous\n");
 
+        if (isPlaying) {
+            ma_device_uninit(&device);
+            ma_decoder_uninit(&decoder);
+            isPlaying = false;
+        }
+
         nodo* previousSong = getPreviousSong();
 
-        thread songThread(playSong, previousSong->file_path);
+        const char* filePath = previousSong->file_path.c_str();
+
+        ma_uint64 startTime = 0;
+
+        thread songThread(playAudio, filePath, startTime);
 
         songThread.detach();
 
@@ -126,11 +170,25 @@ private:
     static void on_play_button_clicked(GtkWidget *widget, gpointer data) {
         g_print("Play\n");
 
+        if (isPlaying) {
+            ma_device_uninit(&device);
+            ma_decoder_uninit(&decoder);
+            isPlaying = false;
+        }
+
         nodo* currentSong = getCurrentSong();
 
-        thread songThread(playSong, currentSong->file_path);
+        const char* filePath = currentSong->file_path.c_str();
 
-        songThread.detach();
+        if (currentPosition == 0){
+            thread songThread(playAudio, filePath, currentPosition);
+            songThread.detach();
+        } else {
+            thread songThread(playAudio, filePath, currentPosition);
+            songThread.detach();
+            currentPosition = 0;
+        }
+
 
         isPlaying = true;
 
@@ -141,15 +199,31 @@ private:
     static void on_stop_button_clicked(GtkWidget *widget, gpointer data) {
         g_print("Stop\n");
 
-        system("killall -9 mpg123");
+        ma_device_uninit(&device);
+        ma_decoder_uninit(&decoder);
+
+        currentPosition = getCurrentPositionInSeconds(&decoder);
+
+        isPlaying = false;
+
     }
 
     static void on_next_button_clicked(GtkWidget *widget, gpointer data) {
         g_print("Next\n");
 
+        if (isPlaying) {
+            ma_device_uninit(&device);
+            ma_decoder_uninit(&decoder);
+            isPlaying = false;
+        }
+
         nodo* nextSong = getNextSong();
 
-        thread songThread(playSong, nextSong->file_path);
+        const char* filePath = nextSong->file_path.c_str();
+
+        ma_uint64 startTime = 0;
+
+        thread songThread(playAudio, filePath, startTime);
 
         songThread.detach();
 
@@ -167,22 +241,46 @@ private:
         }
     }
 
-    static void playSong(const string& filePath) {
-
-        if (isPlaying) {
-            system("killall -9 mpg123");
+    static void playAudio(const char* filePath, ma_uint64 startSeconds)
+    {
+        result = ma_decoder_init_file(filePath, NULL, &decoder);
+        if (result != MA_SUCCESS) {
+            printf("Could not load file: %s\n", filePath);
+            return;
         }
 
-        string command = "mpg123 " + filePath;
+        ma_uint64 startFrame = startSeconds * decoder.outputSampleRate;
 
-        int result = std::system(command.c_str());
+        result = ma_decoder_seek_to_pcm_frame(&decoder, startFrame);
+        if (result != MA_SUCCESS) {
+            printf("Could not seek to the specified position.\n");
+            ma_decoder_uninit(&decoder);
+            return;
+        }
 
-        if (result != 0) {
-            cerr << "Error reproduciendo la canción" << std::endl;
+        deviceConfig = ma_device_config_init(ma_device_type_playback);
+        deviceConfig.playback.format   = decoder.outputFormat;
+        deviceConfig.playback.channels = decoder.outputChannels;
+        deviceConfig.sampleRate        = decoder.outputSampleRate;
+        deviceConfig.dataCallback      = data_callback;
+        deviceConfig.pUserData         = &decoder;
+
+        if (ma_device_init(NULL, &deviceConfig, &device) != MA_SUCCESS) {
+            printf("Failed to open playback device.\n");
+            ma_decoder_uninit(&decoder);
+            return;
+        }
+
+        if (ma_device_start(&device) != MA_SUCCESS) {
+            printf("Failed to start playback device.\n");
+            ma_device_uninit(&device);
+            ma_decoder_uninit(&decoder);
+            return;
         }
 
         isPlaying = false;
     }
+
 
     void updateSongLabels(const string& songName, const string& artistName) {
         gtk_label_set_text(GTK_LABEL(songLabel), ("Canción: " + songName).c_str());
@@ -275,7 +373,6 @@ private:
         server_gui->pc_gui->show();
     }
 };
-
 
 
 int main(int argc, char *argv[]) {
