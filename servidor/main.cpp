@@ -4,6 +4,7 @@
 #include <gtk/gtk.h>
 #include <thread>
 #include <cstdlib>
+#include "server.h"
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -297,6 +298,13 @@ int main(int argc, char *argv[]) {
     display();
 
     savePlaylistToJson("playlist.json");
+
+//    string ipAddress = "127.0.0.1";
+//    int portNum = 50000;
+//    int bufsize = 1024;
+//
+//    server server(ipAddress, portNum, bufsize);
+//    server.start();
 
     gtk_init(&argc, &argv);
     ServerGUI gui;

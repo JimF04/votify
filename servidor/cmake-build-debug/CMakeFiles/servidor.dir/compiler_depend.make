@@ -3,9 +3,14 @@
 
 CMakeFiles/servidor.dir/main.cpp.o: /home/jimmy/Documents/GitHub/votify/servidor/main.cpp \
   /home/jimmy/Documents/GitHub/votify/servidor/playlist.h \
+  /home/jimmy/Documents/GitHub/votify/servidor/server.h \
   /usr/include/alloca.h \
+  /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/include/asm-generic/socket.h \
+  /usr/include/asm-generic/sockios.h \
   /usr/include/atk-1.0/atk/atk-enum-types.h \
   /usr/include/atk-1.0/atk/atk.h \
   /usr/include/atk-1.0/atk/atkaction.h \
@@ -117,6 +122,7 @@ CMakeFiles/servidor.dir/main.cpp.o: /home/jimmy/Documents/GitHub/votify/servidor
   /usr/include/c++/11/cstdint \
   /usr/include/c++/11/cstdio \
   /usr/include/c++/11/cstdlib \
+  /usr/include/c++/11/cstring \
   /usr/include/c++/11/ctime \
   /usr/include/c++/11/cwchar \
   /usr/include/c++/11/cwctype \
@@ -750,7 +756,10 @@ CMakeFiles/servidor.dir/main.cpp.o: /home/jimmy/Documents/GitHub/votify/servidor
   /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
   /usr/include/linux/limits.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
   /usr/include/locale.h \
+  /usr/include/netinet/in.h \
   /usr/include/pango-1.0/pango/pango-attributes.h \
   /usr/include/pango-1.0/pango/pango-bidi-type.h \
   /usr/include/pango-1.0/pango/pango-break.h \
@@ -794,7 +803,12 @@ CMakeFiles/servidor.dir/main.cpp.o: /home/jimmy/Documents/GitHub/votify/servidor
   /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
+  /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
   /usr/include/x86_64-linux-gnu/asm/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
+  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
+  /usr/include/x86_64-linux-gnu/asm/socket.h \
+  /usr/include/x86_64-linux-gnu/asm/sockios.h \
   /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
@@ -809,6 +823,7 @@ CMakeFiles/servidor.dir/main.cpp.o: /home/jimmy/Documents/GitHub/votify/servidor
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/in.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
@@ -834,6 +849,9 @@ CMakeFiles/servidor.dir/main.cpp.o: /home/jimmy/Documents/GitHub/votify/servidor
   /usr/include/x86_64-linux-gnu/bits/sigstack.h \
   /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
   /usr/include/x86_64-linux-gnu/bits/sigthread.h \
+  /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
+  /usr/include/x86_64-linux-gnu/bits/socket.h \
+  /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
@@ -869,7 +887,9 @@ CMakeFiles/servidor.dir/main.cpp.o: /home/jimmy/Documents/GitHub/votify/servidor
   /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
@@ -906,6 +926,7 @@ CMakeFiles/servidor.dir/main.cpp.o: /home/jimmy/Documents/GitHub/votify/servidor
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+  /usr/include/x86_64-linux-gnu/sys/socket.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/include/x86_64-linux-gnu/sys/ucontext.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
@@ -1211,6 +1232,223 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h
 
+CMakeFiles/servidor.dir/server.cpp.o: /home/jimmy/Documents/GitHub/votify/servidor/server.cpp \
+  /home/jimmy/Documents/GitHub/votify/servidor/server.h \
+  /usr/include/alloca.h \
+  /usr/include/arpa/inet.h \
+  /usr/include/asm-generic/bitsperlong.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/include/asm-generic/socket.h \
+  /usr/include/asm-generic/sockios.h \
+  /usr/include/c++/11/backward/binders.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/c++/11/bits/basic_ios.h \
+  /usr/include/c++/11/bits/basic_ios.tcc \
+  /usr/include/c++/11/bits/basic_string.h \
+  /usr/include/c++/11/bits/basic_string.tcc \
+  /usr/include/c++/11/bits/char_traits.h \
+  /usr/include/c++/11/bits/charconv.h \
+  /usr/include/c++/11/bits/concept_check.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/bits/cxxabi_forced.h \
+  /usr/include/c++/11/bits/cxxabi_init_exception.h \
+  /usr/include/c++/11/bits/exception.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/exception_ptr.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/functional_hash.h \
+  /usr/include/c++/11/bits/hash_bytes.h \
+  /usr/include/c++/11/bits/ios_base.h \
+  /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/c++/11/bits/locale_classes.h \
+  /usr/include/c++/11/bits/locale_classes.tcc \
+  /usr/include/c++/11/bits/locale_facets.h \
+  /usr/include/c++/11/bits/locale_facets.tcc \
+  /usr/include/c++/11/bits/localefwd.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/bits/nested_exception.h \
+  /usr/include/c++/11/bits/ostream.tcc \
+  /usr/include/c++/11/bits/ostream_insert.h \
+  /usr/include/c++/11/bits/postypes.h \
+  /usr/include/c++/11/bits/predefined_ops.h \
+  /usr/include/c++/11/bits/ptr_traits.h \
+  /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/bits/std_abs.h \
+  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/c++/11/bits/stl_construct.h \
+  /usr/include/c++/11/bits/stl_function.h \
+  /usr/include/c++/11/bits/stl_iterator.h \
+  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/streambuf.tcc \
+  /usr/include/c++/11/bits/streambuf_iterator.h \
+  /usr/include/c++/11/bits/string_view.tcc \
+  /usr/include/c++/11/bits/stringfwd.h \
+  /usr/include/c++/11/cctype \
+  /usr/include/c++/11/cerrno \
+  /usr/include/c++/11/clocale \
+  /usr/include/c++/11/cstdint \
+  /usr/include/c++/11/cstdio \
+  /usr/include/c++/11/cstdlib \
+  /usr/include/c++/11/cstring \
+  /usr/include/c++/11/cwchar \
+  /usr/include/c++/11/cwctype \
+  /usr/include/c++/11/debug/assertions.h \
+  /usr/include/c++/11/debug/debug.h \
+  /usr/include/c++/11/exception \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/ext/atomicity.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/ext/numeric_traits.h \
+  /usr/include/c++/11/ext/string_conversions.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/ios \
+  /usr/include/c++/11/iosfwd \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/istream \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/ostream \
+  /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/stdexcept \
+  /usr/include/c++/11/streambuf \
+  /usr/include/c++/11/string \
+  /usr/include/c++/11/string_view \
+  /usr/include/c++/11/system_error \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/typeinfo \
+  /usr/include/ctype.h \
+  /usr/include/endian.h \
+  /usr/include/errno.h \
+  /usr/include/features-time64.h \
+  /usr/include/features.h \
+  /usr/include/linux/close_range.h \
+  /usr/include/linux/errno.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
+  /usr/include/locale.h \
+  /usr/include/netinet/in.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdint.h \
+  /usr/include/stdio.h \
+  /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/time.h \
+  /usr/include/unistd.h \
+  /usr/include/wchar.h \
+  /usr/include/wctype.h \
+  /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
+  /usr/include/x86_64-linux-gnu/asm/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
+  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
+  /usr/include/x86_64-linux-gnu/asm/socket.h \
+  /usr/include/x86_64-linux-gnu/asm/sockios.h \
+  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
+  /usr/include/x86_64-linux-gnu/bits/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endianness.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/in.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/locale.h \
+  /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/x86_64-linux-gnu/bits/sched.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+  /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
+  /usr/include/x86_64-linux-gnu/bits/socket.h \
+  /usr/include/x86_64-linux-gnu/bits/socket_type.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/x86_64-linux-gnu/bits/time.h \
+  /usr/include/x86_64-linux-gnu/bits/time64.h \
+  /usr/include/x86_64-linux-gnu/bits/timesize.h \
+  /usr/include/x86_64-linux-gnu/bits/timex.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
+  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+  /usr/include/x86_64-linux-gnu/sys/socket.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h
+
+
+/usr/include/arpa/inet.h:
+
+/home/jimmy/Documents/GitHub/votify/servidor/server.cpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
 
@@ -1219,8 +1457,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/jsoncpp/json/writer.h:
 
 /usr/include/jsoncpp/json/version.h:
-
-/usr/include/jsoncpp/json/json.h:
 
 /usr/include/jsoncpp/json/config.h:
 
@@ -1233,8 +1469,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/c++/11/pstl/glue_memory_defs.h:
 
 /usr/include/c++/11/map:
-
-/usr/include/c++/11/fstream:
 
 /usr/include/c++/11/bits/stl_uninitialized.h:
 
@@ -1269,6 +1503,8 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/x86_64-linux-gnu/sys/ucontext.h:
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/x86_64-linux-gnu/sys/socket.h:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
@@ -1314,6 +1550,10 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
+/usr/include/jsoncpp/json/json.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
@@ -1324,17 +1564,11 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
-
-/usr/include/c++/11/bits/stl_vector.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
@@ -1365,6 +1599,12 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/socket_type.h:
+
+/usr/include/x86_64-linux-gnu/bits/sockaddr.h:
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
@@ -1408,7 +1648,19 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
+/usr/include/c++/11/bits/stl_vector.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/usr/include/x86_64-linux-gnu/asm/socket.h:
+
+/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
+
+/usr/include/x86_64-linux-gnu/asm/posix_types.h:
+
 /usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
 
 /usr/include/wctype.h:
 
@@ -1463,6 +1715,10 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/pango-1.0/pango/pango-color.h:
 
 /usr/include/pango-1.0/pango/pango-break.h:
+
+/usr/include/netinet/in.h:
+
+/usr/include/linux/posix_types.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
@@ -1534,7 +1790,15 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/gtk-3.0/gtk/gtktoolshell.h:
 
-/usr/include/glib-2.0/glib/deprecated/gcompletion.h:
+/usr/include/gtk-3.0/gtk/gtktoolbutton.h:
+
+/usr/include/gtk-3.0/gtk/gtktoolbar.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/gtk-3.0/gtk/gtktoggletoolbutton.h:
+
+/usr/include/gtk-3.0/gtk/gtktogglebutton.h:
 
 /usr/include/glib-2.0/glib-object.h:
 
@@ -1624,10 +1888,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/gtk-3.0/gtk/gtkbuilder.h:
 
-/usr/include/glib-2.0/gio/gmenuexporter.h:
-
-/usr/include/gtk-3.0/gtk/gtktoolitem.h:
-
 /usr/include/glib-2.0/gio/gioenumtypes.h:
 
 /usr/include/glib-2.0/gio/gcredentials.h:
@@ -1635,6 +1895,8 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/gtk-3.0/gtk/deprecated/gtkhscrollbar.h:
 
 /usr/include/glib-2.0/gio/gio.h:
+
+/usr/include/asm-generic/bitsperlong.h:
 
 /usr/include/glib-2.0/gio/ginputstream.h:
 
@@ -1674,15 +1936,13 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/glib-2.0/glib/gmem.h:
 
-/usr/include/glib-2.0/glib/galloca.h:
-
-/usr/include/glib-2.0/gio/gvolumemonitor.h:
-
 /usr/include/glib-2.0/gio/gfileinfo.h:
 
-/usr/include/glib-2.0/gio/gfileenumerator.h:
+/usr/include/c++/11/fstream:
 
-/usr/include/c++/11/thread:
+/usr/include/asm-generic/sockios.h:
+
+/usr/include/glib-2.0/gio/gfileenumerator.h:
 
 /usr/include/glib-2.0/gio/gfileattribute.h:
 
@@ -1697,6 +1957,8 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/glib-2.0/gio/gtcpconnection.h:
 
 /usr/include/glib-2.0/gio/gemblemedicon.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
 
 /usr/include/glib-2.0/glib/gdate.h:
 
@@ -1764,13 +2026,9 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/glib-2.0/gio/gdbusauthobserver.h:
 
-/usr/include/glib-2.0/glib/deprecated/gthread.h:
-
 /usr/include/glib-2.0/gio/gproxyaddressenumerator.h:
 
 /usr/include/glib-2.0/gio/gpollableoutputstream.h:
-
-/usr/include/glib-2.0/gio/gdbusnamewatching.h:
 
 /usr/include/glib-2.0/gio/gconverter.h:
 
@@ -1793,12 +2051,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/c++/11/bits/locale_conv.h:
 
 /usr/include/gtk-3.0/gdk/gdkframetimings.h:
-
-/usr/include/glib-2.0/gio/gasyncresult.h:
-
-/usr/include/c++/11/bits/locale_classes.tcc:
-
-/usr/include/gtk-3.0/gtk/deprecated/gtkaction.h:
 
 /usr/include/gtk-3.0/gtk/gtktexttag.h:
 
@@ -1854,6 +2106,32 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/gtk-3.0/gtk/gtkappchooserbutton.h:
 
+/usr/include/glib-2.0/gio/gmountoperation.h:
+
+/usr/include/glib-2.0/glib/gcharset.h:
+
+/usr/include/gtk-3.0/gdk/gdkseat.h:
+
+/usr/include/features.h:
+
+/usr/include/features-time64.h:
+
+/usr/include/c++/11/pstl/pstl_config.h:
+
+/usr/include/glib-2.0/gio/gasyncinitable.h:
+
+/usr/include/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/signum-generic.h:
+
+/usr/include/gtk-3.0/gdk/gdkcairo.h:
+
+/usr/include/glib-2.0/gio/gsimplepermission.h:
+
+/usr/include/glib-2.0/gio/gioscheduler.h:
+
+/usr/include/endian.h:
+
 /usr/include/glib-2.0/gio/ginetaddressmask.h:
 
 /usr/include/c++/11/bits/istream.tcc:
@@ -1872,6 +2150,8 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/c++/11/initializer_list:
 
+/usr/include/x86_64-linux-gnu/bits/socket.h:
+
 /usr/include/dirent.h:
 
 /usr/include/glib-2.0/gio/gdbusobject.h:
@@ -1889,36 +2169,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/c++/11/bits/quoted_string.h:
 
 /usr/include/gtk-3.0/gtk/gtknotebook.h:
-
-/usr/include/glib-2.0/glib/deprecated/gmain.h:
-
-/usr/include/pango-1.0/pango/pango-matrix.h:
-
-/usr/include/atk-1.0/atk/atktable.h:
-
-/usr/include/gtk-3.0/gtk/gtkcellview.h:
-
-/usr/include/c++/11/bits/localefwd.h:
-
-/usr/include/gtk-3.0/gtk/gtkscale.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/include/gtk-3.0/gtk/gtktoggletoolbutton.h:
-
-/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
-
-/usr/include/atk-1.0/atk/atk-enum-types.h:
-
-/usr/include/c++/11/bits/streambuf_iterator.h:
-
-/usr/include/cairo/cairo-version.h:
-
-/usr/include/glib-2.0/gio/gsimplepermission.h:
-
-/usr/include/glib-2.0/gio/gioscheduler.h:
-
-/usr/include/endian.h:
 
 /usr/include/c++/11/bits/fs_dir.h:
 
@@ -1944,11 +2194,11 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/c++/11/iosfwd:
 
+/usr/include/c++/11/thread:
+
 /usr/include/atk-1.0/atk/atkstateset.h:
 
 /home/jimmy/Documents/GitHub/votify/servidor/playlist.h:
-
-/usr/include/glib-2.0/glib/deprecated/grel.h:
 
 /usr/include/c++/11/bits/stl_multimap.h:
 
@@ -1956,19 +2206,29 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/atk-1.0/atk/atkrelationset.h:
 
+/usr/include/c++/11/bits/locale_classes.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/in.h:
+
+/usr/include/glib-2.0/gio/gasyncresult.h:
+
+/usr/include/gtk-3.0/gtk/deprecated/gtkaction.h:
+
 /usr/include/c++/11/bits/basic_string.h:
 
 /usr/include/c++/11/bits/ios_base.h:
-
-/usr/include/c++/11/new:
-
-/usr/include/glib-2.0/gio/gdbusinterface.h:
 
 /usr/include/c++/11/bits/align.h:
 
 /usr/include/glib-2.0/glib/gslice.h:
 
 /usr/include/gtk-3.0/gtk/deprecated/gtkhandlebox.h:
+
+/usr/include/glib-2.0/gio/gdbusnamewatching.h:
+
+/usr/include/asm-generic/socket.h:
+
+/usr/include/glib-2.0/gio/gloadableicon.h:
 
 /usr/include/gtk-3.0/gtk/gtkgesturezoom.h:
 
@@ -2000,6 +2260,150 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/gtk-3.0/gdk/gdkselection.h:
 
+/usr/include/atk-1.0/atk/atktext.h:
+
+/usr/include/gtk-3.0/gtk/gtkviewport.h:
+
+/usr/include/glib-2.0/gio/gnetworkaddress.h:
+
+/usr/include/atk-1.0/atk/atktablecell.h:
+
+/usr/include/gtk-3.0/gtk/gtkrender.h:
+
+/usr/include/glib-2.0/gio/gtlsinteraction.h:
+
+/usr/include/c++/11/bits/stl_function.h:
+
+/usr/include/c++/11/bits/exception.h:
+
+/usr/include/c++/11/bits/streambuf_iterator.h:
+
+/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
+
+/usr/include/atk-1.0/atk/atk-enum-types.h:
+
+/usr/include/cairo/cairo-version.h:
+
+/usr/include/pango-1.0/pango/pango-matrix.h:
+
+/usr/include/atk-1.0/atk/atktable.h:
+
+/usr/include/glib-2.0/glib/deprecated/gmain.h:
+
+/usr/include/gtk-3.0/gtk/gtkcellview.h:
+
+/usr/include/gtk-3.0/gtk/gtkcellrenderer.h:
+
+/usr/include/gtk-3.0/gdk/gdkdevicetool.h:
+
+/usr/include/gtk-3.0/gtk/gtklabel.h:
+
+/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-animation.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
+
+/usr/include/atk-1.0/atk/atkcomponent.h:
+
+/usr/include/glib-2.0/glib/grand.h:
+
+/usr/include/glib-2.0/gio/gdbusproxy.h:
+
+/usr/include/c++/11/ctime:
+
+/usr/include/c++/11/bits/vector.tcc:
+
+/usr/include/gtk-3.0/gtk/gtkshortcutsgroup.h:
+
+/usr/include/gtk-3.0/gtk/gtkshortcutsshortcut.h:
+
+/usr/include/glib-2.0/gio/gzlibcompressor.h:
+
+/usr/include/glib-2.0/gio/gsocketconnection.h:
+
+/usr/include/gtk-3.0/gtk/deprecated/gtkstyle.h:
+
+/usr/include/gtk-3.0/gtk/gtkcelleditable.h:
+
+/usr/include/glib-2.0/gio/gdbusintrospection.h:
+
+/usr/include/atk-1.0/atk/atksocket.h:
+
+/usr/include/atk-1.0/atk/atkwindow.h:
+
+/usr/include/glib-2.0/gio/gsettings.h:
+
+/usr/include/gtk-3.0/gtk/deprecated/gtkalignment.h:
+
+/usr/include/glib-2.0/gio/gdbusserver.h:
+
+/usr/include/c++/11/debug/assertions.h:
+
+/usr/include/c++/11/bits/localefwd.h:
+
+/usr/include/gtk-3.0/gtk/gtkscale.h:
+
+/usr/include/glib-2.0/glib/deprecated/gcache.h:
+
+/usr/include/c++/11/bits/locale_facets_nonio.h:
+
+/usr/include/glib-2.0/gio/gvfs.h:
+
+/usr/include/c++/11/cstdlib:
+
+/usr/include/c++/11/bits/shared_ptr.h:
+
+/usr/include/glib-2.0/gio/gvolume.h:
+
+/usr/include/glib-2.0/gio/gtlsfiledatabase.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/glib-2.0/gio/gnetworkmonitor.h:
+
+/usr/include/glib-2.0/glib/gregex.h:
+
+/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
+
+/usr/include/gtk-3.0/gtk/gtkimage.h:
+
+/usr/include/c++/11/limits:
+
+/usr/include/glib-2.0/gio/gtlsclientconnection.h:
+
+/usr/include/c++/11/ratio:
+
+/usr/include/c++/11/bits/this_thread_sleep.h:
+
+/usr/include/alloca.h:
+
+/usr/include/c++/11/bits/erase_if.h:
+
+/usr/include/gtk-3.0/gtk/deprecated/gtkiconfactory.h:
+
+/usr/include/gtk-3.0/gtk/gtktoolitem.h:
+
+/usr/include/glib-2.0/gio/gmenuexporter.h:
+
+/home/jimmy/Documents/GitHub/votify/servidor/server.h:
+
+/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-io.h:
+
+/usr/include/glib-2.0/gobject/gboxed.h:
+
+/usr/include/c++/11/bits/cxxabi_init_exception.h:
+
+/usr/include/gtk-3.0/gtk/gtkscrolledwindow.h:
+
+/usr/include/gtk-3.0/gtk/gtkcellareacontext.h:
+
+/usr/include/c++/11/csignal:
+
+/usr/include/atk-1.0/atk/atkhyperlinkimpl.h:
+
+/usr/include/c++/11/bits/basic_ios.tcc:
+
+/usr/include/gtk-3.0/gtk/gtkassistant.h:
+
 /usr/include/c++/11/bits/invoke.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
@@ -2024,39 +2428,7 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/c++/11/bits/char_traits.h:
 
-/usr/include/glib-2.0/gio/gzlibcompressor.h:
-
-/usr/include/glib-2.0/gio/gsocketconnection.h:
-
-/usr/include/gtk-3.0/gtk/deprecated/gtkstyle.h:
-
-/usr/include/gtk-3.0/gtk/gtkcelleditable.h:
-
-/usr/include/glib-2.0/gio/gdbusintrospection.h:
-
-/usr/include/atk-1.0/atk/atksocket.h:
-
-/usr/include/glib-2.0/glib/deprecated/gcache.h:
-
-/usr/include/c++/11/bits/locale_facets_nonio.h:
-
-/usr/include/glib-2.0/gio/gvfs.h:
-
-/usr/include/c++/11/cstdlib:
-
-/usr/include/c++/11/bits/shared_ptr.h:
-
-/usr/include/gtk-3.0/gdk/gdkmonitor.h:
-
-/usr/include/c++/11/csignal:
-
-/usr/include/atk-1.0/atk/atkhyperlinkimpl.h:
-
-/usr/include/c++/11/bits/basic_ios.tcc:
-
-/usr/include/gtk-3.0/gtk/gtkassistant.h:
-
-/usr/include/gtk-3.0/gtk/gtkcellrenderer.h:
+/usr/include/c++/11/bits/cxxabi_forced.h:
 
 /usr/include/glib-2.0/gio/gmount.h:
 
@@ -2064,23 +2436,7 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/gtk-3.0/gtk/gtkcellrendererspin.h:
 
-/usr/include/c++/11/bits/cxxabi_forced.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
-
-/usr/include/atk-1.0/atk/atkcomponent.h:
-
-/usr/include/glib-2.0/glib/grand.h:
-
-/usr/include/glib-2.0/gio/gdbusproxy.h:
-
-/usr/include/c++/11/ctime:
-
-/usr/include/c++/11/bits/vector.tcc:
-
-/usr/include/gtk-3.0/gtk/gtkshortcutsgroup.h:
-
-/usr/include/gtk-3.0/gtk/gtkshortcutsshortcut.h:
+/usr/include/c++/11/ext/atomicity.h:
 
 /usr/include/glib-2.0/gio/gfileiostream.h:
 
@@ -2090,13 +2446,11 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/gtk-3.0/gtk/deprecated/gtkcolorsel.h:
 
-/usr/include/glib-2.0/gio/gasyncinitable.h:
+/usr/include/gtk-3.0/gtk/gtktooltip.h:
 
-/usr/include/errno.h:
+/usr/include/glib-2.0/glib/gtrashstack.h:
 
-/usr/include/x86_64-linux-gnu/bits/signum-generic.h:
-
-/usr/include/gtk-3.0/gdk/gdkcairo.h:
+/usr/include/gtk-3.0/gtk/gtkprogressbar.h:
 
 /usr/include/glib-2.0/gio/gnativesocketaddress.h:
 
@@ -2109,58 +2463,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/glib-2.0/gio/gdbusinterfaceskeleton.h:
 
 /usr/include/gtk-3.0/gtk/gtkbox.h:
-
-/usr/include/gtk-3.0/gtk/gtktooltip.h:
-
-/usr/include/glib-2.0/glib/gtrashstack.h:
-
-/usr/include/gtk-3.0/gtk/gtkprogressbar.h:
-
-/usr/include/glib-2.0/gio/gvolume.h:
-
-/usr/include/glib-2.0/gio/gtlsfiledatabase.h:
-
-/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
-
-/usr/include/glib-2.0/gio/gnetworkmonitor.h:
-
-/usr/include/glib-2.0/glib/gregex.h:
-
-/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
-
-/usr/include/gtk-3.0/gtk/gtkimage.h:
-
-/usr/include/c++/11/limits:
-
-/usr/include/c++/11/bits/move.h:
-
-/usr/include/atk-1.0/atk/atkmisc.h:
-
-/usr/include/c++/11/bits/erase_if.h:
-
-/usr/include/gtk-3.0/gtk/deprecated/gtkiconfactory.h:
-
-/usr/include/glib-2.0/gio/gtlsclientconnection.h:
-
-/usr/include/c++/11/ratio:
-
-/usr/include/c++/11/bits/this_thread_sleep.h:
-
-/usr/include/atk-1.0/atk/atkgobjectaccessible.h:
-
-/usr/include/atk-1.0/atk/atkobjectfactory.h:
-
-/usr/include/gtk-3.0/gdk/gdkdevicetool.h:
-
-/usr/include/atk-1.0/atk/atktext.h:
-
-/usr/include/alloca.h:
-
-/usr/include/c++/11/bits/cxxabi_init_exception.h:
-
-/usr/include/gtk-3.0/gtk/gtkscrolledwindow.h:
-
-/usr/include/gtk-3.0/gtk/gtkcellareacontext.h:
 
 /usr/include/glib-2.0/gio/glistmodel.h:
 
@@ -2192,19 +2494,9 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/gtk-3.0/gtk/gtkmenubar.h:
 
-/usr/include/glib-2.0/gio/gproxyresolver.h:
-
-/usr/include/c++/11/ext/concurrence.h:
-
-/usr/include/gtk-3.0/gdk/gdk-autocleanup.h:
+/usr/include/linux/stddef.h:
 
 /usr/include/atk-1.0/atk/atkplug.h:
-
-/usr/include/glib-2.0/gio/gtlsinteraction.h:
-
-/usr/include/c++/11/bits/stl_function.h:
-
-/usr/include/c++/11/bits/exception.h:
 
 /usr/include/c++/11/bits/fs_ops.h:
 
@@ -2236,45 +2528,29 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/gtk-3.0/gtk/gtkstacksidebar.h:
 
+/usr/include/glib-2.0/gio/gproxyresolver.h:
+
+/usr/include/c++/11/ext/concurrence.h:
+
+/usr/include/gtk-3.0/gdk/gdk-autocleanup.h:
+
 /usr/include/c++/11/bit:
 
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
 
 /usr/include/c++/11/bits/nested_exception.h:
 
-/usr/include/atk-1.0/atk/atkwindow.h:
+/usr/include/atk-1.0/atk/atkmisc.h:
 
-/usr/include/glib-2.0/gio/gsettings.h:
-
-/usr/include/gtk-3.0/gtk/deprecated/gtkalignment.h:
-
-/usr/include/glib-2.0/gio/gdbusserver.h:
-
-/usr/include/c++/11/debug/assertions.h:
-
-/usr/include/gtk-3.0/gtk/gtkviewport.h:
-
-/usr/include/glib-2.0/gio/gnetworkaddress.h:
-
-/usr/include/atk-1.0/atk/atktablecell.h:
-
-/usr/include/gtk-3.0/gtk/gtkrender.h:
-
-/usr/include/gtk-3.0/gtk/gtklabel.h:
-
-/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-animation.h:
-
-/usr/include/glib-2.0/gio/gmountoperation.h:
-
-/usr/include/glib-2.0/glib/gcharset.h:
-
-/usr/include/gtk-3.0/gdk/gdkseat.h:
-
-/usr/include/features.h:
+/usr/include/c++/11/bits/move.h:
 
 /usr/include/c++/11/ext/string_conversions.h:
 
 /usr/include/glib-2.0/gio/gsettingsschema.h:
+
+/usr/include/asm-generic/posix_types.h:
+
+/usr/include/gtk-3.0/gtk/gtkcellrenderercombo.h:
 
 /usr/include/glib-2.0/gio/gfilterinputstream.h:
 
@@ -2366,10 +2642,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/c++/11/cerrno:
 
-/usr/include/c++/11/cstring:
-
-/usr/include/gtk-3.0/gtk/gtkstack.h:
-
 /usr/include/glib-2.0/gio/gsimpleaction.h:
 
 /usr/include/glib-2.0/gobject/gmarshal.h:
@@ -2386,9 +2658,19 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/c++/11/cstdio:
 
-/usr/include/c++/11/pstl/pstl_config.h:
+/usr/include/atk-1.0/atk/atkobjectfactory.h:
 
-/usr/include/features-time64.h:
+/usr/include/atk-1.0/atk/atkgobjectaccessible.h:
+
+/usr/include/gtk-3.0/gdk/gdkmonitor.h:
+
+/usr/include/gtk-3.0/gtk/gtkstack.h:
+
+/usr/include/c++/11/cstring:
+
+/usr/include/gtk-3.0/gtk/gtktoolitemgroup.h:
+
+/usr/include/c++/11/cwchar:
 
 /usr/include/gtk-3.0/gtk/deprecated/gtkactivatable.h:
 
@@ -2407,14 +2689,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/glib-2.0/glib/gstring.h:
 
 /usr/include/c++/11/ext/aligned_buffer.h:
-
-/usr/include/glib-2.0/gio/gloadableicon.h:
-
-/usr/include/c++/11/ext/atomicity.h:
-
-/usr/include/c++/11/cwchar:
-
-/usr/include/gtk-3.0/gtk/gtktoolitemgroup.h:
 
 /usr/include/c++/11/bits/unique_ptr.h:
 
@@ -2443,6 +2717,16 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/gtk-3.0/gtk/gtkaccessible.h:
 
 /usr/include/c++/11/iostream:
+
+/usr/include/glib-2.0/gio/gdbusinterface.h:
+
+/usr/include/c++/11/new:
+
+/usr/include/glib-2.0/glib/deprecated/grel.h:
+
+/usr/include/glib-2.0/gio/gvolumemonitor.h:
+
+/usr/include/glib-2.0/glib/galloca.h:
 
 /usr/include/c++/11/istream:
 
@@ -2479,6 +2763,10 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/gtk-3.0/gtk/gtkfilechooserdialog.h:
 
 /usr/include/gtk-3.0/gtk/gtkpopovermenu.h:
+
+/usr/include/glib-2.0/glib/deprecated/gcompletion.h:
+
+/usr/include/glib-2.0/glib/deprecated/gthread.h:
 
 /usr/include/gtk-3.0/gtk/gtktypebuiltins.h:
 
@@ -2584,8 +2872,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/glib-2.0/glib/gqueue.h:
 
-/usr/include/gtk-3.0/gtk/gtktoolbutton.h:
-
 /usr/include/glib-2.0/gio/gio-autocleanups.h:
 
 /usr/include/glib-2.0/glib/grefcount.h:
@@ -2639,10 +2925,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/c++/11/bits/charconv.h:
 
 /usr/include/glib-2.0/gobject/gbindinggroup.h:
-
-/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-io.h:
-
-/usr/include/glib-2.0/gobject/gboxed.h:
 
 /usr/include/glib-2.0/gobject/gobject-autocleanups.h:
 
@@ -2900,8 +3182,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 
 /usr/include/gtk-3.0/gtk/gtkcheckmenuitem.h:
 
-/usr/include/gtk-3.0/gtk/gtkcellrenderercombo.h:
-
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
 /usr/include/gtk-3.0/gtk/gtkcellrendererpixbuf.h:
@@ -2941,6 +3221,8 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/gtk-3.0/gtk/gtkdnd.h:
 
 /usr/include/gtk-3.0/gtk/gtkdragsource.h:
+
+/usr/include/x86_64-linux-gnu/asm/sockios.h:
 
 /usr/include/gtk-3.0/gtk/gtkeditable.h:
 
@@ -3031,8 +3313,6 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/gtk-3.0/gtk/gtksearchentry.h:
 
 /usr/include/gtk-3.0/gtk/gtkliststore.h:
-
-/usr/include/gtk-3.0/gtk/gtktogglebutton.h:
 
 /usr/include/gtk-3.0/gtk/gtklockbutton.h:
 
@@ -3129,5 +3409,3 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jimmy/Documents/GitHub/votify/serv
 /usr/include/gtk-3.0/gtk/gtktextmark.h:
 
 /usr/include/gtk-3.0/gtk/gtktextview.h:
-
-/usr/include/gtk-3.0/gtk/gtktoolbar.h:
