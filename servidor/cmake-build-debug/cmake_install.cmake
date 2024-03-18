@@ -1,4 +1,4 @@
-# Install script for directory: /home/jose/votify/servidor
+# Install script for directory: /home/jimmy/Documents/GitHub/votify/servidor
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/jose/votify/servidor/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

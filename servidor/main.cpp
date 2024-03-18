@@ -3,7 +3,6 @@
 #include "playlist.h"
 #include <gtk/gtk.h>
 #include <thread>
-#include "server.h"
 #include <cstdlib>
 
 using namespace std;
@@ -280,7 +279,6 @@ private:
 
 
 int main(int argc, char *argv[]) {
-
     // Ruta de las canciones
     string folder_path = "/home/" + string(getenv("USER")) + "/Downloads/PlayList";
 
@@ -298,14 +296,7 @@ int main(int argc, char *argv[]) {
 
     display();
 
-//    savePlaylistToJson("playlist.json");
-
-    string ipAddress = "127.0.0.1";
-    int portNum = 50000;
-    int bufsize = 1024;
-
-    server server(ipAddress, portNum, bufsize);
-    server.start();
+    savePlaylistToJson("playlist.json");
 
     gtk_init(&argc, &argv);
     ServerGUI gui;
