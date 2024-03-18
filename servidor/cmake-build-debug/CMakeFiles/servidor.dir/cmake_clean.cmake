@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/servidor.dir/main.cpp.o.d"
   "CMakeFiles/servidor.dir/playlist.cpp.o"
   "CMakeFiles/servidor.dir/playlist.cpp.o.d"
+  "CMakeFiles/servidor.dir/server.cpp.o"
+  "CMakeFiles/servidor.dir/server.cpp.o.d"
   "servidor"
   "servidor.pdb"
 )
