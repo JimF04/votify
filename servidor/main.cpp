@@ -4,6 +4,10 @@
 #include <gtk/gtk.h>
 #include <thread>
 #include <cstdlib>
+#include <sstream>
+#include <iomanip>
+#include <fstream>
+#include <unistd.h>
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -193,7 +197,8 @@ private:
 
 class ServerGUI {
 public:
-    ServerGUI() {
+    ServerGUI() : server_pid_(getpid()) {
+        std::cout << "PID" << server_pid_ << std::endl;
         gtk_init(NULL, NULL);
 
         window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -233,6 +238,11 @@ public:
         gtk_widget_set_halign(PlaylistButton, GTK_ALIGN_CENTER);
         gtk_widget_set_valign(PlaylistButton, GTK_ALIGN_CENTER);
 
+        RamUsageLabel = gtk_label_new("RAM Usage: Calculating...");
+        gtk_widget_set_size_request(RamUsageLabel, 250, 50);
+        gtk_widget_override_color(RamUsageLabel, GTK_STATE_FLAG_NORMAL, &color);
+        gtk_box_pack_start(GTK_BOX(vbox), RamUsageLabel, FALSE, FALSE, 10);
+
         PangoFontDescription *Boton_desc = pango_font_description_new();
         pango_font_description_set_size(Boton_desc, 15 * PANGO_SCALE);
         gtk_widget_override_font(ReproductorButton, Boton_desc);
@@ -244,6 +254,8 @@ public:
         gtk_widget_show_all(window);
 
         pc_gui = nullptr;
+
+        g_timeout_add_seconds(1, (GSourceFunc)updateRamUsage, this);
     }
 
     ~ServerGUI() {
@@ -259,6 +271,8 @@ private:
     GtkWidget *VotLabel;
     GtkWidget *ReproductorButton;
     GtkWidget *PlaylistButton;
+    GtkWidget *RamUsageLabel;
+    pid_t server_pid_;
     PCGUI *pc_gui;
 
     static void onReproductorButtonClicked(GtkWidget *widget, gpointer data) {
@@ -274,7 +288,37 @@ private:
         }
         server_gui->pc_gui->show();
     }
+
+    static gboolean updateRamUsage(gpointer data) {
+        ServerGUI *server_gui = static_cast<ServerGUI *>(data);
+        double ramUsage = getServerRamUsage(server_gui->server_pid_);
+        std::ostringstream ramUsageStr;
+        ramUsageStr << "RAM Usage: " << std::fixed << std::setprecision(2) << ramUsage << " MB";
+        gtk_label_set_text(GTK_LABEL(server_gui->RamUsageLabel), ramUsageStr.str().c_str());
+        return G_SOURCE_CONTINUE;
+    }
+
+    static double getServerRamUsage(pid_t server_pid) {
+        std::ifstream file("/proc/" + std::to_string(server_pid) + "/statm");
+        if (!file.is_open()) {
+            std::cerr << "Error: Could not open /proc/" << server_pid << "/statm" << std::endl;
+            return 0.0;
+        }
+
+        int totalMemoryPages;
+        int residentSetPages;
+        int sharedPages;
+        if (!(file >> totalMemoryPages >> residentSetPages >> sharedPages)) {
+            std::cerr << "Error: Failed to read memory information from /proc/" << server_pid << "/statm" << std::endl;
+            return 0.0;
+        }
+
+        const long pageSize = sysconf(_SC_PAGESIZE) / 1024;
+        double residentMemoryKb = (residentSetPages - sharedPages) * pageSize;
+        return residentMemoryKb / 1024.0;
+    }
 };
+
 
 
 
