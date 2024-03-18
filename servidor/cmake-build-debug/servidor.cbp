@@ -131,6 +131,9 @@
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/main.cpp">
 			<Option target="servidor"/>
 		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/miniaudio.h">
+			<Option target="servidor"/>
+		</Unit>
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/playlist.cpp">
 			<Option target="servidor"/>
 		</Unit>

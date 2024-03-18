@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.22)
 project(servidor)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -10,6 +10,7 @@ add_executable(servidor main.cpp
         playlist.h
         server.cpp
         server.h
+        miniaudio.h
 )
 
 find_package(PkgConfig REQUIRED)
