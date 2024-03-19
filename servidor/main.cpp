@@ -105,6 +105,8 @@ GtkWidget *CPOffButton;
 GtkWidget *PaginateButton;
 GtkWidget *DeleteButton;
 
+
+
 void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data);
 void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data);
 void on_StopButton_clicked(GtkButton *StopButton, gpointer user_data);
@@ -151,6 +153,12 @@ int main(int argc, char *argv[]) {
     main_window = GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
 
 
+    NameLabel = GTK_WIDGET(gtk_builder_get_object(builder, "NameLabel"));
+    ArtistLabel = GTK_WIDGET(gtk_builder_get_object(builder, "ArtistLabel"));
+    AlbumLabel = GTK_WIDGET(gtk_builder_get_object(builder, "AlbumLabel"));
+    GenreLabel = GTK_WIDGET(gtk_builder_get_object(builder, "GenreLabel"));
+
+
     // Conecta las señales de los widgets a las funciones callback
     gtk_builder_connect_signals(builder, NULL);
 
@@ -190,6 +198,13 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
 }
 
+void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName )  {
+    gtk_label_set_text(GTK_LABEL(NameLabel), ("Song: " + songName).c_str());
+    gtk_label_set_text(GTK_LABEL(ArtistLabel), ("Artist: " + artistName).c_str());
+    gtk_label_set_text(GTK_LABEL(AlbumLabel), ("Album: " + albumName).c_str());
+    gtk_label_set_text(GTK_LABEL(GenreLabel), ("Genre: " + genreName).c_str());
+}
+
 // Definición de funciones callback
 // Implementación de la función de controlador para el botón PreviousButton
 void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
@@ -211,6 +226,7 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
     songThread.detach();
 
     isPlaying = true;
+    updateSongLabels(previousSong->name, previousSong->artist, previousSong->album, previousSong->genre);
 }
 
 // Implementación de la función de controlador para el botón PlayButton
@@ -237,6 +253,7 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
 
 
     isPlaying = true;
+    updateSongLabels(currentSong->name, currentSong->artist, currentSong->album, currentSong->genre);
 
 }
 
@@ -273,6 +290,7 @@ void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     songThread.detach();
 
     isPlaying = true;
+    updateSongLabels(nextSong->name, nextSong->artist, nextSong->album, nextSong->genre);
 }
 
 // Implementación de la función de controlador para el botón CPOnButton
@@ -299,3 +317,5 @@ void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_da
         // Realizar acciones cuando el botón se desactiva
     }
 }
+
+
