@@ -8,6 +8,7 @@
 #include <uuid/uuid.h>
 #include <json/json.h>
 #include <fstream>
+#include <csignal>
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -25,13 +26,34 @@ void insert_songs(const string& file_path) {
     uuid_unparse(uuid, uuid_str);
     new_nodo->id = string(uuid_str);
 
-    // Falta por agregar por medio de metadata
     fs::path path(file_path);
-    new_nodo->name = path.filename().string();
 
-    new_nodo->artist = "";
-    new_nodo->album = "";
-    new_nodo->genre = "pop";
+    // Ejecutar el comando mpg123 para obtener los metadatos
+    string command = "mpg123 -t t \"" + file_path + "\" 2>&1";
+    FILE *pipe = popen(command.c_str(), "r");
+    if (!pipe) {
+        cerr << "Error al ejecutar el comando mpg123." << endl;
+        return;
+    }
+
+    // Procesar la salida del comando para extraer los metadatos
+    char buffer[256];
+    while (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
+        string line(buffer);
+
+        // Buscar las líneas que contienen los metadatos y extraer los valores correspondientes
+        size_t pos;
+        if ((pos = line.find("Title:")) != string::npos) {
+            new_nodo->name = line.substr(pos + 7);
+        } else if ((pos = line.find("Artist:")) != string::npos) {
+            new_nodo->artist = line.substr(pos + 8);
+        } else if ((pos = line.find("Album:")) != string::npos) {
+            new_nodo->album = line.substr(pos + 7);
+        } else if ((pos = line.find("Genre:")) != string::npos) {
+            new_nodo->genre = line.substr(pos + 7);
+        }
+    }
+    pclose(pipe);
 
     // Inicializar votos en 0
     new_nodo->up_votes = 0;

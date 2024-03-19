@@ -47,7 +47,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="AlbumLabel:">
+              <object class="GtkLabel" id="AlbumLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Album:</property>
