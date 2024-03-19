@@ -124,6 +124,7 @@ servidor: CMakeFiles/servidor.dir/main.cpp.o
 servidor: CMakeFiles/servidor.dir/playlist.cpp.o
 servidor: CMakeFiles/servidor.dir/server.cpp.o
 servidor: CMakeFiles/servidor.dir/build.make
+servidor: /usr/local/lib/libglog.so.0.8.0
 servidor: /usr/lib/x86_64-linux-gnu/libjsoncpp.so.1.9.5
 servidor: CMakeFiles/servidor.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable servidor"

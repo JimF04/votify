@@ -5,7 +5,7 @@
 		<Option title="servidor"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\.vcpkg-clion\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\.vcpkg-clion\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug"/>
@@ -25,6 +25,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DXML_STATIC"/>
+					<Add option="-DGLOG_USE_GLOG_EXPORT"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/libmount"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/blkid"/>
@@ -70,6 +71,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DXML_STATIC"/>
+					<Add option="-DGLOG_USE_GLOG_EXPORT"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/libmount"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/blkid"/>
@@ -166,6 +168,21 @@
 		</Unit>
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfigVersion.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-modules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-targets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

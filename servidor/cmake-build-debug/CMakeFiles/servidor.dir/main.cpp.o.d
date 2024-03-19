@@ -883,4 +883,22 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/sys/poll.h \
  /usr/include/x86_64-linux-gnu/bits/poll.h \
  /usr/include/x86_64-linux-gnu/sys/eventfd.h \
- /usr/include/x86_64-linux-gnu/bits/eventfd.h
+ /usr/include/x86_64-linux-gnu/bits/eventfd.h \
+ /usr/local/include/glog/logging.h /usr/include/c++/11/atomic \
+ /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/cstddef /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/stl_tempbuf.h \
+ /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/bits/shared_ptr_atomic.h \
+ /usr/include/c++/11/backward/auto_ptr.h \
+ /usr/include/c++/11/pstl/glue_memory_defs.h \
+ /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc /usr/local/include/glog/export.h \
+ /usr/local/include/glog/flags.h /usr/local/include/glog/platform.h \
+ /usr/local/include/glog/types.h /usr/local/include/glog/log_severity.h \
+ /usr/local/include/glog/vlog_is_on.h

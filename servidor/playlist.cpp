@@ -9,6 +9,7 @@
 #include <json/json.h>
 #include <fstream>
 #include <csignal>
+#include <glog/logging.h>
 
 using namespace std;
 namespace fs = std::filesystem;

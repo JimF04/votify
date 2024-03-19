@@ -8,6 +8,7 @@
 #include "server.h"
 #include "miniaudio.h"
 #include <stdio.h>
+#include <glog/logging.h>
 
 
 using namespace std;
@@ -117,9 +118,16 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data);
 void on_PaginateButton_toggled(GtkToggleButton *button, gpointer user_data);
 
 int main(int argc, char *argv[]) {
+    google::InitGoogleLogging(argv[0]);
+
+    google::SetLogDestination(google::GLOG_INFO, "server.log");
+    google::SetLogDestination(google::GLOG_ERROR, "server.log");
+    google::SetLogDestination(google::GLOG_WARNING, "server.log");
+    google::SetLogDestination(google::GLOG_FATAL, "server.log");
 
     // Ruta de las canciones
     string folder_path = "/home/" + string(getenv("USER")) + "/Downloads/PlayList";
+    LOG(INFO) << "Ruta de las canciones: " << folder_path << endl;
 
     // Iterar sobre los archivos dentro del directorio
     for (const auto& entry : fs::directory_iterator(folder_path)) {
@@ -127,7 +135,7 @@ int main(int argc, char *argv[]) {
             // Llamar a insert_songs() con la ruta del archivo
             insert_songs(entry.path().string());
         } else {
-            cout << "El archivo " << entry.path().string() << " no es un archivo de audio" << endl;
+            LOG(WARNING) << "El archivo " << entry.path().string() << " no es un archivo de audio" << endl;
         }
     }
 

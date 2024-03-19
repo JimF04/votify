@@ -547,3 +547,49 @@ events:
       
       
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "/home/jimmy/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake:859 (_find_package)"
+      - "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/usr/local/lib/cmake/glog/glog-config.cmake:24 (find_dependency)"
+      - "/home/jimmy/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake:859 (_find_package)"
+      - "CMakeLists.txt:7 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-EBJEZg"
+      binary: "/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-EBJEZg"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/glog/../../../share/glog/cmake"
+      VCPKG_APPLOCAL_DEPS: "ON"
+      VCPKG_TARGET_TRIPLET: "x64-linux"
+      Z_VCPKG_ROOT_DIR: "/home/jimmy/.vcpkg-clion/vcpkg"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-EBJEZg'
+        
+        Run Build Command(s): /snap/clion/265/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_04678/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_04678.dir/build.make CMakeFiles/cmTC_04678.dir/build
+        gmake[1]: Entering directory '/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-EBJEZg'
+        Building C object CMakeFiles/cmTC_04678.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -fdiagnostics-color=always -o CMakeFiles/cmTC_04678.dir/src.c.o -c /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-EBJEZg/src.c
+        Linking C executable cmTC_04678
+        /snap/clion/265/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04678.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_04678.dir/src.c.o -o cmTC_04678 
+        gmake[1]: Leaving directory '/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-EBJEZg'
+        
+      exitCode: 0
+...
