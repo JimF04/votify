@@ -1,5 +1,6 @@
 mod cliente_Server;
 
+use std::fs::File;
 use gtk::gdk::keys::constants::{b, CD};
 use gtk::prelude::*;
 use gtk::{Application, ApplicationWindow, Button,Label,Box};
@@ -11,11 +12,21 @@ use std::thread;
 use async_std::task;
 use gio::FileAttributeType::String;
 use std::time::Duration;
-
-
-
+use fern::Dispatch;
+use log::{info, warn, error, debug, trace};
 
 fn main() {
+
+    let file = File::create("cliente.log").expect("Failed to create log file");
+    let logger_config = Dispatch::new()
+        .format(|out, message, record| {
+            out.finish(format_args!("[{}] {}", record.level(), message))
+        })
+        .chain(file);
+
+    // Configurar el logger global para que use fern
+    logger_config.apply().expect("Failed to initialize logger");
+
 
     let handle = thread::spawn(|| {
         let ejemplo_string ="mensaje";
@@ -56,12 +67,6 @@ fn main() {
     });
 
     application.run();
-
-
-
-
-
-
 }
 
 
@@ -122,7 +127,7 @@ fn abrir_socket_mensaje(mensaje: &str){
 
     match TcpStream::connect("localhost:50000") {
         Ok(mut stream) => {
-            println!("Successfully connected to server in port 50000");
+            info!("Successfully connected to server in port 50000");
 
             let msg = mensaje;
 
@@ -131,7 +136,7 @@ fn abrir_socket_mensaje(mensaje: &str){
             task::block_on(async {
                 loop {
                     stream.write(msg.as_ref()).unwrap();
-                    println!("Sent list, awaiting reply...");
+                    info!("Sent list, awaiting reply...");
                     let mut data = [0 as u8; 6]; // using 6 byte buffer
 
                     // Sleep for the specified interval before running the function again
@@ -155,9 +160,9 @@ fn abrir_socket_mensaje(mensaje: &str){
             // }
         }
         Err(e) => {
-            println!("Failed to connect: {}", e);
+            warn!("Failed to connect: {}", e);
         }
     }
-    println!("Terminated.");
+    info!("Terminated.");
 
 }
