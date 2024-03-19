@@ -1,3 +1,3 @@
-/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/CMakeFiles/servidor.dir
-/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/ahenao/Desktop/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/CMakeFiles/servidor.dir
+/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
