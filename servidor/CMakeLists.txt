@@ -9,6 +9,10 @@ find_package(jsoncpp CONFIG REQUIRED)
 add_executable(servidor main.cpp
         playlist.cpp
         playlist.h
+        server.cpp
+        server.h
+        miniaudio.h
+
 )
 
 find_package(PkgConfig REQUIRED)

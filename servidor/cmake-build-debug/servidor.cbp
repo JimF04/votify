@@ -127,10 +127,19 @@
 		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/main.cpp">
 			<Option target="servidor"/>
 		</Unit>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/miniaudio.h">
+			<Option target="servidor"/>
+		</Unit>
 		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/playlist.cpp">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/playlist.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/server.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/server.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/CMakeLists.txt">

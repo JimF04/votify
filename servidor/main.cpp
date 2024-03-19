@@ -1,12 +1,93 @@
+#define MINIAUDIO_IMPLEMENTATION
 #include <iostream>
 #include <filesystem>
 #include "playlist.h"
-#include <cstdlib>
-#include <iostream>
 #include <gtk/gtk.h>
+#include <thread>
+#include <cstdlib>
+#include "server.h"
+#include "miniaudio.h"
+#include <stdio.h>
+
 
 using namespace std;
 namespace fs = std::filesystem;
+
+bool isPlaying = false;
+
+ma_decoder decoder;
+ma_device device;
+ma_result result;
+ma_device_config deviceConfig;
+
+ma_uint64 currentPosition = 0;
+
+void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
+{
+    ma_decoder* pDecoder = (ma_decoder*)pDevice->pUserData;
+    if (pDecoder == NULL) {
+        return;
+    }
+
+    ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, NULL);
+
+    (void)pInput;
+}
+
+ma_uint64 getCurrentPositionInSeconds(ma_decoder* pDecoder) {
+    ma_uint64 currentFrame;
+    ma_result result = ma_decoder_get_cursor_in_pcm_frames(pDecoder, &currentFrame);
+    if (result != MA_SUCCESS) {
+        printf("Error al obtener la posición actual.\n");
+        return 0;
+    }
+
+    ma_uint64 sampleRate = pDecoder->outputSampleRate;
+    return currentFrame / sampleRate;
+}
+
+
+static void playAudio(const char* filePath, ma_uint64 startSeconds)
+{
+    result = ma_decoder_init_file(filePath, NULL, &decoder);
+    if (result != MA_SUCCESS) {
+        printf("Could not load file: %s\n", filePath);
+        return;
+    }
+
+    ma_uint64 startFrame = startSeconds * decoder.outputSampleRate;
+
+    result = ma_decoder_seek_to_pcm_frame(&decoder, startFrame);
+    if (result != MA_SUCCESS) {
+        printf("Could not seek to the specified position.\n");
+        ma_decoder_uninit(&decoder);
+        return;
+    }
+
+    deviceConfig = ma_device_config_init(ma_device_type_playback);
+    deviceConfig.playback.format   = decoder.outputFormat;
+    deviceConfig.playback.channels = decoder.outputChannels;
+    deviceConfig.sampleRate        = decoder.outputSampleRate;
+    deviceConfig.dataCallback      = data_callback;
+    deviceConfig.pUserData         = &decoder;
+
+    if (ma_device_init(NULL, &deviceConfig, &device) != MA_SUCCESS) {
+        printf("Failed to open playback device.\n");
+        ma_decoder_uninit(&decoder);
+        return;
+    }
+
+    if (ma_device_start(&device) != MA_SUCCESS) {
+        printf("Failed to start playback device.\n");
+        ma_device_uninit(&device);
+        ma_decoder_uninit(&decoder);
+        return;
+    }
+
+    isPlaying = false;
+}
+
+
 
 GtkBuilder *builder;
 GtkWidget *main_window;
@@ -22,6 +103,7 @@ GtkWidget *NextButton;
 GtkWidget *CPOnButton;
 GtkWidget *CPOffButton;
 GtkWidget *PaginateButton;
+GtkWidget *DeleteButton;
 
 void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data);
 void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data);
@@ -29,6 +111,7 @@ void on_StopButton_clicked(GtkButton *StopButton, gpointer user_data);
 void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data);
 void on_CPOn_clicked(GtkButton *CPOnButton, gpointer user_data);
 void on_CPOffButton_clicked(GtkButton *CPOffButton, gpointer user_data);
+void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data);
 void on_PaginateButton_toggled(GtkToggleButton *button, gpointer user_data);
 
 
@@ -83,6 +166,9 @@ int main(int argc, char *argv[]) {
     CPOffButton = GTK_WIDGET(gtk_builder_get_object(builder, "CPOffButton"));
     g_signal_connect(CPOffButton, "clicked", G_CALLBACK(on_CPOffButton_clicked), NULL);
 
+    DeleteButton = GTK_WIDGET(gtk_builder_get_object(builder, "DeleteButton"));
+    g_signal_connect(DeleteButton, "clicked", G_CALLBACK(on_DeleteButton_clicked), NULL);
+
     PaginateButton = GTK_WIDGET(gtk_builder_get_object(builder, "PaginateButton"));
     g_signal_connect(PaginateButton, "toggled", G_CALLBACK(on_PaginateButton_toggled), NULL);
 
@@ -102,21 +188,85 @@ int main(int argc, char *argv[]) {
 // Implementación de la función de controlador para el botón PreviousButton
 void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
     g_print("PreviousButton clickeado\n");
+    if (isPlaying) {
+        ma_device_uninit(&device);
+        ma_decoder_uninit(&decoder);
+        isPlaying = false;
+    }
+
+    nodo* previousSong = getPreviousSong();
+
+    const char* filePath = previousSong->file_path.c_str();
+
+    ma_uint64 startTime = 0;
+
+    thread songThread(playAudio, filePath, startTime);
+
+    songThread.detach();
+
+    isPlaying = true;
 }
 
 // Implementación de la función de controlador para el botón PlayButton
 void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
     g_print("PlayButton clickeado\n");
+    if (isPlaying) {
+        ma_device_uninit(&device);
+        ma_decoder_uninit(&decoder);
+        isPlaying = false;
+    }
+
+    nodo* currentSong = getCurrentSong();
+
+    const char* filePath = currentSong->file_path.c_str();
+
+    if (currentPosition == 0){
+        thread songThread(playAudio, filePath, currentPosition);
+        songThread.detach();
+    } else {
+        thread songThread(playAudio, filePath, currentPosition);
+        songThread.detach();
+        currentPosition = 0;
+    }
+
+
+    isPlaying = true;
+
 }
 
 // Implementación de la función de controlador para el botón StopButton
 void on_StopButton_clicked(GtkButton *StopButton, gpointer user_data) {
     g_print("StopButton clickeado\n");
+    ma_device_uninit(&device);
+    ma_decoder_uninit(&decoder);
+
+    currentPosition = getCurrentPositionInSeconds(&decoder);
+
+    isPlaying = false;
+
 }
+
 
 // Implementación de la función de controlador para el botón NextButton
 void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     g_print("NextButton clickeado\n");
+    if (isPlaying) {
+        ma_device_uninit(&device);
+        ma_decoder_uninit(&decoder);
+        isPlaying = false;
+    }
+
+    nodo* nextSong = getNextSong();
+
+    const char* filePath = nextSong->file_path.c_str();
+
+    ma_uint64 startTime = 0;
+
+    thread songThread(playAudio, filePath, startTime);
+
+    songThread.detach();
+
+    isPlaying = true;
 }
 
 // Implementación de la función de controlador para el botón CPOnButton
@@ -127,6 +277,10 @@ void on_CPOn_clicked(GtkButton *CPOnButton, gpointer user_data) {
 // Implementación de la función de controlador para el botón CPOffButton
 void on_CPOffButton_clicked(GtkButton *CPOffButton, gpointer user_data) {
     g_print("CPOffButton clickeado\n");
+}
+
+void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
+    g_print("DeleteButton clickeado\n");
 }
 
 void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_data) {
