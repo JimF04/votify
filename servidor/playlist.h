@@ -1,33 +1,28 @@
-//
-// Created by jimmy on 3/2/24.
-//
+// playlist.h
 
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
 
 #include <string>
 
-using namespace std;
-
 struct nodo {
-    string id;
-    string name;
-    string artist;
-    string album;
-    string genre;
+    std::string id;
+    std::string name;
+    std::string artist;
+    std::string album;
+    std::string genre;
     int up_votes;
     int down_votes;
-    string file_path;
+    std::string file_path;
     nodo* next;
     nodo* prev;
 };
 
+void insert_songs(const std::string& file_path);
 nodo* getCurrentSong();
 nodo* getNextSong();
 nodo* getPreviousSong();
-
-void insert_songs(const string& file_path);
 void display();
-void savePlaylistToJson(const string& jsonFilePath);
+void savePlaylistToJson(const std::string& jsonFilePath);
 
-#endif
+#endif  // PLAYLIST_H

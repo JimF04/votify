@@ -1,4 +1,4 @@
-/snap/clion/265/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/jimmy/Documents/GitHub/votify/servidor -B /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug
+/snap/clion/265/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/gabrielvb/VotifyClone/votify/servidor -B /home/gabrielvb/VotifyClone/votify/servidor/cmake-build-debug
 CMake Deprecation Warning:
   Support for "Extra Generators" like
 
@@ -20,4 +20,4 @@ Call Stack (most recent call first):
 
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug
+-- Build files have been written to: /home/gabrielvb/VotifyClone/votify/servidor/cmake-build-debug

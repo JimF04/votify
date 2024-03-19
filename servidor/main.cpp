@@ -4,6 +4,7 @@
 #include <gtk/gtk.h>
 #include <thread>
 #include <cstdlib>
+#include "ArrayPagedList.h"
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -162,10 +163,29 @@ private:
     static void on_page_button_toggled(GtkWidget *widget, gpointer data) {
         if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
             g_print("Modo paginado activado\n");
+
+            // Crear una instancia de ArrayPagedList
+            ArrayPagedList playlist(10); // Supongamos un tamaño de página de 10 elementos
+
+            // Iterar sobre la lista enlazada y agregar cada canción a ArrayPagedList
+            nodo* currentSong = getCurrentSong();
+            if (currentSong != nullptr) {
+                do {
+                    // Insertar la canción en la ArrayPagedList
+                    playlist.insert(currentSong->id, currentSong->name, currentSong->artist, currentSong->album, currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->file_path);
+
+                    // Obtener la siguiente canción en la lista enlazada
+                    currentSong = currentSong->next;
+                } while (currentSong != getCurrentSong());
+            }
+
+            // Imprimir la página actual de la ArrayPagedList
+            playlist.printCurrentPage();
         } else {
             g_print("Modo paginado desactivado\n");
         }
     }
+
 
     static void playSong(const string& filePath) {
 
@@ -292,15 +312,11 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    cout << "\n";
-
-    display();
-
-    savePlaylistToJson("playlist.json");
-
+    // Iniciar la GUI
     gtk_init(&argc, &argv);
     ServerGUI gui;
     gui.run();
 
     return 0;
 }
+
