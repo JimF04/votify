@@ -9,10 +9,13 @@
 #include "miniaudio.h"
 #include <stdio.h>
 #include <glog/logging.h>
-
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/ini_parser.hpp>
+#include <boost/filesystem.hpp>
 
 using namespace std;
-namespace fs = std::filesystem;
+namespace fs_std = std::filesystem;
+namespace fs_boost = boost::filesystem;
 
 Playlist myPlaylist;
 
@@ -133,12 +136,21 @@ int main(int argc, char *argv[]) {
     google::SetLogDestination(google::GLOG_WARNING, "server.log");
     google::SetLogDestination(google::GLOG_FATAL, "server.log");
 
+    boost::property_tree::ptree pt;
+    try {
+        boost::property_tree::ini_parser::read_ini("/home/jimmy/Documents/GitHub/votify/servidor/config.ini", pt);
+    } catch (boost::property_tree::ini_parser::ini_parser_error &e) {
+        LOG(ERROR) << "Error al leer el archivo de configuración: " << e.what() << endl;
+    }
+
+    auto songs_path = pt.get<string>("paths.songs_path");
+
     // Ruta de las canciones
-    string folder_path = "/home/" + string(getenv("USER")) + "/Downloads/PlayList";
-    LOG(INFO) << "Ruta de las canciones: " << folder_path << endl;
+//    string folder_path = "/home/" + string(getenv("USER")) + "/Downloads/PlayList";
+//    LOG(INFO) << "Ruta de las canciones: " << folder_path << endl;
 
     // Iterar sobre los archivos dentro del directorio
-    for (const auto& entry : fs::directory_iterator(folder_path)) {
+    for (const auto& entry : fs_std::directory_iterator(songs_path)) {
         if (entry.is_regular_file() && entry.path().extension() == ".mp3") {
             // Llamar a insert_songs() con la ruta del archivo
             myPlaylist.insertSong(entry.path().string());
@@ -164,7 +176,7 @@ int main(int argc, char *argv[]) {
     gtk_init(&argc, &argv);
 
     // Carga la interfaz desde el archivo Glade
-    builder = gtk_builder_new_from_file("/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/GUI Server.glade");
+    builder = gtk_builder_new_from_file("/home/jimmy/Documents/GitHub/votify/servidor/GUI Server.glade");
 
     // Obtiene los widgets necesarios de la interfaz
     main_window = GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
@@ -342,8 +354,7 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
     g_print("DeleteButton clickeado\n");
 
     if (isPlaying = true) {
-        ma_device_uninit(&device);
-        ma_decoder_uninit(&decoder);
+        ma_device_stop(&device);
         isPlaying = false;
     }
 
