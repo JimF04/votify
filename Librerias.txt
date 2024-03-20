@@ -4,7 +4,7 @@ sudo apt-get install cmake libtool zlib1g-dev libflac-dev libogg-dev libvorbis-d
 
 sudo apt-get install cmake libtool autoconf automake libboost-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-test-dev
 
-// Librerria jsoncpp
+// Biblioteca jsoncpp
 // junto
 git clone https://github.com/Microsoft/vcpkg.git
 cd vcpkg

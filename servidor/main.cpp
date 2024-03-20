@@ -9,13 +9,10 @@
 #include "miniaudio.h"
 #include <stdio.h>
 #include <glog/logging.h>
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/ini_parser.hpp>
-#include <boost/filesystem.hpp>
+#include "INIReader.h"
 
 using namespace std;
 namespace fs_std = std::filesystem;
-namespace fs_boost = boost::filesystem;
 
 Playlist myPlaylist;
 
@@ -136,14 +133,9 @@ int main(int argc, char *argv[]) {
     google::SetLogDestination(google::GLOG_WARNING, "server.log");
     google::SetLogDestination(google::GLOG_FATAL, "server.log");
 
-    boost::property_tree::ptree pt;
-    try {
-        boost::property_tree::ini_parser::read_ini("/home/jimmy/Documents/GitHub/votify/servidor/config.ini", pt);
-    } catch (boost::property_tree::ini_parser::ini_parser_error &e) {
-        LOG(ERROR) << "Error al leer el archivo de configuración: " << e.what() << endl;
-    }
+    INIReader reader("/home/jimmy/Documents/GitHub/votify/servidor/config.ini");
 
-    auto songs_path = pt.get<string>("paths.songs_path");
+    string songs_path = reader.Get("paths", "songs_path", "");
 
     // Ruta de las canciones
 //    string folder_path = "/home/" + string(getenv("USER")) + "/Downloads/PlayList";
@@ -175,8 +167,10 @@ int main(int argc, char *argv[]) {
 
     gtk_init(&argc, &argv);
 
+    string gladePath = reader.Get("paths", "glade_path", "");
+
     // Carga la interfaz desde el archivo Glade
-    builder = gtk_builder_new_from_file("/home/jimmy/Documents/GitHub/votify/servidor/GUI Server.glade");
+    builder = gtk_builder_new_from_file(gladePath.c_str());
 
     // Obtiene los widgets necesarios de la interfaz
     main_window = GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
