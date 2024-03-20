@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
     google::SetLogDestination(google::GLOG_WARNING, "server.log");
     google::SetLogDestination(google::GLOG_FATAL, "server.log");
 
-    INIReader reader("/home/jimmy/Documents/GitHub/votify/servidor/config.ini");
+    INIReader reader("/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/config.ini");
 
     string songs_path = reader.Get("paths", "songs_path", "");
 
@@ -250,8 +250,7 @@ void updateSongLabels(const string& songName, const string& artistName, const st
 void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
     g_print("PreviousButton clickeado\n");
     if (isPlaying = true) {
-        ma_device_uninit(&device);
-        ma_decoder_uninit(&decoder);
+        ma_device_stop(&device);
         isPlaying = false;
     }
 
@@ -273,8 +272,7 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
 void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
     g_print("PlayButton clickeado\n");
     if (isPlaying = true) {
-        ma_device_uninit(&device);
-        ma_decoder_uninit(&decoder);
+        ma_device_stop(&device);
         isPlaying = false;
     }
 
@@ -314,8 +312,7 @@ void on_StopButton_clicked(GtkButton *StopButton, gpointer user_data) {
 void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     g_print("NextButton clickeado\n");
     if (isPlaying = true) {
-        ma_device_uninit(&device);
-        ma_decoder_uninit(&decoder);
+        ma_device_stop(&device);
         isPlaying = false;
     }
 
