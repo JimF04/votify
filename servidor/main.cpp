@@ -14,6 +14,8 @@
 using namespace std;
 namespace fs = std::filesystem;
 
+Playlist myPlaylist;
+
 bool isPlaying = false;
 
 ma_decoder decoder;
@@ -118,6 +120,7 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data);
 void on_PaginateButton_toggled(GtkToggleButton *button, gpointer user_data);
 
 int main(int argc, char *argv[]) {
+
     google::InitGoogleLogging(argv[0]);
 
     google::SetLogDestination(google::GLOG_INFO, "server.log");
@@ -133,7 +136,7 @@ int main(int argc, char *argv[]) {
     for (const auto& entry : fs::directory_iterator(folder_path)) {
         if (entry.is_regular_file() && entry.path().extension() == ".mp3") {
             // Llamar a insert_songs() con la ruta del archivo
-            insert_songs(entry.path().string());
+            myPlaylist.insertSong(entry.path().string());
         } else {
             LOG(WARNING) << "El archivo " << entry.path().string() << " no es un archivo de audio" << endl;
         }
@@ -141,9 +144,10 @@ int main(int argc, char *argv[]) {
 
     cout << "\n";
 
-    display();
+    myPlaylist.display();
 
-    savePlaylistToJson("playlist.json");
+
+    myPlaylist.saveToJson("playlist.json");
 
 //    string ipAddress = "127.0.0.1";
 //    int portNum = 50000;
@@ -223,7 +227,7 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
         isPlaying = false;
     }
 
-    nodo* previousSong = getPreviousSong();
+    nodo* previousSong = myPlaylist.getPreviousSong();
 
     const char* filePath = previousSong->file_path.c_str();
 
@@ -246,7 +250,7 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
         isPlaying = false;
     }
 
-    nodo* currentSong = getCurrentSong();
+    nodo* currentSong = myPlaylist.getCurrentSong();
 
     const char* filePath = currentSong->file_path.c_str();
 
@@ -268,8 +272,8 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
 // Implementación de la función de controlador para el botón StopButton
 void on_StopButton_clicked(GtkButton *StopButton, gpointer user_data) {
     g_print("StopButton clickeado\n");
-    ma_device_uninit(&device);
-    ma_decoder_uninit(&decoder);
+    
+    ma_device_stop(&device);
 
     currentPosition = getCurrentPositionInSeconds(&decoder);
 
@@ -287,7 +291,7 @@ void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
         isPlaying = false;
     }
 
-    nodo* nextSong = getNextSong();
+    nodo* nextSong = myPlaylist.getNextSong();
 
     const char* filePath = nextSong->file_path.c_str();
 
@@ -311,8 +315,40 @@ void on_CPOffButton_clicked(GtkButton *CPOffButton, gpointer user_data) {
     g_print("CPOffButton clickeado\n");
 }
 
+// Implementación de la función de controlador para el botón DeleteButton
 void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
     g_print("DeleteButton clickeado\n");
+
+    if (isPlaying = true) {
+        ma_device_uninit(&device);
+        ma_decoder_uninit(&decoder);
+        isPlaying = false;
+    }
+
+    nodo* currentSong = myPlaylist.getCurrentSong();
+    string songId = currentSong->id;
+    myPlaylist.deleteSong(songId);
+
+    nodo* nextSong = myPlaylist.getNextSong();
+
+    // Verifica si hay una próxima canción
+    if (nextSong != nullptr) {
+        const char* filePath = nextSong->file_path.c_str();
+
+        // Reproduce la próxima canción en un hilo separado
+        thread songThread(playAudio, filePath, currentPosition);
+        songThread.detach();
+
+        // Actualiza las etiquetas de la canción
+        updateSongLabels(nextSong->name, nextSong->artist, nextSong->album, nextSong->genre);
+
+        // Muestra la lista de reproducción
+        myPlaylist.display();
+    } else {
+        // Si no hay una próxima canción, muestra un mensaje indicando que la lista está vacía
+        cout << "La lista de reproducción está vacía." << endl;
+    }
+
 }
 
 void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_data) {
