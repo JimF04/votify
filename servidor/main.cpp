@@ -12,7 +12,12 @@ namespace fs = std::filesystem;
 bool isPlaying = false;
 
 class PCGUI {
+
+private:
+
+
 public:
+
     PCGUI(GtkWidget *parent_window) : parent_window(parent_window) {
         window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
         gtk_window_set_title(GTK_WINDOW(window), "Playlist Comunitaria");
@@ -72,7 +77,13 @@ public:
         gtk_box_pack_start(GTK_BOX(musicPlayerBox), pageButton, FALSE, FALSE, 5);
 
         gtk_widget_show_all(window);
+
+
+
+
+
     }
+
 
     void show() {
         gtk_widget_show_all(window);
@@ -97,6 +108,9 @@ private:
     GtkWidget *artistLabel;
     GtkWidget *durationLabel;
 
+    int currentPage;
+    ArrayPagedList* playlist;
+
     static void on_window_closed(GtkWidget *widget, gpointer data) {
         PCGUI *pc_gui = static_cast<PCGUI *>(data);
         pc_gui->hide();
@@ -108,6 +122,8 @@ private:
         gtk_widget_hide(pc_gui->window);
         gtk_widget_show(pc_gui->parent_window);
     }
+
+
 
     static void on_previous_button_clicked(GtkWidget *widget, gpointer data) {
         g_print("Previous\n");
@@ -161,6 +177,8 @@ private:
     }
 
     static void on_page_button_toggled(GtkWidget *widget, gpointer data) {
+        PCGUI *pc_gui = static_cast<PCGUI *>(data);
+
         if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
             g_print("Modo paginado activado\n");
 
@@ -179,12 +197,43 @@ private:
                 } while (currentSong != getCurrentSong());
             }
 
-            // Imprimir la página actual de la ArrayPagedList
-            playlist.printCurrentPage();
+            // Actualizar la página actual
+            pc_gui->currentPage = 0;
+
+            // Imprimir la página actual de la ArrayPagedList solo si es válida
+            if (pc_gui->currentPage >= 0 && pc_gui->currentPage < playlist.getTotalPages()) {
+                pc_gui->printCurrentPage(&playlist);
+            } else {
+                std::cout << "La página actual no es válida." << std::endl;
+            }
         } else {
             g_print("Modo paginado desactivado\n");
         }
     }
+
+    void printCurrentPage(ArrayPagedList* playlist) {
+        if (playlist->getTotalPages() > 0 && currentPage >= 0 && currentPage < playlist->getTotalPages()) {
+            // Obtener la página actual
+            ArrayPagedNode* currentPage = playlist->getPage(this->currentPage); // Usa currentPage como índice
+
+            // Imprimir la página actual
+            std::cout << "Página actual " << this->currentPage + 1 << "/" << playlist->getTotalPages() << std::endl;
+            for (int i = 0; i < playlist->getPageSize(); ++i) {
+                std::cout << "Id: " << currentPage[i].id << std::endl;
+                std::cout << "Nombre: " << currentPage[i].name << std::endl;
+                std::cout << "Artista: " << currentPage[i].artist << std::endl;
+                std::cout << "Album: " << currentPage[i].album << std::endl;
+                std::cout << "Genero: " << currentPage[i].genre << std::endl;
+                std::cout << "Votos positivos: " << currentPage[i].up_votes << std::endl;
+                std::cout << "Votos negativos: " << currentPage[i].down_votes << std::endl;
+                std::cout << "Ruta del archivo: " << currentPage[i].file_path << std::endl;
+                std::cout << std::endl;
+            }
+        } else {
+            std::cout << "La página actual no es válida." << std::endl;
+        }
+    }
+
 
 
     static void playSong(const string& filePath) {

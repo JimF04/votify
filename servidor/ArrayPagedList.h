@@ -24,6 +24,14 @@ public:
     ArrayPagedNode* getCurrentPage();
     void printCurrentPage();
     ~ArrayPagedList();
+    void getPagesize();
+    void currentPage();
+    int getPageSize() const;
+    int getCurrentPageNumber() const;
+    ArrayPagedNode* getPage(int pageNumber);
+
+
+
 
 private:
     int pagesize;

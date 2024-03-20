@@ -4,6 +4,8 @@
 
 using namespace std;
 
+
+
 ArrayPagedList::ArrayPagedList(int pagesize) : pagesize(pagesize), currentpage(0), totalPages(0), currentPageSize(0) {
     pages = new ArrayPagedNode*[10]; // Supongamos un máximo de 10 páginas inicialmente
     for (int i = 0; i < 10; ++i) {
@@ -43,28 +45,50 @@ int ArrayPagedList::getTotalPages() {
     return totalPages;
 }
 
+
+
+
 ArrayPagedNode* ArrayPagedList::getCurrentPage() {
     return pages[currentpage];
 }
 
-void ArrayPagedList::printCurrentPage() {
-    if (currentpage >= 0 && currentpage < totalPages) {
-        cout << "Página actual " << currentpage + 1 << "/" << getTotalPages() << endl;
-        for (int i = 0; i < currentPageSize; ++i) {
-            cout << "Id: " << pages[currentpage][i].id << endl;
-            cout << "Nombre: " << pages[currentpage][i].name << endl;
-            cout << "Artista: " << pages[currentpage][i].artist << endl;
-            cout << "Album: " << pages[currentpage][i].album << endl;
-            cout << "Genero: " << pages[currentpage][i].genre << endl;
-            cout << "Votos positivos: " << pages[currentpage][i].up_votes << endl;
-            cout << "Votos negativos: " << pages[currentpage][i].down_votes << endl;
-            cout << "Ruta del archivo: " << pages[currentpage][i].file_path << endl;
-            cout << endl;
-        }
+int ArrayPagedList::getCurrentPageNumber() const {
+    return currentpage + 1; // Sumamos 1 porque las páginas se numeran desde 1 en lugar de 0
+}
+
+ArrayPagedNode* ArrayPagedList::getPage(int pageNumber) {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+        return pages[pageNumber - 1]; // Restamos 1 porque los índices de las páginas se numeran desde 0
     } else {
-        cout << "La página actual no es válida." << endl;
+        return nullptr; // Devolvemos nullptr si el número de página está fuera de rango
     }
 }
+
+void printCurrentPage(ArrayPagedList* playlist) {
+    int currentPageNumber = playlist->getCurrentPageNumber();
+    if (playlist->getTotalPages() > 0 && currentPageNumber >= 1 && currentPageNumber <= playlist->getTotalPages()) {
+        // Obtener la página actual
+        ArrayPagedNode* currentPage = playlist->getCurrentPage(); // Use getCurrentPage para obtener la página actual
+
+        // Imprimir la página actual
+        std::cout << "Página actual " << currentPageNumber << "/" << playlist->getTotalPages() << std::endl;
+        for (int i = 0; i < playlist->getPageSize(); ++i) {
+            std::cout << "Id: " << currentPage[i].id << std::endl;
+            std::cout << "Nombre: " << currentPage[i].name << std::endl;
+            std::cout << "Artista: " << currentPage[i].artist << std::endl;
+            std::cout << "Album: " << currentPage[i].album << std::endl;
+            std::cout << "Genero: " << currentPage[i].genre << std::endl;
+            std::cout << "Votos positivos: " << currentPage[i].up_votes << std::endl;
+            std::cout << "Votos negativos: " << currentPage[i].down_votes << std::endl;
+            std::cout << "Ruta del archivo: " << currentPage[i].file_path << std::endl;
+            std::cout << std::endl;
+        }
+    } else {
+        std::cout << "La página actual no es válida." << std::endl;
+    }
+}
+
+
 
 ArrayPagedList::~ArrayPagedList() {
     for (int i = 0; i < 10; ++i) {
@@ -72,3 +96,8 @@ ArrayPagedList::~ArrayPagedList() {
     }
     delete[] pages;
 }
+
+int ArrayPagedList::getPageSize() const {
+    return pagesize;
+}
+
