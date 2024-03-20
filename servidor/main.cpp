@@ -217,7 +217,7 @@ void updateSongLabels(const string& songName, const string& artistName, const st
 // Implementación de la función de controlador para el botón PreviousButton
 void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
     g_print("PreviousButton clickeado\n");
-    if (isPlaying) {
+    if (isPlaying = true) {
         ma_device_uninit(&device);
         ma_decoder_uninit(&decoder);
         isPlaying = false;
@@ -240,7 +240,7 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
 // Implementación de la función de controlador para el botón PlayButton
 void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
     g_print("PlayButton clickeado\n");
-    if (isPlaying) {
+    if (isPlaying = true) {
         ma_device_uninit(&device);
         ma_decoder_uninit(&decoder);
         isPlaying = false;
@@ -281,7 +281,7 @@ void on_StopButton_clicked(GtkButton *StopButton, gpointer user_data) {
 // Implementación de la función de controlador para el botón NextButton
 void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     g_print("NextButton clickeado\n");
-    if (isPlaying) {
+    if (isPlaying = true) {
         ma_device_uninit(&device);
         ma_decoder_uninit(&decoder);
         isPlaying = false;
