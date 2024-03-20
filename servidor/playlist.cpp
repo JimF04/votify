@@ -11,13 +11,24 @@
 #include <csignal>
 #include <glog/logging.h>
 
-using namespace std;
 namespace fs = std::filesystem;
 
-nodo *head = nullptr;
-nodo *tail = nullptr;
+Playlist::Playlist() {
+    head = nullptr;
+    tail = nullptr;
+}
 
-void insert_songs(const string& file_path) {
+Playlist::~Playlist() {
+    // Liberar la memoria de todos los nodos
+    nodo* current = head;
+    while (current != nullptr) {
+        nodo* next = current->next;
+        delete current;
+        current = next;
+    }
+}
+
+void Playlist::insertSong(const string& file_path) {
     nodo *new_nodo = new nodo;
 
     // Generar un UUID para el nodo
@@ -62,6 +73,7 @@ void insert_songs(const string& file_path) {
 
     // Asignar la ruta del archivo al nodo
     new_nodo->file_path = file_path;
+    new_nodo->observer = nullptr; // Inicializar el observador como nullptr
 
     // Insertar el nuevo nodo en la lista
     if (head == nullptr) {
@@ -78,11 +90,37 @@ void insert_songs(const string& file_path) {
     }
 }
 
-nodo* getCurrentSong() {
+void Playlist::deleteSong(const string& songId) {
+    nodo* temp = head;
+    while (temp != nullptr) {
+        if (temp->id == songId) {
+            // Eliminar el nodo de la lista
+            if (temp == head) {
+                head = head->next;
+            }
+            temp->prev->next = temp->next;
+            temp->next->prev = temp->prev;
+
+            // Notificar al observador si está configurado
+            if (observer != nullptr) {
+                observer->onSongDeleted(songId);
+            }
+
+            delete temp;
+            return;
+        }
+        temp = temp->next;
+        if (temp == head) {
+            break; // Se ha recorrido toda la lista
+        }
+    }
+}
+
+nodo* Playlist::getCurrentSong() {
     return head;
 }
 
-nodo* getNextSong() {
+nodo* Playlist::getNextSong() {
     if (head != nullptr) {
         head = head->next;
         return head;
@@ -91,7 +129,7 @@ nodo* getNextSong() {
     }
 }
 
-nodo* getPreviousSong() {
+nodo* Playlist::getPreviousSong() {
     if (head != nullptr) {
         head = head->prev;
         return head;
@@ -100,7 +138,7 @@ nodo* getPreviousSong() {
     }
 }
 
-void display() {
+void Playlist::display() {
     nodo *temp = head;
     if (head != nullptr) {
         do {
@@ -120,7 +158,7 @@ void display() {
     }
 }
 
-void savePlaylistToJson(const string& jsonFilePath) {
+void Playlist::saveToJson(const string& jsonFilePath) {
     Json::Value playlistJson(Json::arrayValue); // Array JSON para almacenar los nodos
 
     nodo* temp = head;
@@ -152,5 +190,15 @@ void savePlaylistToJson(const string& jsonFilePath) {
         cout << "Se guardo correctamente" << endl;
     } else {
         cerr << "No se pudo guardar" << endl;
+    }
+}
+
+void Playlist::registerObserver(PlaylistObserver* observer) {
+    this->observer = observer;
+}
+
+void Playlist::unregisterObserver(PlaylistObserver* observer) {
+    if (this->observer == observer) {
+        this->observer = nullptr;
     }
 }
