@@ -1,5 +1,5 @@
 CMakeFiles/servidor.dir/main.cpp.o: \
- /home/jimmy/Documents/GitHub/votify/servidor/main.cpp \
+ /home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -169,7 +169,7 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/ext/aligned_buffer.h \
  /usr/include/c++/11/bits/fs_dir.h /usr/include/c++/11/bits/fs_ops.h \
- /home/jimmy/Documents/GitHub/votify/servidor/playlist.h \
+ /home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/playlist.h \
  /usr/include/gtk-3.0/gtk/gtk.h /usr/include/gtk-3.0/gdk/gdk.h \
  /usr/include/gtk-3.0/gdk/gdkconfig.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
@@ -822,7 +822,7 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/gtk-3.0/gtk/gtk-autocleanups.h /usr/include/c++/11/thread \
  /usr/include/c++/11/bits/std_thread.h \
  /usr/include/c++/11/bits/this_thread_sleep.h \
- /home/jimmy/Documents/GitHub/votify/servidor/server.h \
+ /home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/server.h \
  /usr/include/c++/11/cstring /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/x86_64-linux-gnu/bits/socket.h \
@@ -840,7 +840,7 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
- /home/jimmy/Documents/GitHub/votify/servidor/miniaudio.h \
+ /home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/miniaudio.h \
  /usr/include/assert.h /usr/include/c++/11/math.h \
  /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -899,6 +899,8 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/local/include/glog/export.h \
- /usr/local/include/glog/flags.h /usr/local/include/glog/platform.h \
- /usr/local/include/glog/types.h /usr/local/include/glog/log_severity.h \
+ /usr/local/include/glog/flags.h /usr/include/gflags/gflags.h \
+ /usr/include/gflags/gflags_declare.h /usr/include/gflags/gflags_gflags.h \
+ /usr/local/include/glog/platform.h /usr/local/include/glog/types.h \
+ /usr/local/include/glog/log_severity.h \
  /usr/local/include/glog/vlog_is_on.h

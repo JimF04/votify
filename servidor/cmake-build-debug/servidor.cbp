@@ -5,30 +5,28 @@
 		<Option title="servidor"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\.vcpkg-clion\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\.vcpkg-clion\;CMake Files\..\..\..\.vcpkg-clion\vcpkg\;CMake Files\..\..\..\.vcpkg-clion\vcpkg\scripts\;CMake Files\..\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\;CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\;CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\;CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\;CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\glog\;CMake Files\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\usr\local\share\glog\;CMake Files\..\..\..\..\..\usr\local\share\glog\cmake\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug"/>
+				<Option working_dir="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="servidor">
-				<Option output="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/servidor" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug"/>
+				<Option output="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/servidor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add option="-DXML_STATIC"/>
 					<Add option="-DGLOG_USE_GLOG_EXPORT"/>
-					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include"/>
-					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/libmount"/>
-					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/blkid"/>
+					<Add option="-DGLOG_USE_GFLAGS"/>
+					<Add option="-DGFLAGS_IS_A_DLL=0"/>
 					<Add directory="/usr/include/gtk-3.0"/>
 					<Add directory="/usr/include/at-spi2-atk/2.0"/>
 					<Add directory="/usr/include/at-spi-2.0"/>
@@ -45,9 +43,11 @@
 					<Add directory="/usr/include/freetype2"/>
 					<Add directory="/usr/include/gdk-pixbuf-2.0"/>
 					<Add directory="/usr/include/libpng16"/>
+					<Add directory="/usr/include/libmount"/>
+					<Add directory="/usr/include/blkid"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
-					<Add directory="/usr/include/jsoncpp"/>
+					<Add directory="/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -57,24 +57,22 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 servidor"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 servidor"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="servidor/fast">
-				<Option output="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/servidor" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug"/>
+				<Option output="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug/servidor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add option="-DXML_STATIC"/>
 					<Add option="-DGLOG_USE_GLOG_EXPORT"/>
-					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include"/>
-					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/libmount"/>
-					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/blkid"/>
+					<Add option="-DGLOG_USE_GFLAGS"/>
+					<Add option="-DGFLAGS_IS_A_DLL=0"/>
 					<Add directory="/usr/include/gtk-3.0"/>
 					<Add directory="/usr/include/at-spi2-atk/2.0"/>
 					<Add directory="/usr/include/at-spi-2.0"/>
@@ -91,9 +89,11 @@
 					<Add directory="/usr/include/freetype2"/>
 					<Add directory="/usr/include/gdk-pixbuf-2.0"/>
 					<Add directory="/usr/include/libpng16"/>
+					<Add directory="/usr/include/libmount"/>
+					<Add directory="/usr/include/blkid"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
-					<Add directory="/usr/include/jsoncpp"/>
+					<Add directory="/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -103,86 +103,104 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 servidor/fast"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 servidor/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug"/>
+				<Option working_dir="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug"/>
+				<Option working_dir="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/ahenao/Proyecto\ Playlist\ Comunitaria/votify/servidor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/main.cpp">
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/main.cpp">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/miniaudio.h">
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/miniaudio.h">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/playlist.cpp">
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/playlist.cpp">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/playlist.h">
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/playlist.h">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/server.cpp">
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/server.cpp">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/server.h">
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/server.h">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/CMakeLists.txt">
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-namespaced-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-namespaced-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets-none.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-config-version.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-config.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/local/lib/cmake/glog/glog-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-modules.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/local/lib/cmake/glog/glog-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-targets-noconfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/local/lib/cmake/glog/glog-modules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
 		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/local/lib/cmake/glog/glog-targets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/local/lib/cmake/glog/glog-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/local/share/glog/cmake/FindUnwind.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\share\glog\cmake\"/>
+		</Unit>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
+		</Unit>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
+		</Unit>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-nonamespace-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
+		</Unit>
+		<Unit filename="/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/../../../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-nonamespace-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

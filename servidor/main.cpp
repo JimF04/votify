@@ -105,6 +105,9 @@ GtkWidget *CPOnButton;
 GtkWidget *CPOffButton;
 GtkWidget *PaginateButton;
 GtkWidget *DeleteButton;
+GtkWidget *TimeSlider;
+GtkWidget *VolumeSlider;
+
 
 
 
@@ -116,6 +119,8 @@ void on_CPOn_clicked(GtkButton *CPOnButton, gpointer user_data);
 void on_CPOffButton_clicked(GtkButton *CPOffButton, gpointer user_data);
 void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data);
 void on_PaginateButton_toggled(GtkToggleButton *button, gpointer user_data);
+void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data);
+void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data);
 
 int main(int argc, char *argv[]) {
     google::InitGoogleLogging(argv[0]);
@@ -155,10 +160,12 @@ int main(int argc, char *argv[]) {
     gtk_init(&argc, &argv);
 
     // Carga la interfaz desde el archivo Glade
-    builder = gtk_builder_new_from_file("/home/jimmy/Documents/GitHub/votify/servidor/GUI Server.glade");
+    builder = gtk_builder_new_from_file("/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/GUI Server.glade");
 
     // Obtiene los widgets necesarios de la interfaz
     main_window = GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
+    GtkWidget *TimeGrid = GTK_WIDGET(gtk_builder_get_object(builder, "TimeGrid"));
+    GtkWidget *VolumeBox = GTK_WIDGET(gtk_builder_get_object(builder, "VolumeBox"));
 
 
     NameLabel = GTK_WIDGET(gtk_builder_get_object(builder, "NameLabel"));
@@ -167,7 +174,21 @@ int main(int argc, char *argv[]) {
     GenreLabel = GTK_WIDGET(gtk_builder_get_object(builder, "GenreLabel"));
 
 
-    // Conecta las señales de los widgets a las funciones callback
+    TimeSlider = gtk_scale_new_with_range(GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+    g_signal_connect(TimeSlider, "value-changed", G_CALLBACK(on_TimeSlider_value_changed), NULL);
+    gtk_widget_set_size_request(TimeSlider, 400, -1); // Establece un tamaño fijo para el slider
+    gtk_grid_attach(GTK_GRID(TimeGrid), TimeSlider, 1, 0, 1, 1);
+
+
+    VolumeSlider = gtk_scale_new_with_range(GTK_ORIENTATION_VERTICAL, 0, 100, 1);
+    gtk_range_set_inverted(GTK_RANGE(VolumeSlider), TRUE);
+    gtk_range_set_value(GTK_RANGE(VolumeSlider), 80);
+    g_signal_connect(VolumeSlider, "value-changed", G_CALLBACK(on_VolumeSlider_value_changed), NULL);
+    gtk_widget_set_size_request(VolumeSlider, 10, 200);
+    gtk_box_pack_end(GTK_BOX(VolumeBox), VolumeSlider, FALSE, FALSE, 0);
+
+
+
     gtk_builder_connect_signals(builder, NULL);
 
     PreviousButton = GTK_WIDGET(gtk_builder_get_object(builder, "PreviousButton"));
@@ -193,6 +214,7 @@ int main(int argc, char *argv[]) {
 
     PaginateButton = GTK_WIDGET(gtk_builder_get_object(builder, "PaginateButton"));
     g_signal_connect(PaginateButton, "toggled", G_CALLBACK(on_PaginateButton_toggled), NULL);
+
 
     // Libera el builder
     g_object_unref(builder);
@@ -325,5 +347,21 @@ void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_da
         // Realizar acciones cuando el botón se desactiva
     }
 }
+
+void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data) {
+
+    gdouble value = gtk_range_get_value(range);
+
+    g_print("Time: %f\n", value);
+}
+
+
+void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data) {
+
+    gdouble value = gtk_range_get_value(range);
+
+    g_print("Volume: %f\n", value);
+}
+
 
 

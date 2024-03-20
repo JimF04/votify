@@ -178,7 +178,18 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkScale" id="TimeScale">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="orientation">vertical</property>
+                    <property name="round-digits">1</property>
+                    <property name="value-pos">bottom</property>
+                    <signal name="move-slider" handler="on_TimeScale_move_slider" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
+                  </packing>
                 </child>
               </object>
               <packing>
