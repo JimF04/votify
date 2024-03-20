@@ -24,6 +24,7 @@ ma_result result;
 ma_device_config deviceConfig;
 
 ma_uint64 currentPosition = 0;
+int songDuration;
 
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
 {
@@ -36,19 +37,6 @@ void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uin
 
     (void)pInput;
 }
-
-ma_uint64 getCurrentPositionInSeconds(ma_decoder* pDecoder) {
-    ma_uint64 currentFrame;
-    ma_result result = ma_decoder_get_cursor_in_pcm_frames(pDecoder, &currentFrame);
-    if (result != MA_SUCCESS) {
-        printf("Error al obtener la posición actual.\n");
-        return 0;
-    }
-
-    ma_uint64 sampleRate = pDecoder->outputSampleRate;
-    return currentFrame / sampleRate;
-}
-
 
 static void playAudio(const char* filePath, ma_uint64 startSeconds)
 {
@@ -87,10 +75,20 @@ static void playAudio(const char* filePath, ma_uint64 startSeconds)
         return;
     }
 
-    isPlaying = false;
+    isPlaying = true;
 }
 
+ma_uint64 getCurrentPositionInSeconds(ma_decoder* pDecoder) {
+    ma_uint64 currentFrame;
+    ma_result result = ma_decoder_get_cursor_in_pcm_frames(pDecoder, &currentFrame);
+    if (result != MA_SUCCESS) {
+        printf("Error al obtener la posición actual.\n");
+        return 0;
+    }
 
+    ma_uint64 sampleRate = pDecoder->outputSampleRate;
+    return currentFrame / sampleRate;
+}
 
 GtkBuilder *builder;
 GtkWidget *main_window;
@@ -133,13 +131,12 @@ int main(int argc, char *argv[]) {
     google::SetLogDestination(google::GLOG_WARNING, "server.log");
     google::SetLogDestination(google::GLOG_FATAL, "server.log");
 
-    INIReader reader("/home/ahenao/Proyecto Playlist Comunitaria/votify/servidor/config.ini");
+    string ini_path =  "/home/" + string(getenv("USER")) + "/Documents/GitHub/votify/servidor/config.ini";
+    LOG(INFO) << "Ruta de config.ini: " << ini_path << endl;
+
+    INIReader reader(ini_path);
 
     string songs_path = reader.Get("paths", "songs_path", "");
-
-    // Ruta de las canciones
-//    string folder_path = "/home/" + string(getenv("USER")) + "/Downloads/PlayList";
-//    LOG(INFO) << "Ruta de las canciones: " << folder_path << endl;
 
     // Iterar sobre los archivos dentro del directorio
     for (const auto& entry : fs_std::directory_iterator(songs_path)) {
@@ -174,6 +171,7 @@ int main(int argc, char *argv[]) {
 
     // Obtiene los widgets necesarios de la interfaz
     main_window = GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
+    g_signal_connect(main_window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
     GtkWidget *TimeGrid = GTK_WIDGET(gtk_builder_get_object(builder, "TimeGrid"));
     GtkWidget *VolumeBox = GTK_WIDGET(gtk_builder_get_object(builder, "VolumeBox"));
 
@@ -245,14 +243,61 @@ void updateSongLabels(const string& songName, const string& artistName, const st
     gtk_label_set_text(GTK_LABEL(GenreLabel), ("Genre: " + genreName).c_str());
 }
 
+GSource *timer_source = NULL;
+
+// Función para actualizar el slider
+gboolean update_slider(gpointer user_data) {
+    // Incrementar el valor actual del slider por 1 segundo
+    double value = gtk_range_get_value(GTK_RANGE(TimeSlider));
+    value += 1.0;
+
+    // Actualizar el valor del slider
+    gtk_range_set_value(GTK_RANGE(TimeSlider), value);
+
+    nodo* currentSong = myPlaylist.getCurrentSong();
+    if (value >= currentSong->songDuration) {
+        on_NextButton_clicked(GTK_BUTTON(NextButton), NULL);
+    }
+
+    // Retornar TRUE para que el temporizador se mantenga activo
+    return TRUE;
+}
+
+// Función para iniciar el temporizador
+void start_timer() {
+    if (timer_source == NULL) {
+        // Crear un nuevo temporizador que se ejecute cada segundo
+        timer_source = g_timeout_source_new_seconds(1);
+
+        // Conectar la señal para actualizar el slider
+        g_source_set_callback(timer_source, (GSourceFunc)update_slider, NULL, NULL);
+
+        // Agregar el temporizador al contexto principal de la aplicación
+        g_source_attach(timer_source, NULL);
+    }
+}
+
+// Función para detener el temporizador
+void stop_timer() {
+    if (timer_source != NULL) {
+        // Detener y liberar el temporizador
+        g_source_destroy(timer_source);
+        g_source_unref(timer_source);
+        timer_source = NULL;
+    }
+}
+
+
 // Definición de funciones callback
 // Implementación de la función de controlador para el botón PreviousButton
 void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
     g_print("PreviousButton clickeado\n");
-    if (isPlaying = true) {
+    if (isPlaying) {
         ma_device_stop(&device);
         isPlaying = false;
     }
+
+    gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
 
     nodo* previousSong = myPlaylist.getPreviousSong();
 
@@ -266,14 +311,22 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
 
     isPlaying = true;
     updateSongLabels(previousSong->name, previousSong->artist, previousSong->album, previousSong->genre);
+
+    songDuration = previousSong->songDuration;
+
+    g_print("Duración de la canción: %lu\n", songDuration);
+    gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
+
+    start_timer();
 }
 
 // Implementación de la función de controlador para el botón PlayButton
 void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
     g_print("PlayButton clickeado\n");
-    if (isPlaying = true) {
+    if (isPlaying) {
         ma_device_stop(&device);
         isPlaying = false;
+        gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
     }
 
     nodo* currentSong = myPlaylist.getCurrentSong();
@@ -293,6 +346,12 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
     isPlaying = true;
     updateSongLabels(currentSong->name, currentSong->artist, currentSong->album, currentSong->genre);
 
+    songDuration = currentSong->songDuration;
+
+    g_print("Duración de la canción: %lu\n", songDuration);
+    gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
+
+    start_timer();
 }
 
 // Implementación de la función de controlador para el botón StopButton
@@ -305,16 +364,20 @@ void on_StopButton_clicked(GtkButton *StopButton, gpointer user_data) {
 
     isPlaying = false;
 
+    stop_timer();
+
 }
 
 
 // Implementación de la función de controlador para el botón NextButton
 void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     g_print("NextButton clickeado\n");
-    if (isPlaying = true) {
+    if (isPlaying) {
         ma_device_stop(&device);
         isPlaying = false;
     }
+
+    gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
 
     nodo* nextSong = myPlaylist.getNextSong();
 
@@ -328,6 +391,13 @@ void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
 
     isPlaying = true;
     updateSongLabels(nextSong->name, nextSong->artist, nextSong->album, nextSong->genre);
+
+    songDuration = nextSong->songDuration;
+
+    g_print("Duración de la canción: %lu\n", songDuration);
+    gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
+
+    start_timer();
 }
 
 // Implementación de la función de controlador para el botón CPOnButton
@@ -344,10 +414,12 @@ void on_CPOffButton_clicked(GtkButton *CPOffButton, gpointer user_data) {
 void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
     g_print("DeleteButton clickeado\n");
 
-    if (isPlaying = true) {
+    if (isPlaying) {
         ma_device_stop(&device);
         isPlaying = false;
     }
+
+    gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
 
     nodo* currentSong = myPlaylist.getCurrentSong();
     string songId = currentSong->id;
@@ -368,6 +440,8 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
 
         // Muestra la lista de reproducción
         myPlaylist.display();
+
+        start_timer();
     } else {
         // Si no hay una próxima canción, muestra un mensaje indicando que la lista está vacía
         cout << "La lista de reproducción está vacía." << endl;
@@ -387,10 +461,8 @@ void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_da
 }
 
 void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data) {
-
+    // Obtener el valor del slider de duración
     gdouble value = gtk_range_get_value(range);
-
-    g_print("Time: %f\n", value);
 }
 
 

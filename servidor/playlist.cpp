@@ -67,6 +67,28 @@ void Playlist::insertSong(const string& file_path) {
     }
     pclose(pipe);
 
+    string command2 = "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 " + file_path;
+
+    // Ejecutar el comando y capturar la salida
+    FILE *pipe2 = popen(command2.c_str(), "r");
+    if (!pipe2) {
+        cerr << "Error: No se pudo ejecutar el comando." << endl;
+        return;
+    }
+
+    char buffer2[128];
+    string result = "";
+    while (!feof(pipe)) {
+        if (fgets(buffer, 128, pipe) != NULL)
+            result += buffer;
+    }
+    pclose(pipe);
+
+    // Convertir la salida (que es una cadena) a un double (la duración en segundos)
+    int duration = stod(result);
+
+    new_nodo->songDuration = duration;
+
     // Inicializar votos en 0
     new_nodo->up_votes = 0;
     new_nodo->down_votes = 0;
@@ -150,6 +172,7 @@ void Playlist::display() {
             cout << "Votos positivos: " << temp->up_votes << endl;
             cout << "Votos negativos: " << temp->down_votes << endl;
             cout << "Ruta del archivo: " << temp->file_path << endl;
+            cout << "Duracion de la cancion: " << temp->songDuration << endl;
             cout << endl;
             temp = temp->next;
         } while (temp != head);

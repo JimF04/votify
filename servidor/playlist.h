@@ -33,6 +33,7 @@ struct nodo {
     nodo* next;
     nodo* prev;
     PlaylistObserver* observer;
+    int songDuration;
 };
 
 // Declaración de la clase Playlist
