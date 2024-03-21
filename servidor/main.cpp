@@ -467,11 +467,14 @@ void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data) {
 
 
 void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data) {
-
     gdouble value = gtk_range_get_value(range);
-
     g_print("Volume: %f\n", value);
+
+    // Convertir el valor del slider al rango aceptado por miniaudio (de 0 a 1)
+    float volume = (float)value / 100.0f;
+
+    // Setear el volumen utilizando miniaudio (la manera específica depende de cómo estés utilizando miniaudio en tu programa)
+    // Supongamos que tienes una instancia de `ma_device` llamada `device`:
+    ma_device_set_master_volume(&device, volume);
 }
-
-
 
