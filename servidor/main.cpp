@@ -121,6 +121,7 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data);
 void on_PaginateButton_toggled(GtkToggleButton *button, gpointer user_data);
 void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data);
 void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data);
+static void change_slider_value(GtkScale *scale, gdouble value);
 
 int main(int argc, char *argv[]) {
 
@@ -152,8 +153,9 @@ int main(int argc, char *argv[]) {
 
     myPlaylist.display();
 
-
-    myPlaylist.saveToJson("playlist.json");
+//    string jsonPath = reader.Get("paths", "json_path", "");
+//
+//    myPlaylist.saveToJson(jsonPath);
 
 //    string ipAddress = "127.0.0.1";
 //    int portNum = 50000;
@@ -184,6 +186,7 @@ int main(int argc, char *argv[]) {
 
     TimeSlider = gtk_scale_new_with_range(GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
     g_signal_connect(TimeSlider, "value-changed", G_CALLBACK(on_TimeSlider_value_changed), NULL);
+    g_signal_connect(TimeSlider, "change-value", G_CALLBACK(change_slider_value), NULL);
     gtk_widget_set_size_request(TimeSlider, 400, -1); // Establece un tamaño fijo para el slider
     gtk_grid_attach(GTK_GRID(TimeGrid), TimeSlider, 1, 0, 1, 1);
 
@@ -245,18 +248,26 @@ void updateSongLabels(const string& songName, const string& artistName, const st
 
 GSource *timer_source = NULL;
 
+gboolean updating_slider = FALSE;
+
 // Función para actualizar el slider
-gboolean update_slider(gpointer user_data) {
-    // Incrementar el valor actual del slider por 1 segundo
-    double value = gtk_range_get_value(GTK_RANGE(TimeSlider));
-    value += 1.0;
+static gboolean update_slider(gpointer user_data) {
+    if (!updating_slider) {
+        updating_slider = TRUE;
 
-    // Actualizar el valor del slider
-    gtk_range_set_value(GTK_RANGE(TimeSlider), value);
+        // Incrementar el valor actual del slider por 1 segundo
+        double value = gtk_range_get_value(GTK_RANGE(TimeSlider));
+        value += 1.0;
 
-    nodo* currentSong = myPlaylist.getCurrentSong();
-    if (value >= currentSong->songDuration) {
-        on_NextButton_clicked(GTK_BUTTON(NextButton), NULL);
+        // Actualizar el valor del slider
+        gtk_range_set_value(GTK_RANGE(TimeSlider), value);
+
+        nodo* currentSong = myPlaylist.getCurrentSong();
+        if (value >= currentSong->songDuration) {
+            on_NextButton_clicked(GTK_BUTTON(NextButton), NULL);
+        }
+
+        updating_slider = FALSE;
     }
 
     // Retornar TRUE para que el temporizador se mantenga activo
@@ -295,13 +306,14 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
     if (isPlaying) {
         ma_device_stop(&device);
         isPlaying = false;
+        stop_timer();
     }
 
     gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
 
-    nodo* previousSong = myPlaylist.getPreviousSong();
+    nodo* prevSong = myPlaylist.getPreviousSong();
 
-    const char* filePath = previousSong->file_path.c_str();
+    const char* filePath = prevSong->file_path.c_str();
 
     ma_uint64 startTime = 0;
 
@@ -310,9 +322,9 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
     songThread.detach();
 
     isPlaying = true;
-    updateSongLabels(previousSong->name, previousSong->artist, previousSong->album, previousSong->genre);
+    updateSongLabels(prevSong->name, prevSong->artist, prevSong->album, prevSong->genre);
 
-    songDuration = previousSong->songDuration;
+    songDuration = prevSong->songDuration;
 
     g_print("Duración de la canción: %lu\n", songDuration);
     gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
@@ -327,6 +339,7 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
         ma_device_stop(&device);
         isPlaying = false;
         gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
+        stop_timer();
     }
 
     nodo* currentSong = myPlaylist.getCurrentSong();
@@ -375,6 +388,7 @@ void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     if (isPlaying) {
         ma_device_stop(&device);
         isPlaying = false;
+        stop_timer();
     }
 
     gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
@@ -460,9 +474,32 @@ void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_da
     }
 }
 
+static void change_slider_value(GtkScale *scale, gdouble value) {
+    // Actualizar el valor del slider
+    gtk_range_set_value(GTK_RANGE(TimeSlider), value);
+    // g_print("Slider value: %f\n", value);
+
+    if (isPlaying) {
+        ma_device_stop(&device);
+        isPlaying = false;
+        stop_timer();
+    }
+
+    nodo* currentSong = myPlaylist.getCurrentSong();
+
+    const char* filePath = currentSong->file_path.c_str();
+
+    thread SongThread(playAudio, filePath, value);
+    SongThread.detach();
+
+    gtk_range_set_value(GTK_RANGE(TimeSlider), value);
+
+    start_timer();
+
+
+}
+
 void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data) {
-    // Obtener el valor del slider de duración
-    gdouble value = gtk_range_get_value(range);
 }
 
 
