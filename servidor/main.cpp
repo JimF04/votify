@@ -96,6 +96,8 @@ GtkWidget *NameLabel;
 GtkWidget *ArtistLabel;
 GtkWidget *AlbumLabel;
 GtkWidget *GenreLabel;
+GtkWidget *UpVotesLabel;
+GtkWidget *DownVotesLabel;
 
 GtkWidget *PreviousButton;
 GtkWidget *PlayButton;
@@ -188,6 +190,8 @@ int main(int argc, char *argv[]) {
     ArtistLabel = GTK_WIDGET(gtk_builder_get_object(builder, "ArtistLabel"));
     AlbumLabel = GTK_WIDGET(gtk_builder_get_object(builder, "AlbumLabel"));
     GenreLabel = GTK_WIDGET(gtk_builder_get_object(builder, "GenreLabel"));
+    UpVotesLabel = GTK_WIDGET(gtk_builder_get_object(builder, "UpVotesLabel"));
+    DownVotesLabel = GTK_WIDGET(gtk_builder_get_object(builder, "DownVotesLabel"));
 
     TimeSlider = gtk_scale_new_with_range(GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
     g_signal_connect(TimeSlider, "value-changed", G_CALLBACK(on_TimeSlider_value_changed), NULL);
@@ -316,11 +320,13 @@ void on_artist_button_clicked(GtkButton *button, gpointer user_data) {
     showSongsByArtist(button_data->artistId, songArtistBox);
 }
 
-void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName )  {
+void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName, int upVotes, int downVotes)  {
     gtk_label_set_text(GTK_LABEL(NameLabel), ("Song: " + songName).c_str());
     gtk_label_set_text(GTK_LABEL(ArtistLabel), ("Artist: " + artistName).c_str());
     gtk_label_set_text(GTK_LABEL(AlbumLabel), ("Album: " + albumName).c_str());
     gtk_label_set_text(GTK_LABEL(GenreLabel), ("Genre: " + genreName).c_str());
+    gtk_label_set_text(GTK_LABEL(UpVotesLabel), ("Up Votes: " + to_string(upVotes)).c_str());
+    gtk_label_set_text(GTK_LABEL(DownVotesLabel), ("Down Votes: " + to_string(downVotes)).c_str());
 }
 
 GSource *timer_source = NULL;
@@ -385,7 +391,8 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
     songThread.detach();
 
     isPlaying = true;
-    updateSongLabels(prevSong->name, prevSong->artist, prevSong->album, prevSong->genre);
+    updateSongLabels(prevSong->name, prevSong->artist, prevSong->album,
+                     prevSong->genre, prevSong->up_votes, prevSong->down_votes);
 
     songDuration = prevSong->songDuration;
 
@@ -417,7 +424,8 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
     }
 
     isPlaying = true;
-    updateSongLabels(currentSong->name, currentSong->artist, currentSong->album, currentSong->genre);
+    updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+                     currentSong->genre, currentSong->up_votes, currentSong->down_votes);
 
     songDuration = currentSong->songDuration;
 
@@ -460,7 +468,9 @@ void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     songThread.detach();
 
     isPlaying = true;
-    updateSongLabels(nextSong->name, nextSong->artist, nextSong->album, nextSong->genre);
+
+    updateSongLabels(nextSong->name, nextSong->artist, nextSong->album,
+                     nextSong->genre, nextSong->up_votes, nextSong->down_votes);
 
     songDuration = nextSong->songDuration;
 
@@ -504,7 +514,9 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
         thread songThread(playAudio, filePath, currentPosition);
         songThread.detach();
 
-        updateSongLabels(nextSong->name, nextSong->artist, nextSong->album, nextSong->genre);
+        updateSongLabels(nextSong->name, nextSong->artist, nextSong->album,
+                         nextSong->genre, nextSong->up_votes, nextSong->down_votes);
+
         start_timer();
     } else {
         // Si no hay una próxima canción, muestra un mensaje indicando que la lista está vacía
@@ -552,7 +564,6 @@ void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data) {
 
 void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data) {
     gdouble value = gtk_range_get_value(range);
-    g_print("Volume: %f\n", value);
 
     // Convertir el valor del slider al rango aceptado por miniaudio (de 0 a 1)
     float volume = (float)value / 100.0f;
