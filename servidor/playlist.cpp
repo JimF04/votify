@@ -225,3 +225,42 @@ void Playlist::unregisterObserver(PlaylistObserver* observer) {
         this->observer = nullptr;
     }
 }
+
+void Playlist::insertUniqueArtist(const string &artist, string *uniqueArtists, int &artistCount) {
+    for (int i = 0; i < artistCount; ++i) {
+        // Verificar si el artista ya está en la lista de artistas únicos
+        if (uniqueArtists[i] == artist) {
+            return; // Si el artista ya está presente, salir sin hacer nada
+        }
+    }
+    // Si el artista no está presente, agregarlo a la lista de artistas únicos
+    uniqueArtists[artistCount++] = artist;
+}
+
+string* Playlist::getUniqueArtists() {
+    // Determinar el tamaño máximo de los arreglos basado en la cantidad de nodos en la lista de reproducción
+    int playlistSize = 0;
+    nodo *temp = head;
+    if (head != nullptr) {
+        do {
+            playlistSize++;
+            temp = temp->next;
+        } while (temp != head);
+    }
+
+    // Arreglos para almacenar los artistas únicos y la cantidad de artistas únicos
+    string* uniqueArtists = new string[playlistSize];
+    int artistCount = 0;
+
+    temp = head;
+    if (head != nullptr) {
+        do {
+            // Insertar el artista actual en la lista de artistas únicos
+            insertUniqueArtist(temp->artist, uniqueArtists, artistCount);
+            temp = temp->next;
+        } while (temp != head);
+    }
+
+    // Devolver el arreglo de artistas únicos
+    return uniqueArtists;
+}
