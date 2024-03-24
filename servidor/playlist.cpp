@@ -112,16 +112,33 @@ void Playlist::insertSong(const string& file_path) {
     }
 }
 
+
 void Playlist::deleteSong(const string& songId) {
+    if (head == nullptr) {
+        // Lista vacía, no hay nada que borrar
+        return;
+    }
+
     nodo* temp = head;
     while (temp != nullptr) {
         if (temp->id == songId) {
-            // Eliminar el nodo de la lista
+            // Si temp es el nodo actual, actualiza el puntero current
             if (temp == head) {
-                head = head->next;
+                head = temp->next;
             }
-            temp->prev->next = temp->next;
-            temp->next->prev = temp->prev;
+
+            // Si solo hay un nodo en la lista, actualiza también el puntero tail
+            if (head == temp && temp->next == temp) {
+                head = nullptr;
+                tail = nullptr;
+            } else {
+                // Eliminar el nodo de la lista
+                temp->prev->next = temp->next;
+                temp->next->prev = temp->prev;
+                if (temp == tail) {
+                    tail = temp->prev;
+                }
+            }
 
             // Notificar al observador si está configurado
             if (observer != nullptr) {
@@ -137,6 +154,7 @@ void Playlist::deleteSong(const string& songId) {
         }
     }
 }
+
 
 nodo* Playlist::getCurrentSong() {
     return head;

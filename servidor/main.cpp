@@ -342,17 +342,33 @@ void updateSongLabels(const string& songName, const string& artistName, const st
 }
 
 void on_upVote_clicked(GtkButton *button, gpointer user_data) {
-    nodo* currentSong = myPlaylist.getCurrentSong();
-    myPlaylist.upVote(currentSong->id);
+
+    nodo* currentSong = nullptr;
+
+    if (CPisOn){
+        currentSong = randomPlaylist.getCurrentSong();
+        randomPlaylist.upVote(currentSong->id);
+    } else {
+        currentSong = myPlaylist.getCurrentSong();
+        myPlaylist.upVote(currentSong->id);
+    }
     updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                     currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+                 currentSong->genre, currentSong->up_votes, currentSong->down_votes);
 }
 
 void on_downVote_clicked(GtkButton *button, gpointer user_data) {
-    nodo* currentSong = myPlaylist.getCurrentSong();
-    myPlaylist.downVote(currentSong->id);
+
+    nodo* currentSong = nullptr;
+
+    if (CPisOn) {
+        currentSong = randomPlaylist.getCurrentSong();
+        randomPlaylist.downVote(currentSong->id);
+    } else {
+        currentSong = myPlaylist.getCurrentSong();
+        myPlaylist.downVote(currentSong->id);
+    }
     updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                     currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+                 currentSong->genre, currentSong->up_votes, currentSong->down_votes);
 }
 
 static gboolean update_slider(gpointer user_data) {
@@ -401,6 +417,7 @@ void playSong(const nodo& song) {
     updateSongLabels(song.name, song.artist, song.album, song.genre,
                      song.up_votes, song.down_votes);
     songDuration = song.songDuration;
+    gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
 }
 
 void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
@@ -421,7 +438,6 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
     if (prevSong != nullptr) {
         playSong(*prevSong);
         isPlaying = true;
-        gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
         start_timer();
     }
 }
@@ -491,7 +507,6 @@ void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     if (nextSong != nullptr) {
         playSong(*nextSong);
         isPlaying = true;
-        gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
         start_timer();
     }
 }
@@ -554,10 +569,13 @@ void on_CP_clicked(GtkButton *CPButton, gpointer user_data) {
         g_print("CPButton encendido.\n");
 
         createRandomPlayList();
-        randomPlaylist.display();
 
-        thread serverThread(startServer);
-        serverThread.detach();
+        nodo* currentSong = randomPlaylist.getCurrentSong();
+        updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+                         currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+
+//        thread serverThread(startServer);
+//        serverThread.detach();
 
     } else {
         // Si el botón está apagado
@@ -573,46 +591,35 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
     if (isPlaying) {
         ma_device_stop(&device);
         isPlaying = false;
+        gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
     }
-    nodo* nextSong = myPlaylist.getNextSong();
 
-    // Verifica si hay una próxima canción
-    if (nextSong != nullptr) {
-        const char* filePath = nextSong->file_path.c_str();
-
-        // Reproducir la próxima canción
-        thread songThread(playAudio, filePath, currentPosition);
-        songThread.detach();
-
-        updateSongLabels(nextSong->name, nextSong->artist, nextSong->album,
-                         nextSong->genre, nextSong->up_votes, nextSong->down_votes);
-
-        start_timer();
+    if (CPisOn) {
+        nodo* currentSong = randomPlaylist.getCurrentSong();
+        string songId = currentSong->id;
+        randomPlaylist.deleteSong(songId);
     } else {
-        if (CPisOn){
-            ma_device_stop(&device);
-            isPlaying = false;
+        nodo* currentSong = myPlaylist.getCurrentSong();
+        string songId = currentSong->id;
+        myPlaylist.deleteSong(songId);
+    }
 
-            nodo* currentSong = myPlaylist.getCurrentSong();
+    nodo* currentAfterDel = nullptr;
 
-            updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                             currentSong->genre, currentSong->up_votes, currentSong->down_votes);
-
-            gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
-
+    if (CPisOn) {
+        currentAfterDel = randomPlaylist.getCurrentSong();
+        if (currentAfterDel == nullptr) {
+            on_CP_clicked(GTK_BUTTON(CPButton), NULL);
+        }
+        on_PlayButton_clicked(GTK_BUTTON(PlayButton), NULL);
+    } else {
+        currentAfterDel = myPlaylist.getCurrentSong();
+        if (currentAfterDel == nullptr) {
+            LOG(FATAL) << "No hay canciones en la lista" << endl;
         } else {
-            // Si no hay una próxima canción, muestra un mensaje indicando que la lista está vacía
-            cout << "La lista de reproducción está vacía." << endl;
-            return;
+            on_PlayButton_clicked(GTK_BUTTON(PlayButton), NULL);
         }
     }
-
-    gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
-
-    nodo* currentSong = myPlaylist.getCurrentSong();
-    string songId = currentSong->id;
-    myPlaylist.deleteSong(songId);
-
 }
 
 void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_data) {
@@ -636,16 +643,21 @@ static void change_slider_value(GtkScale *scale, gdouble value) {
         stop_timer();
     }
 
-    nodo* currentSong = myPlaylist.getCurrentSong();
-
-    const char* filePath = currentSong->file_path.c_str();
-
-    thread SongThread(playAudio, filePath, value);
-    SongThread.detach();
-
-    gtk_range_set_value(GTK_RANGE(TimeSlider), value);
-
-    start_timer();
+    if (CPisOn) {
+        nodo* currentSong = randomPlaylist.getCurrentSong();
+        const char* filePath = currentSong->file_path.c_str();
+        thread SongThread(playAudio, filePath, value);
+        SongThread.detach();
+        gtk_range_set_value(GTK_RANGE(TimeSlider), value);
+        start_timer();
+    } else {
+        nodo* currentSong = myPlaylist.getCurrentSong();
+        const char* filePath = currentSong->file_path.c_str();
+        thread SongThread(playAudio, filePath, value);
+        SongThread.detach();
+        gtk_range_set_value(GTK_RANGE(TimeSlider), value);
+        start_timer();
+    }
 }
 
 void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data) {
