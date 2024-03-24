@@ -10,21 +10,32 @@
 #include <stdio.h>
 #include <glog/logging.h>
 #include "INIReader.h"
+#include <random>
+#include <set>
+#include <iterator>
 
 using namespace std;
 namespace fs_std = std::filesystem;
 
 Playlist myPlaylist;
+Playlist randomPlaylist;
 
 bool isPlaying = false;
+bool CPisOn = false;
+
+ma_uint64 currentPosition = 0;
+int songDuration;
+
+GSource *timer_source = NULL;
+gboolean updating_slider = FALSE;
 
 ma_decoder decoder;
 ma_device device;
 ma_result result;
 ma_device_config deviceConfig;
 
-ma_uint64 currentPosition = 0;
-int songDuration;
+string ini_path =  "/home/" + string(getenv("USER")) + "/Documents/GitHub/votify/servidor/config.ini";
+INIReader reader(ini_path);
 
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
 {
@@ -103,8 +114,6 @@ GtkWidget *PreviousButton;
 GtkWidget *PlayButton;
 GtkWidget *StopButton;
 GtkWidget *NextButton;
-GtkWidget *CPOnButton;
-GtkWidget *CPOffButton;
 GtkWidget *PaginateButton;
 GtkWidget *DeleteButton;
 GtkWidget *TimeSlider;
@@ -112,6 +121,10 @@ GtkWidget *VolumeSlider;
 
 GtkWidget *artistBox;
 
+GtkWidget *upVoteButton;
+GtkWidget *downVoteButton;
+
+GtkWidget *CPButton;
 
 typedef struct {
     GtkWidget *button;
@@ -126,14 +139,17 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data);
 void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data);
 void on_StopButton_clicked(GtkButton *StopButton, gpointer user_data);
 void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data);
-void on_CPOn_clicked(GtkButton *CPOnButton, gpointer user_data);
-void on_CPOffButton_clicked(GtkButton *CPOffButton, gpointer user_data);
 void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data);
 void on_PaginateButton_toggled(GtkToggleButton *button, gpointer user_data);
 void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data);
 void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data);
 static void change_slider_value(GtkScale *scale, gdouble value);
 void on_artist_button_clicked(GtkButton *button, gpointer user_data);
+
+void on_upVote_clicked(GtkButton *button, gpointer user_data);
+void on_downVote_clicked(GtkButton *button, gpointer user_data);
+void on_CP_clicked(GtkButton *button, gpointer user_data);
+void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName, int upVotes, int downVotes);
 
 int main(int argc, char *argv[]) {
 
@@ -143,11 +159,6 @@ int main(int argc, char *argv[]) {
     google::SetLogDestination(google::GLOG_ERROR, "server.log");
     google::SetLogDestination(google::GLOG_WARNING, "server.log");
     google::SetLogDestination(google::GLOG_FATAL, "server.log");
-
-    string ini_path =  "/home/" + string(getenv("USER")) + "/Documents/GitHub/votify/servidor/config.ini";
-    LOG(INFO) << "Ruta de config.ini: " << ini_path << endl;
-
-    INIReader reader(ini_path);
 
     string songs_path = reader.Get("paths", "songs_path", "");
 
@@ -165,13 +176,6 @@ int main(int argc, char *argv[]) {
 
     string jsonPath = reader.Get("paths", "json_path", "");
     myPlaylist.saveToJson(jsonPath);
-
-//    string ipAddress = "127.0.0.1";
-//    int portNum = 50000;
-//    int bufsize = 1024;
-//
-//    server server(ipAddress, portNum, bufsize);
-//    server.start();
 
     gtk_init(&argc, &argv);
 
@@ -220,17 +224,20 @@ int main(int argc, char *argv[]) {
     NextButton = GTK_WIDGET(gtk_builder_get_object(builder, "NextButton"));
     g_signal_connect(NextButton, "clicked", G_CALLBACK(on_NextButton_clicked), NULL);
 
-    CPOnButton = GTK_WIDGET(gtk_builder_get_object(builder, "CPOnButton"));
-    g_signal_connect(CPOnButton, "clicked", G_CALLBACK(on_CPOn_clicked), NULL);
-
-    CPOffButton = GTK_WIDGET(gtk_builder_get_object(builder, "CPOffButton"));
-    g_signal_connect(CPOffButton, "clicked", G_CALLBACK(on_CPOffButton_clicked), NULL);
+    CPButton = GTK_WIDGET(gtk_builder_get_object(builder, "CPButton"));
+    g_signal_connect(CPButton, "clicked", G_CALLBACK(on_CP_clicked), NULL);
 
     DeleteButton = GTK_WIDGET(gtk_builder_get_object(builder, "DeleteButton"));
     g_signal_connect(DeleteButton, "clicked", G_CALLBACK(on_DeleteButton_clicked), NULL);
 
     PaginateButton = GTK_WIDGET(gtk_builder_get_object(builder, "PaginateButton"));
     g_signal_connect(PaginateButton, "toggled", G_CALLBACK(on_PaginateButton_toggled), NULL);
+
+    upVoteButton = GTK_WIDGET(gtk_builder_get_object(builder, "upVote"));
+    g_signal_connect(upVoteButton, "clicked", G_CALLBACK(on_upVote_clicked), NULL);
+
+    downVoteButton = GTK_WIDGET(gtk_builder_get_object(builder, "downVote"));
+    g_signal_connect(downVoteButton, "clicked", G_CALLBACK(on_downVote_clicked), NULL);
 
     songArtistBox = GTK_WIDGET(gtk_builder_get_object(builder, "SongsByArtistBx"));
 
@@ -276,6 +283,11 @@ int main(int argc, char *argv[]) {
         gtk_widget_show(button);
     }
     delete[] uniqueArtists;
+
+    // Info de la primera cancion de la lista
+    nodo* currentSong = myPlaylist.getCurrentSong();
+    updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+                     currentSong->genre, currentSong->up_votes, currentSong->down_votes);
 
     g_object_unref(builder);
     gtk_widget_show_all(main_window);
@@ -329,8 +341,19 @@ void updateSongLabels(const string& songName, const string& artistName, const st
     gtk_label_set_text(GTK_LABEL(DownVotesLabel), ("Down Votes: " + to_string(downVotes)).c_str());
 }
 
-GSource *timer_source = NULL;
-gboolean updating_slider = FALSE;
+void on_upVote_clicked(GtkButton *button, gpointer user_data) {
+    nodo* currentSong = myPlaylist.getCurrentSong();
+    myPlaylist.upVote(currentSong->id);
+    updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+                     currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+}
+
+void on_downVote_clicked(GtkButton *button, gpointer user_data) {
+    nodo* currentSong = myPlaylist.getCurrentSong();
+    myPlaylist.downVote(currentSong->id);
+    updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+                     currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+}
 
 static gboolean update_slider(gpointer user_data) {
     if (!updating_slider) {
@@ -449,6 +472,12 @@ void on_StopButton_clicked(GtkButton *StopButton, gpointer user_data) {
 
 void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     g_print("NextButton clickeado\n");
+
+    if (myPlaylist.getCurrentSong() == nullptr) {
+        g_print("No hay canciones para reproducir.\n");
+        return;
+    }
+
     if (isPlaying) {
         ma_device_stop(&device);
         isPlaying = false;
@@ -480,14 +509,75 @@ void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
     start_timer();
 }
 
+void startServer() {
 
-void on_CPOn_clicked(GtkButton *CPOnButton, gpointer user_data) {
-    g_print("CPOnButton clickeado\n");
+    string ipAddress = reader.Get("server", "ipAdress", "127.0.0.1");
+    int portNum = stoi(reader.Get("server", "port", "8080"));
+    int bufsize = stoi(reader.Get("server", "bufsize", "1024"));
+
+    server myServer(ipAddress, portNum, bufsize);
+    myServer.start();
+}
+
+void createRandomPlayList() {
+    int totalSongs = 0;
+    nodo* temp = myPlaylist.getCurrentSong();
+    if (temp != nullptr) {
+        do {
+            totalSongs++;
+            temp = temp->next;
+        } while (temp != myPlaylist.getCurrentSong());
+    }
+
+    // Crear un conjunto para almacenar las rutas de archivo ya seleccionadas
+    std::set<std::string> selectedFilePaths;
+
+    // Crear la lista aleatoria evitando duplicados
+    while (selectedFilePaths.size() < 10 && selectedFilePaths.size() < totalSongs) {
+        // Generar un índice aleatorio único
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> dis(0, totalSongs - 1);
+        int randomIndex = dis(gen);
+
+        // Avanzar hasta el nodo correspondiente al índice aleatorio
+        temp = myPlaylist.getCurrentSong();
+        for (int i = 0; i < randomIndex; ++i) {
+            temp = temp->next;
+        }
+
+        // Verificar si la ruta de archivo ya ha sido seleccionada
+        if (selectedFilePaths.find(temp->file_path) == selectedFilePaths.end()) {
+            // Si la ruta de archivo no está en el conjunto, insertarla en la lista aleatoria
+            randomPlaylist.insertSong(temp->file_path);
+            // Agregar la ruta de archivo al conjunto de rutas seleccionadas
+            selectedFilePaths.insert(temp->file_path);
+        }
+    }
 }
 
 
-void on_CPOffButton_clicked(GtkButton *CPOffButton, gpointer user_data) {
-    g_print("CPOffButton clickeado\n");
+void on_CP_clicked(GtkButton *CPButton, gpointer user_data) {
+    CPisOn = !CPisOn;
+    const char *newLabel = CPisOn ? "ON" : "OFF";
+    gtk_button_set_label(CPButton, newLabel);
+
+    if (CPisOn) {
+        // Si el botón está encendido
+        g_print("CPButton encendido.\n");
+
+        createRandomPlayList();
+        randomPlaylist.display();
+
+        thread serverThread(startServer);
+        serverThread.detach();
+
+    } else {
+        // Si el botón está apagado
+        g_print("CPButton apagado.\n");
+
+    }
+
 }
 
 void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
@@ -497,13 +587,6 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
         ma_device_stop(&device);
         isPlaying = false;
     }
-
-    gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
-
-    nodo* currentSong = myPlaylist.getCurrentSong();
-    string songId = currentSong->id;
-    myPlaylist.deleteSong(songId);
-
     nodo* nextSong = myPlaylist.getNextSong();
 
     // Verifica si hay una próxima canción
@@ -520,8 +603,15 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
         start_timer();
     } else {
         // Si no hay una próxima canción, muestra un mensaje indicando que la lista está vacía
-        LOG(FATAL) << "La lista de reproducción está vacía." << endl;
+        cout << "La lista de reproducción está vacía." << endl;
+        return;
     }
+
+    gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
+
+    nodo* currentSong = myPlaylist.getCurrentSong();
+    string songId = currentSong->id;
+    myPlaylist.deleteSong(songId);
 
 }
 

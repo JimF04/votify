@@ -291,12 +291,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="CPOnButton">
-                <property name="label" translatable="yes">On</property>
+              <object class="GtkButton" id="CPButton">
+                <property name="label" translatable="yes">OFF</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <signal name="clicked" handler="on_CPOn_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_CP_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -305,12 +305,37 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="CPOffButton">
-                <property name="label" translatable="yes">Off</property>
+              <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-                <signal name="clicked" handler="on_CPOffButton_clicked" swapped="no"/>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkButton" id="upVote">
+                    <property name="label" translatable="yes">Up Vote</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <signal name="clicked" handler="on_upVote_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="downVote">
+                    <property name="label" translatable="yes">Down Vote</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <signal name="clicked" handler="on_downVote_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>

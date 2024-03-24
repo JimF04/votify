@@ -53,6 +53,8 @@ public:
     void unregisterObserver(PlaylistObserver* observer);
     static void insertUniqueArtist(const string& artist, string uniqueArtists[], int& artistCount);
     string* getUniqueArtists();
+    void upVote(const string& songId);
+    void downVote(const string& songId);
 
 private:
     nodo *head;

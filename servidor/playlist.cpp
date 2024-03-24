@@ -264,3 +264,19 @@ string* Playlist::getUniqueArtists() {
     // Devolver el arreglo de artistas únicos
     return uniqueArtists;
 }
+
+void Playlist::upVote(const string& songId) {
+    nodo *temp = head;
+    if (temp->id == songId) {
+        temp->up_votes++;
+        return;
+    }
+}
+
+void Playlist::downVote(const string& songId) {
+    nodo* temp = head;
+    if (temp->id == songId) {
+        temp->down_votes++;
+        return;
+    }
+}
