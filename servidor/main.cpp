@@ -119,6 +119,9 @@ GtkWidget *DeleteButton;
 GtkWidget *TimeSlider;
 GtkWidget *VolumeSlider;
 
+GtkWidget *startTime;
+GtkWidget *endTime;
+
 GtkWidget *artistBox;
 
 GtkWidget *upVoteButton;
@@ -149,7 +152,7 @@ void on_artist_button_clicked(GtkButton *button, gpointer user_data);
 void on_upVote_clicked(GtkButton *button, gpointer user_data);
 void on_downVote_clicked(GtkButton *button, gpointer user_data);
 void on_CP_clicked(GtkButton *button, gpointer user_data);
-void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName, int upVotes, int downVotes);
+void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName, int upVotes, int downVotes, int songDuration);
 
 int main(int argc, char *argv[]) {
 
@@ -196,6 +199,11 @@ int main(int argc, char *argv[]) {
     GenreLabel = GTK_WIDGET(gtk_builder_get_object(builder, "GenreLabel"));
     UpVotesLabel = GTK_WIDGET(gtk_builder_get_object(builder, "UpVotesLabel"));
     DownVotesLabel = GTK_WIDGET(gtk_builder_get_object(builder, "DownVotesLabel"));
+
+    endTime = GTK_WIDGET(gtk_builder_get_object(builder, "endTime"));
+    startTime = GTK_WIDGET(gtk_builder_get_object(builder, "startTime"));
+    gtk_grid_attach(GTK_GRID(TimeGrid), endTime, 0, 0, 1, 1);
+    gtk_grid_attach(GTK_GRID(TimeGrid), startTime, 2, 0, 1, 1);
 
     TimeSlider = gtk_scale_new_with_range(GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
     g_signal_connect(TimeSlider, "value-changed", G_CALLBACK(on_TimeSlider_value_changed), NULL);
@@ -287,7 +295,7 @@ int main(int argc, char *argv[]) {
     // Info de la primera cancion de la lista
     nodo* currentSong = myPlaylist.getCurrentSong();
     updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                     currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+                     currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
 
     g_object_unref(builder);
     gtk_widget_show_all(main_window);
@@ -332,13 +340,14 @@ void on_artist_button_clicked(GtkButton *button, gpointer user_data) {
     showSongsByArtist(button_data->artistId, songArtistBox);
 }
 
-void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName, int upVotes, int downVotes)  {
+void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName, int upVotes, int downVotes, int songDuration)  {
     gtk_label_set_text(GTK_LABEL(NameLabel), ("Song: " + songName).c_str());
     gtk_label_set_text(GTK_LABEL(ArtistLabel), ("Artist: " + artistName).c_str());
     gtk_label_set_text(GTK_LABEL(AlbumLabel), ("Album: " + albumName).c_str());
     gtk_label_set_text(GTK_LABEL(GenreLabel), ("Genre: " + genreName).c_str());
     gtk_label_set_text(GTK_LABEL(UpVotesLabel), ("Up Votes: " + to_string(upVotes)).c_str());
     gtk_label_set_text(GTK_LABEL(DownVotesLabel), ("Down Votes: " + to_string(downVotes)).c_str());
+    gtk_label_set_text(GTK_LABEL(endTime), (to_string(songDuration) + " s").c_str());
 }
 
 void on_upVote_clicked(GtkButton *button, gpointer user_data) {
@@ -353,7 +362,7 @@ void on_upVote_clicked(GtkButton *button, gpointer user_data) {
         myPlaylist.upVote(currentSong->id);
     }
     updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                 currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+                 currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
 }
 
 void on_downVote_clicked(GtkButton *button, gpointer user_data) {
@@ -368,7 +377,7 @@ void on_downVote_clicked(GtkButton *button, gpointer user_data) {
         myPlaylist.downVote(currentSong->id);
     }
     updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                 currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+                 currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
 }
 
 static gboolean update_slider(gpointer user_data) {
@@ -415,7 +424,7 @@ void playSong(const nodo& song) {
     thread songThread(playAudio, filePath, startTime);
     songThread.detach();
     updateSongLabels(song.name, song.artist, song.album, song.genre,
-                     song.up_votes, song.down_votes);
+                     song.up_votes, song.down_votes, song.songDuration);
     songDuration = song.songDuration;
     gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
 }
@@ -468,7 +477,7 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
         currentPosition = 0;
     }
     updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                     currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+                     currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
     songDuration = currentSong->songDuration;
     gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
     start_timer();
@@ -572,7 +581,7 @@ void on_CP_clicked(GtkButton *CPButton, gpointer user_data) {
 
         nodo* currentSong = randomPlaylist.getCurrentSong();
         updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                         currentSong->genre, currentSong->up_votes, currentSong->down_votes);
+                         currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
 
 //        thread serverThread(startServer);
 //        serverThread.detach();

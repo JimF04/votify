@@ -5,7 +5,7 @@
 		<Option title="servidor"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\.vcpkg-clion\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\unofficial-inih\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\.vcpkg-clion\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\glog\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\unofficial-inih\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug"/>
@@ -26,6 +26,8 @@
 				<Compiler>
 					<Add option="-DXML_STATIC"/>
 					<Add option="-DGLOG_USE_GLOG_EXPORT"/>
+					<Add option="-DGLOG_USE_GFLAGS"/>
+					<Add option="-DGFLAGS_IS_A_DLL=0"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/libmount"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/blkid"/>
@@ -47,7 +49,6 @@
 					<Add directory="/usr/include/libpng16"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
-					<Add directory="/usr/include/jsoncpp"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
@@ -73,6 +74,8 @@
 				<Compiler>
 					<Add option="-DXML_STATIC"/>
 					<Add option="-DGLOG_USE_GLOG_EXPORT"/>
+					<Add option="-DGLOG_USE_GFLAGS"/>
+					<Add option="-DGFLAGS_IS_A_DLL=0"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/libmount"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include/blkid"/>
@@ -94,7 +97,6 @@
 					<Add directory="/usr/include/libpng16"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
-					<Add directory="/usr/include/jsoncpp"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
@@ -156,38 +158,68 @@
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\scripts\buildsystems\"/>
 		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-namespaced-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\jsoncpp\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\glog\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\glog\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\glog\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\glog\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\glog\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-nonamespace-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-nonamespace-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-nonamespace-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/vcpkg-cmake-wrapper.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\gflags\"/>
+		</Unit>
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg/installed/x64-linux/share/unofficial-inih/unofficial-inihConfig.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg\installed\x64-linux\share\unofficial-inih\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-namespaced-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets-none.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-config-version.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-config.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-modules.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-targets-noconfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/local/lib/cmake/glog/glog-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\glog\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
