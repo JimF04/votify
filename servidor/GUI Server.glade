@@ -94,7 +94,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_PreviousButton_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -107,7 +106,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_PlayButton_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
@@ -120,7 +118,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_StopButton_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left-attach">2</property>
@@ -133,7 +130,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_NextButton_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left-attach">3</property>
@@ -146,7 +142,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_DeleteButton_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left-attach">4</property>
@@ -237,7 +232,7 @@
               <object class="GtkLabel" id="MemCounterLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label" translatable="yes">num: double</property>
+                <property name="label" translatable="yes">Calculating ...</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -252,7 +247,6 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="image-position">bottom</property>
-                <signal name="toggled" handler="on_PaginateButton_toggled" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -317,7 +311,6 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <signal name="clicked" handler="on_CP_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -335,7 +328,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_upVote_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -349,7 +341,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_downVote_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>

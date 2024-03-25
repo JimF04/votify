@@ -109,6 +109,7 @@ GtkWidget *AlbumLabel;
 GtkWidget *GenreLabel;
 GtkWidget *UpVotesLabel;
 GtkWidget *DownVotesLabel;
+GtkWidget *MemCounterLabel;
 
 GtkWidget *PreviousButton;
 GtkWidget *PlayButton;
@@ -148,11 +149,13 @@ void on_TimeSlider_value_changed(GtkRange *range, gpointer user_data);
 void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data);
 static void change_slider_value(GtkScale *scale, gdouble value);
 void on_artist_button_clicked(GtkButton *button, gpointer user_data);
-
 void on_upVote_clicked(GtkButton *button, gpointer user_data);
 void on_downVote_clicked(GtkButton *button, gpointer user_data);
 void on_CP_clicked(GtkButton *button, gpointer user_data);
 void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName, int upVotes, int downVotes, int songDuration);
+static gboolean updateRamUsage(gpointer data);
+static double getServerRamUsage(pid_t server_pid);
+
 
 int main(int argc, char *argv[]) {
 
@@ -199,6 +202,8 @@ int main(int argc, char *argv[]) {
     GenreLabel = GTK_WIDGET(gtk_builder_get_object(builder, "GenreLabel"));
     UpVotesLabel = GTK_WIDGET(gtk_builder_get_object(builder, "UpVotesLabel"));
     DownVotesLabel = GTK_WIDGET(gtk_builder_get_object(builder, "DownVotesLabel"));
+    MemCounterLabel = GTK_WIDGET(gtk_builder_get_object(builder, "MemCounterLabel"));
+    g_timeout_add_seconds(1, updateRamUsage, NULL);
 
     endTime = GTK_WIDGET(gtk_builder_get_object(builder, "endTime"));
     startTime = GTK_WIDGET(gtk_builder_get_object(builder, "startTime"));
@@ -209,7 +214,7 @@ int main(int argc, char *argv[]) {
     g_signal_connect(TimeSlider, "value-changed", G_CALLBACK(on_TimeSlider_value_changed), NULL);
     g_signal_connect(TimeSlider, "change-value", G_CALLBACK(change_slider_value), NULL);
     gtk_widget_set_size_request(TimeSlider, 400, -1); // Establece un tamaño fijo para el slider
-    gtk_grid_attach(GTK_GRID(TimeGrid), TimeSlider, 1, 0, 1, 1);
+    gtk_grid_attach(GTK_GRID(TimeGrid), TimeSlider, 1, 1, 1, 1);
 
     VolumeSlider = gtk_scale_new_with_range(GTK_ORIENTATION_VERTICAL, 0, 100, 1);
     gtk_range_set_inverted(GTK_RANGE(VolumeSlider), TRUE);
@@ -348,6 +353,34 @@ void updateSongLabels(const string& songName, const string& artistName, const st
     gtk_label_set_text(GTK_LABEL(UpVotesLabel), ("Up Votes: " + to_string(upVotes)).c_str());
     gtk_label_set_text(GTK_LABEL(DownVotesLabel), ("Down Votes: " + to_string(downVotes)).c_str());
     gtk_label_set_text(GTK_LABEL(endTime), (to_string(songDuration) + " s").c_str());
+}
+
+static gboolean updateRamUsage(gpointer data) {
+    double ramUsage = getServerRamUsage(getpid()); // Obtener el uso de RAM del proceso actual
+    std::ostringstream ramUsageStr;
+    ramUsageStr << "RAM Usage: " << std::fixed << std::setprecision(2) << ramUsage << " MB";
+    gtk_label_set_text(GTK_LABEL(MemCounterLabel), ramUsageStr.str().c_str());
+    return G_SOURCE_CONTINUE;
+}
+
+static double getServerRamUsage(pid_t server_pid) {
+    std::ifstream file("/proc/" + std::to_string(server_pid) + "/statm");
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open /proc/" << server_pid << "/statm" << std::endl;
+        return 0.0;
+    }
+
+    int totalMemoryPages;
+    int residentSetPages;
+    int sharedPages;
+    if (!(file >> totalMemoryPages >> residentSetPages >> sharedPages)) {
+        std::cerr << "Error: Failed to read memory information from /proc/" << server_pid << "/statm" << std::endl;
+        return 0.0;
+    }
+
+    const long pageSize = sysconf(_SC_PAGESIZE) / 1024;
+    double residentMemoryKb = (residentSetPages - sharedPages) * pageSize;
+    return residentMemoryKb / 1024.0;
 }
 
 void on_upVote_clicked(GtkButton *button, gpointer user_data) {
