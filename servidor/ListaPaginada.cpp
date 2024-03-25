@@ -1,8 +1,9 @@
 #include "ListaPaginada.h"
 #include <iostream>
+#include <fstream>
 
-ListaPaginada::ListaPaginada(int maxPages, int numSongsPerPage, PlaylistObserver* obs)
-        : MAX_PAGES(maxPages), NUM_SONGS_PER_PAGE(numSongsPerPage), observer(obs) {
+ListaPaginada::ListaPaginada(int maxPages, int numSongsPerPage, PlaylistObserver* obs, const string& SwapFilePath)
+        : MAX_PAGES(maxPages), NUM_SONGS_PER_PAGE(numSongsPerPage), observer(obs){
 
     // Calcula el tamaño total de cada nodo de canción
     int nodeSize = sizeof(nodo*);
@@ -127,13 +128,36 @@ nodo* ListaPaginada::obtenerCancionPorIndice(int index) {
 
 
 void ListaPaginada::swapOut(int pageIndex) {
-    // Implementar intercambio de página con el disco
+    // Guarda la página especificada en el archivo de intercambio
+
+    std::ofstream swapFile(swapFilePath, std::ios::binary | std::ios::app);
+    if (swapFile.is_open()) {
+        // Escribe la página en el archivo de intercambio
+        swapFile.write(reinterpret_cast<char*>(paginas[pageIndex]), PAGE_SIZE);
+        swapFile.close();
+    } else {
+        std::cerr << "Error al abrir el archivo de intercambio para escritura" << std::endl;
+    }
 }
 
 void ListaPaginada::swapIn(int pageIndex) {
-    // Implementar intercambio de página desde el disco
-}
+    // Carga la página especificada desde el archivo de intercambio
 
+    std::ifstream swapFile(swapFilePath, std::ios::binary);
+    if (swapFile.is_open()) {
+        // Calcula la posición en el archivo de intercambio para la página específica
+        std::streampos pos = pageIndex * PAGE_SIZE;
+
+        // Mueve el puntero de lectura al inicio de la página en el archivo de intercambio
+        swapFile.seekg(pos);
+
+        // Lee la página desde el archivo de intercambio y la carga en la memoria
+        swapFile.read(reinterpret_cast<char*>(paginas[pageIndex]), PAGE_SIZE);
+        swapFile.close();
+    } else {
+        std::cerr << "Error al abrir el archivo de intercambio para lectura" << std::endl;
+    }
+}
 void ListaPaginada::imprimirCancionPorIndice(int index) {
     nodo* cancion = obtenerCancionPorIndice(index);
 

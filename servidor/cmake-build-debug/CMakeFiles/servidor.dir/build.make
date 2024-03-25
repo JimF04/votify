@@ -140,10 +140,9 @@ servidor: CMakeFiles/servidor.dir/playlist.cpp.o
 servidor: CMakeFiles/servidor.dir/server.cpp.o
 servidor: CMakeFiles/servidor.dir/ListaPaginada.cpp.o
 servidor: CMakeFiles/servidor.dir/build.make
-servidor: /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglog.a
+servidor: /usr/local/lib/libglog.so.0.8.0
 servidor: /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libINIReader.a
-servidor: /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libjsoncpp.a
-servidor: /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libgflags_debug.a
+servidor: /usr/lib/x86_64-linux-gnu/libjsoncpp.so.1.9.5
 servidor: /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libinih.a
 servidor: CMakeFiles/servidor.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable servidor"

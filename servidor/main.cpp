@@ -592,10 +592,13 @@ void on_CP_clicked(GtkButton *CPButton, gpointer user_data) {
 //        thread serverThread(startServer);
 //        serverThread.detach();
 
+        myPlaylist.clearPlaylist();
+
     } else {
         // Si el botón está apagado
         g_print("CPButton apagado.\n");
-
+        randomPlaylist.clearPlaylist();
+        createPlaylist();
     }
 
 }
@@ -637,11 +640,12 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
     }
 }
 
-int MAX_PAGES = stoi(reader.Get("pagination", "max_pages", "10"));
-int PAGE_SIZE = stoi(reader.Get("pagination", "songs_per_page", "3"));
+int MAX_PAGES = stoi(reader.Get("paginated", "max_pages", "10"));
+int PAGE_SIZE = stoi(reader.Get("paginated", "songs_per_page", "3"));
+string swapPath = reader.Get("paginated", "swap_path", "/swapfile");
 
 // Crear instancia de la clase ListaPaginada
-ListaPaginada listaPaginada(MAX_PAGES, PAGE_SIZE, nullptr); // Por ahora no se pasa ningún observador
+ListaPaginada listaPaginada(MAX_PAGES, PAGE_SIZE, nullptr, swapPath); // Por ahora no se pasa ningún observador
 
 void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_data) {
     gboolean active = gtk_toggle_button_get_active(PaginateButton);
@@ -651,6 +655,10 @@ void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_da
         listaPaginada.paginar(myPlaylist);
 
         listaPaginada.imprimirPaginaActual();
+
+        for (MAX_PAGES - 3; MAX_PAGES > 0 ; MAX_PAGES--){
+            listaPaginada.swapOut(MAX_PAGES);
+        }
 
         myPlaylist.clearPlaylist();
 
