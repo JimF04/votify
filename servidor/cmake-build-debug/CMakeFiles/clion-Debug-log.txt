@@ -1,4 +1,4 @@
-/snap/clion/265/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=/home/jimmy/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake -G "CodeBlocks - Unix Makefiles" -S /home/jimmy/Documents/GitHub/votify/servidor -B /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug
+/snap/clion/265/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug /home/gabrielvb/Documents/GitHub/votify/servidor "-DCMAKE_TOOLCHAIN_FILE=/home/gabrielvb/.vcpkg-clion/vcpkg (4)/scripts/buildsystems/vcpkg.cmake" -G "CodeBlocks - Unix Makefiles" -S /home/gabrielvb/Documents/GitHub/votify/servidor -B /home/gabrielvb/Documents/GitHub/votify/servidor/cmake-build-debug
 CMake Deprecation Warning:
   Support for "Extra Generators" like
 
@@ -8,6 +8,18 @@ CMake Deprecation Warning:
   use the cmake-file-api(7) to view CMake-generated project build trees.
 
 
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 CMake Deprecation Warning at /usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfig.cmake:2 (cmake_policy):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -15,10 +27,16 @@ CMake Deprecation Warning at /usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConf
   Update the VERSION argument <min> value or use a ...<max> suffix to tell
   CMake that the project does not need compatibility with older versions.
 Call Stack (most recent call first):
-  /home/jimmy/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake:859 (_find_package)
+  /home/gabrielvb/.vcpkg-clion/vcpkg (4)/scripts/buildsystems/vcpkg.cmake:859 (_find_package)
   CMakeLists.txt:6 (find_package)
 
 
--- Configuring done (0.1s)
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+-- Checking for module 'gtk+-3.0'
+--   Found gtk+-3.0, version 3.24.33
+-- Configuring done (0.9s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug
+-- Build files have been written to: /home/gabrielvb/Documents/GitHub/votify/servidor/cmake-build-debug
