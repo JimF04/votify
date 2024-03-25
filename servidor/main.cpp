@@ -8,7 +8,7 @@
 #include "server.h"
 #include "miniaudio.h"
 #include <stdio.h>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 #include "INIReader.h"
 #include <random>
 #include <set>
@@ -34,7 +34,7 @@ ma_device device;
 ma_result result;
 ma_device_config deviceConfig;
 
-string ini_path =  "/home/" + string(getenv("USER")) + "/Documents/GitHub/votify/servidor/config.ini";
+string ini_path =  "/home/" + string(getenv("USER")) + "/votify/servidor/config.ini";
 INIReader reader(ini_path);
 
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
@@ -153,12 +153,12 @@ void updateSongLabels(const string& songName, const string& artistName, const st
 
 int main(int argc, char *argv[]) {
 
-    google::InitGoogleLogging(argv[0]);
-
-    google::SetLogDestination(google::GLOG_INFO, "server.log");
-    google::SetLogDestination(google::GLOG_ERROR, "server.log");
-    google::SetLogDestination(google::GLOG_WARNING, "server.log");
-    google::SetLogDestination(google::GLOG_FATAL, "server.log");
+//    google::InitGoogleLogging(argv[0]);
+//
+//    google::SetLogDestination(google::GLOG_INFO, "server.log");
+//    google::SetLogDestination(google::GLOG_ERROR, "server.log");
+//    google::SetLogDestination(google::GLOG_WARNING, "server.log");
+//    google::SetLogDestination(google::GLOG_FATAL, "server.log");
 
     string songs_path = reader.Get("paths", "songs_path", "");
 
@@ -168,7 +168,7 @@ int main(int argc, char *argv[]) {
             // Llamar a insert_songs() con la ruta del archivo
             myPlaylist.insertSong(entry.path().string());
         } else {
-            LOG(WARNING) << "El archivo " << entry.path().string() << " no es un archivo de audio" << endl;
+            //LOG(WARNING) << "El archivo " << entry.path().string() << " no es un archivo de audio" << endl;
         }
     }
 

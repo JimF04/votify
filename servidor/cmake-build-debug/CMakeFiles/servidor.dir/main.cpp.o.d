@@ -1,5 +1,4 @@
-CMakeFiles/servidor.dir/main.cpp.o: \
- /home/jimmy/Documents/GitHub/votify/servidor/main.cpp \
+CMakeFiles/servidor.dir/main.cpp.o: /home/jose/votify/servidor/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -169,13 +168,13 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/ext/aligned_buffer.h \
  /usr/include/c++/11/bits/fs_dir.h /usr/include/c++/11/bits/fs_ops.h \
- /home/jimmy/Documents/GitHub/votify/servidor/playlist.h \
- /usr/include/c++/11/fstream \
+ /home/jose/votify/servidor/playlist.h /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc /usr/include/uuid/uuid.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
- /usr/include/jsoncpp/json/json.h /usr/include/jsoncpp/json/config.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/json/json.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/json/config.h \
  /usr/include/c++/11/cstddef /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
@@ -187,13 +186,14 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /usr/include/jsoncpp/json/allocator.h /usr/include/c++/11/cstring \
- /usr/include/string.h /usr/include/strings.h \
- /usr/include/jsoncpp/json/version.h \
- /usr/include/jsoncpp/json/json_features.h \
- /usr/include/jsoncpp/json/forwards.h /usr/include/jsoncpp/json/reader.h \
- /usr/include/jsoncpp/json/value.h /usr/include/c++/11/map \
- /usr/include/c++/11/bits/stl_tree.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/json/allocator.h \
+ /usr/include/c++/11/cstring /usr/include/string.h /usr/include/strings.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/json/version.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/json/json_features.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/json/forwards.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/json/reader.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/json/value.h \
+ /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h \
@@ -203,10 +203,10 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/stack /usr/include/c++/11/bits/stl_stack.h \
- /usr/include/jsoncpp/json/writer.h /usr/include/gtk-3.0/gtk/gtk.h \
- /usr/include/gtk-3.0/gdk/gdk.h /usr/include/gtk-3.0/gdk/gdkconfig.h \
- /usr/include/glib-2.0/glib.h /usr/include/glib-2.0/glib/galloca.h \
- /usr/include/glib-2.0/glib/gtypes.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/json/writer.h \
+ /usr/include/gtk-3.0/gtk/gtk.h /usr/include/gtk-3.0/gdk/gdk.h \
+ /usr/include/gtk-3.0/gdk/gdkconfig.h /usr/include/glib-2.0/glib.h \
+ /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -856,7 +856,7 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/gtk-3.0/gtk/gtk-autocleanups.h /usr/include/c++/11/thread \
  /usr/include/c++/11/bits/std_thread.h \
  /usr/include/c++/11/bits/this_thread_sleep.h \
- /home/jimmy/Documents/GitHub/votify/servidor/server.h \
+ /home/jose/votify/servidor/server.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/x86_64-linux-gnu/bits/socket.h \
@@ -874,9 +874,8 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
- /home/jimmy/Documents/GitHub/votify/servidor/miniaudio.h \
- /usr/include/assert.h /usr/include/c++/11/math.h \
- /usr/include/c++/11/cmath /usr/include/math.h \
+ /home/jose/votify/servidor/miniaudio.h /usr/include/assert.h \
+ /usr/include/c++/11/math.h /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -917,12 +916,7 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/poll.h \
  /usr/include/x86_64-linux-gnu/sys/eventfd.h \
  /usr/include/x86_64-linux-gnu/bits/eventfd.h \
- /usr/local/include/glog/logging.h /usr/include/c++/11/atomic \
- /usr/local/include/glog/export.h /usr/local/include/glog/flags.h \
- /usr/local/include/glog/platform.h /usr/local/include/glog/types.h \
- /usr/local/include/glog/log_severity.h \
- /usr/local/include/glog/vlog_is_on.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/INIReader.h \
+ /home/jose/.vcpkg-clion/vcpkg\ (2)/installed/x64-linux/include/INIReader.h \
  /usr/include/c++/11/random /usr/include/c++/11/bits/random.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \

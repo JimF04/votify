@@ -45,18 +45,27 @@ void server::start() {
     // Comunicación bidireccional
     bool isExit = false;
     while (!isExit) {
-        recv(client_socket, buffer, buffer_size, 0);
-        std::cout << "Cliente: " << buffer << std::endl;
+        int bytesReceived = recv(client_socket, buffer, buffer_size, 0);
+        if(bytesReceived<=0){
+            socklen_t size = sizeof(server_address);
+            client_socket = accept(server_socket, (struct sockaddr *) &server_address, &size);
+            if (client_socket < 0) {
+                std::cout << "Error aceptando conexión..." << std::endl;
+                exit(1);
+            }
+            std::cout << "Servidor: Conexión aceptada" << std::endl;
+
+        }
+        else{
+            recv(client_socket, buffer, buffer_size, 0);
+            std::cout << "" << buffer << std::endl;
+        }
+
         if (*buffer == '#') {
             isExit = true;
         }
 
-//        std::cout << "Servidor: ";
-//        std::cin.getline(buffer, buffer_size);
-//        send(client_socket, buffer, buffer_size, 0);
-//        if (*buffer == '#') {
-//            isExit = true;
-//        }
+
     }
 
     // Cerrar la conexión del servidor
