@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /home/gabrielvb/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/servidor.dir
 /home/gabrielvb/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/gabrielvb/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+=======
+/home/ahenao/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/servidor.dir
+/home/ahenao/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ahenao/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+>>>>>>> 1b3e9b5dc0ac0971bc0c757077a7123ede1d3d5f

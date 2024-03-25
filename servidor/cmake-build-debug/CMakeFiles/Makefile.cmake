@@ -7,9 +7,35 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
+<<<<<<< HEAD
   "/home/gabrielvb/.vcpkg-clion/vcpkg (4)/installed/x64-linux/share/unofficial-inih/unofficial-inihConfig.cmake"
   "/home/gabrielvb/.vcpkg-clion/vcpkg (4)/scripts/buildsystems/vcpkg.cmake"
   "/home/gabrielvb/Documents/GitHub/votify/servidor/CMakeLists.txt"
+=======
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-config-version.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-config.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-nonamespace-targets-debug.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-nonamespace-targets-release.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-nonamespace-targets.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-targets-debug.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-targets-release.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/gflags-targets.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags/vcpkg-cmake-wrapper.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-config-version.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-config.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-targets-debug.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-targets-release.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/glog/glog-targets.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-namespaced-targets.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets-debug.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets-release.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfig.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfigVersion.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/unofficial-inih/unofficial-inihConfig.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake"
+  "/home/ahenao/Documents/GitHub/votify/servidor/CMakeLists.txt"
+>>>>>>> 1b3e9b5dc0ac0971bc0c757077a7123ede1d3d5f
   "CMakeFiles/3.27.8/CMakeCCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeSystem.cmake"
@@ -119,16 +145,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/ProcessorCount.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-namespaced-targets.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets-none.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfig.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfigVersion.cmake"
-  "/usr/local/lib/cmake/glog/glog-config-version.cmake"
-  "/usr/local/lib/cmake/glog/glog-config.cmake"
-  "/usr/local/lib/cmake/glog/glog-modules.cmake"
-  "/usr/local/lib/cmake/glog/glog-targets-noconfig.cmake"
-  "/usr/local/lib/cmake/glog/glog-targets.cmake"
   )
 
 # The corresponding makefile is:
