@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <glog/logging.h>
 #include "INIReader.h"
+#include "ListaPaginada.h"
 #include <random>
 #include <set>
 #include <iterator>
@@ -154,15 +155,7 @@ void on_downVote_clicked(GtkButton *button, gpointer user_data);
 void on_CP_clicked(GtkButton *button, gpointer user_data);
 void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName, int upVotes, int downVotes, int songDuration);
 
-int main(int argc, char *argv[]) {
-
-    google::InitGoogleLogging(argv[0]);
-
-    google::SetLogDestination(google::GLOG_INFO, "server.log");
-    google::SetLogDestination(google::GLOG_ERROR, "server.log");
-    google::SetLogDestination(google::GLOG_WARNING, "server.log");
-    google::SetLogDestination(google::GLOG_FATAL, "server.log");
-
+void createPlaylist(){
     string songs_path = reader.Get("paths", "songs_path", "");
 
     // Iterar sobre los archivos dentro del directorio
@@ -179,6 +172,19 @@ int main(int argc, char *argv[]) {
 
     string jsonPath = reader.Get("paths", "json_path", "");
     myPlaylist.saveToJson(jsonPath);
+
+}
+
+int main(int argc, char *argv[]) {
+
+    google::InitGoogleLogging(argv[0]);
+
+    google::SetLogDestination(google::GLOG_INFO, "server_info.log");
+    google::SetLogDestination(google::GLOG_ERROR, "server_error.log");
+    google::SetLogDestination(google::GLOG_WARNING, "server_warning.log");
+    google::SetLogDestination(google::GLOG_FATAL, "server_fatal.log");
+
+    createPlaylist();
 
     gtk_init(&argc, &argv);
 
@@ -631,14 +637,31 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
     }
 }
 
+int MAX_PAGES = stoi(reader.Get("pagination", "max_pages", "10"));
+int PAGE_SIZE = stoi(reader.Get("pagination", "songs_per_page", "3"));
+
+// Crear instancia de la clase ListaPaginada
+ListaPaginada listaPaginada(MAX_PAGES, PAGE_SIZE, nullptr); // Por ahora no se pasa ningún observador
+
 void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_data) {
     gboolean active = gtk_toggle_button_get_active(PaginateButton);
     if (active) {
         g_print("PaginateButton activado\n");
-        // Realizar acciones cuando el botón se activa
+
+        listaPaginada.paginar(myPlaylist);
+
+        listaPaginada.imprimirPaginaActual();
+
+        myPlaylist.clearPlaylist();
+
+
     } else {
         g_print("PaginateButton desactivado\n");
-        // Realizar acciones cuando el botón se desactiva
+
+        listaPaginada.clearPlaylistPaginated();
+
+        createPlaylist();
+
     }
 }
 

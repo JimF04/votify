@@ -931,6 +931,7 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/glog/log_severity.h \
  /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/glog/vlog_is_on.h \
  /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/INIReader.h \
+ /home/jimmy/Documents/GitHub/votify/servidor/ListaPaginada.h \
  /usr/include/c++/11/random /usr/include/c++/11/bits/random.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \

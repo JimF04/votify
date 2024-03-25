@@ -13,6 +13,8 @@ add_executable(servidor main.cpp
         server.cpp
         server.h
         miniaudio.h
+        ListaPaginada.cpp
+        ListaPaginada.h
 )
 
 find_package(PkgConfig REQUIRED)
