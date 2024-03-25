@@ -112,16 +112,33 @@ void Playlist::insertSong(const string& file_path) {
     }
 }
 
+
 void Playlist::deleteSong(const string& songId) {
+    if (head == nullptr) {
+        // Lista vacía, no hay nada que borrar
+        return;
+    }
+
     nodo* temp = head;
     while (temp != nullptr) {
         if (temp->id == songId) {
-            // Eliminar el nodo de la lista
+            // Si temp es el nodo actual, actualiza el puntero current
             if (temp == head) {
-                head = head->next;
+                head = temp->next;
             }
-            temp->prev->next = temp->next;
-            temp->next->prev = temp->prev;
+
+            // Si solo hay un nodo en la lista, actualiza también el puntero tail
+            if (head == temp && temp->next == temp) {
+                head = nullptr;
+                tail = nullptr;
+            } else {
+                // Eliminar el nodo de la lista
+                temp->prev->next = temp->next;
+                temp->next->prev = temp->prev;
+                if (temp == tail) {
+                    tail = temp->prev;
+                }
+            }
 
             // Notificar al observador si está configurado
             if (observer != nullptr) {
@@ -137,6 +154,7 @@ void Playlist::deleteSong(const string& songId) {
         }
     }
 }
+
 
 nodo* Playlist::getCurrentSong() {
     return head;
@@ -223,5 +241,60 @@ void Playlist::registerObserver(PlaylistObserver* observer) {
 void Playlist::unregisterObserver(PlaylistObserver* observer) {
     if (this->observer == observer) {
         this->observer = nullptr;
+    }
+}
+
+void Playlist::insertUniqueArtist(const string &artist, string *uniqueArtists, int &artistCount) {
+    for (int i = 0; i < artistCount; ++i) {
+        // Verificar si el artista ya está en la lista de artistas únicos
+        if (uniqueArtists[i] == artist) {
+            return; // Si el artista ya está presente, salir sin hacer nada
+        }
+    }
+    // Si el artista no está presente, agregarlo a la lista de artistas únicos
+    uniqueArtists[artistCount++] = artist;
+}
+
+string* Playlist::getUniqueArtists() {
+    // Determinar el tamaño máximo de los arreglos basado en la cantidad de nodos en la lista de reproducción
+    int playlistSize = 0;
+    nodo *temp = head;
+    if (head != nullptr) {
+        do {
+            playlistSize++;
+            temp = temp->next;
+        } while (temp != head);
+    }
+
+    // Arreglos para almacenar los artistas únicos y la cantidad de artistas únicos
+    string* uniqueArtists = new string[playlistSize];
+    int artistCount = 0;
+
+    temp = head;
+    if (head != nullptr) {
+        do {
+            // Insertar el artista actual en la lista de artistas únicos
+            insertUniqueArtist(temp->artist, uniqueArtists, artistCount);
+            temp = temp->next;
+        } while (temp != head);
+    }
+
+    // Devolver el arreglo de artistas únicos
+    return uniqueArtists;
+}
+
+void Playlist::upVote(const string& songId) {
+    nodo *temp = head;
+    if (temp->id == songId) {
+        temp->up_votes++;
+        return;
+    }
+}
+
+void Playlist::downVote(const string& songId) {
+    nodo* temp = head;
+    if (temp->id == songId) {
+        temp->down_votes++;
+        return;
     }
 }

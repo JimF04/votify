@@ -161,7 +161,7 @@
               </packing>
             </child>
             <child>
-              <!-- n-columns=2 n-rows=1 -->
+              <!-- n-columns=3 n-rows=1 -->
               <object class="GtkGrid" id="TimeGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
@@ -170,7 +170,20 @@
                   <object class="GtkLabel" id="TimeLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="margin-right">22</property>
+                    <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Time:</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="startTIme">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">0 s</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -178,16 +191,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScale" id="TimeScale">
+                  <object class="GtkLabel" id="endTime">
                     <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="orientation">vertical</property>
-                    <property name="round-digits">1</property>
-                    <property name="value-pos">bottom</property>
-                    <signal name="move-slider" handler="on_TimeScale_move_slider" swapped="no"/>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">0 s</property>
                   </object>
                   <packing>
-                    <property name="left-attach">1</property>
+                    <property name="left-attach">2</property>
                     <property name="top-attach">0</property>
                   </packing>
                 </child>
@@ -302,12 +312,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="CPOnButton">
-                <property name="label" translatable="yes">On</property>
+              <object class="GtkButton" id="CPButton">
+                <property name="label" translatable="yes">OFF</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <signal name="clicked" handler="on_CPOn_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_CP_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -316,12 +326,37 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="CPOffButton">
-                <property name="label" translatable="yes">Off</property>
+              <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-                <signal name="clicked" handler="on_CPOffButton_clicked" swapped="no"/>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkButton" id="upVote">
+                    <property name="label" translatable="yes">Up Vote</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <signal name="clicked" handler="on_upVote_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="downVote">
+                    <property name="label" translatable="yes">Down Vote</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <signal name="clicked" handler="on_downVote_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -335,7 +370,7 @@
                 <property name="can-focus">False</property>
                 <property name="homogeneous">True</property>
                 <child>
-                  <object class="GtkLabel" id="UpvotesLabel">
+                  <object class="GtkLabel" id="UpVotesLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">UpVotes: 0</property>
@@ -372,47 +407,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="ResponsesServerBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkLabel" id="ResponsesLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Client Responses</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">1</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkBox" id="SongsByArtistBx">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="SongsByArtistLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Songs By Artists</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
               <placeholder/>
@@ -429,16 +429,7 @@
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="AllArtistsLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">All Artists In Playlist</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
               <placeholder/>
@@ -448,6 +439,9 @@
             <property name="left-attach">3</property>
             <property name="top-attach">1</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>
