@@ -221,6 +221,7 @@ int main(int argc, char *argv[]) {
     gtk_widget_set_size_request(VolumeSlider, 10, 200);
     gtk_box_pack_end(GTK_BOX(VolumeBox), VolumeSlider, FALSE, FALSE, 0);
 
+
     gtk_builder_connect_signals(builder, NULL);
 
     PreviousButton = GTK_WIDGET(gtk_builder_get_object(builder, "PreviousButton"));
@@ -322,7 +323,7 @@ void showSongsByArtist(const std::string& artistName, GtkWidget *songArtistBox) 
     gtk_box_pack_start(GTK_BOX(songArtistBox), label, FALSE, FALSE, 0);
     gtk_widget_show(label);
 
-    GtkWidget *blanck = gtk_label_new("Select Artist");
+    GtkWidget *blanck = gtk_label_new("");
     gtk_box_pack_start(GTK_BOX(songArtistBox), blanck, FALSE, FALSE, 0);
     gtk_widget_show(blanck);
 

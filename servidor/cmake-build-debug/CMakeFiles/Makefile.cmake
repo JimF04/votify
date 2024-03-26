@@ -7,11 +7,17 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/jimmy/.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/rapidjson/RapidJSONConfig.cmake"
-  "/home/jimmy/.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/rapidjson/RapidJSONConfigVersion.cmake"
-  "/home/jimmy/.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/unofficial-inih/unofficial-inihConfig.cmake"
-  "/home/jimmy/.vcpkg-clion/vcpkg (1)/scripts/buildsystems/vcpkg.cmake"
-  "/home/jimmy/Documents/GitHub/votify/servidor/CMakeLists.txt"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-namespaced-targets.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets-debug.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets-release.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncpp-targets.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfig.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp/jsoncppConfigVersion.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/rapidjson/RapidJSONConfig.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/rapidjson/RapidJSONConfigVersion.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/installed/x64-linux/share/unofficial-inih/unofficial-inihConfig.cmake"
+  "/home/ahenao/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake"
+  "/home/ahenao/Documents/GitHub/votify/servidor/CMakeLists.txt"
   "CMakeFiles/3.27.8/CMakeCCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeSystem.cmake"
@@ -40,11 +46,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/ProcessorCount.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-namespaced-targets.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets-none.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-targets.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfig.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfigVersion.cmake"
   )
 
 # The corresponding makefile is:
