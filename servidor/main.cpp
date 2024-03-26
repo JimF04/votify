@@ -8,7 +8,7 @@
 #include "server.h"
 #include "miniaudio.h"
 #include <stdio.h>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 #include "INIReader.h"
 #include <random>
 #include <set>
@@ -155,13 +155,13 @@ static double getServerRamUsage(pid_t server_pid);
 
 
 int main(int argc, char *argv[]) {
-
-    google::InitGoogleLogging(argv[0]);
-
-    google::SetLogDestination(google::GLOG_INFO, "server.log");
-    google::SetLogDestination(google::GLOG_ERROR, "server.log");
-    google::SetLogDestination(google::GLOG_WARNING, "server.log");
-    google::SetLogDestination(google::GLOG_FATAL, "server.log");
+//
+//    google::InitGoogleLogging(argv[0]);
+//
+//    google::SetLogDestination(google::GLOG_INFO, "server.log");
+//    google::SetLogDestination(google::GLOG_ERROR, "server.log");
+//    google::SetLogDestination(google::GLOG_WARNING, "server.log");
+//    google::SetLogDestination(google::GLOG_FATAL, "server.log");
 
     string songs_path = reader.Get("paths", "songs_path", "");
 
@@ -171,7 +171,7 @@ int main(int argc, char *argv[]) {
             // Llamar a insert_songs() con la ruta del archivo
             myPlaylist.insertSong(entry.path().string());
         } else {
-            LOG(WARNING) << "El archivo " << entry.path().string() << " no es un archivo de audio" << endl;
+            //LOG(WARNING) << "El archivo " << entry.path().string() << " no es un archivo de audio" << endl;
         }
     }
 
@@ -614,8 +614,8 @@ void on_CP_clicked(GtkButton *CPButton, gpointer user_data) {
         updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
                          currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
 
-//        thread serverThread(startServer);
-//        serverThread.detach();
+        thread serverThread(startServer);
+        serverThread.detach();
 
     } else {
         // Si el botón está apagado
@@ -655,7 +655,7 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
     } else {
         currentAfterDel = myPlaylist.getCurrentSong();
         if (currentAfterDel == nullptr) {
-            LOG(FATAL) << "No hay canciones en la lista" << endl;
+            //LOG(FATAL) << "No hay canciones en la lista" << endl;
         } else {
             on_PlayButton_clicked(GTK_BUTTON(PlayButton), NULL);
         }
