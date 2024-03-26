@@ -303,10 +303,10 @@ _VCPKG_INSTALLED_DIR:PATH=/home/jimmy/.vcpkg-clion/vcpkg/installed
 gflags_DIR:PATH=/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/share/gflags
 
 //The directory containing a CMake configuration file for glog.
-glog_DIR:PATH=/usr/local/lib/cmake/glog
+glog_DIR:PATH=/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/share/glog
 
 //The directory containing a CMake configuration file for jsoncpp.
-jsoncpp_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/jsoncpp
+jsoncpp_DIR:PATH=/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/share/jsoncpp
 
 //Path to a library.
 pkgcfg_lib_GTK3_atk-1.0:FILEPATH=/usr/lib/x86_64-linux-gnu/libatk-1.0.so

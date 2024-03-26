@@ -18,10 +18,9 @@ private:
     int currentPageIndex; // Índice de la página actual
     int currentSongIndex; // Índice de la canción actual en la página actual
     PlaylistObserver* observer; // Observador de la lista paginada
-    const string swapFilePath; // Ruta del archivo de intercambio
 
 public:
-    ListaPaginada(int maxPages, int numSongsPerPage, PlaylistObserver* obs, const string& swapFilePaTH); // Constructor
+    ListaPaginada(int maxPages, int numSongsPerPage, PlaylistObserver* obs); // Constructor
     ~ListaPaginada(); // Destructor
     void paginar(Playlist& playlist); // Método para paginar la lista de canciones
     void imprimirPaginaActual(); // Método para imprimir la página actual

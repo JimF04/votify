@@ -1,11 +1,105 @@
 [
 	{
+		"album" : "  china\n",
+		"artist" : " Justin Bibo\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Baby-Chinese.mp3",
+		"genre" : "  pop\n",
+		"id" : "3083d1c8-a69f-4e02-bd34-8e4cc64e6185",
+		"name" : "  Baby Chinese\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  china\n",
+		"artist" : " Zhong Xina\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Red_Sun.mp3",
+		"genre" : "  pop\n",
+		"id" : "9d34e4ee-becb-444b-ba4b-20014837f8e6",
+		"name" : "  Red Sun in the Sky\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " BEYOND\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_\u6d77\u95ca\u5929\u7a7a---BEYOND.mp3",
+		"genre" : "  pop\n",
+		"id" : "05d9a995-6820-400d-8b60-7a5f53ded11a",
+		"name" : "  \u6d77\u95ca\u5929\u7a7a\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Japon\n",
+		"artist" : " YOASOBI\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_\u30e9\u30d6\u30ec\u30bf\u30fc---YOASOBI.mp3",
+		"genre" : "  jpop\n",
+		"id" : "23bde3c5-90d5-48c3-a998-28be160fdbdc",
+		"name" : "  \u30e9\u30d5\u3099\u30ec\u30bf\u30fc\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " Tian Yiming\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Super_Idol.mp3",
+		"genre" : "  pop\n",
+		"id" : "566f5d05-f1fe-4426-b124-52ef01fd50b2",
+		"name" : "  Super Idol\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Japon\n",
+		"artist" : " Yonezu Kenshi\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Lemon---Yonezu-Kenshi.mp3",
+		"genre" : "  jpop\n",
+		"id" : "a4516ca8-2aed-4b99-8704-023df1e37184",
+		"name" : "  Lemon\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " Eggman\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Xue_Hua_Piao.mp3",
+		"genre" : "  pop\n",
+		"id" : "576c17f3-d892-4fba-9984-6a7c35bb9253",
+		"name" : "  Xue Hua Piao\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Japon\n",
+		"artist" : " YOASOBI\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Idol---YOASOBI.mp3",
+		"genre" : "  jpop\n",
+		"id" : "d07604cd-eddd-4876-a89e-d52b08fe13be",
+		"name" : "  \u30a2\u30a4\u30c8\u3099\u30eb\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Korea\n",
+		"artist" : " TWICE\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Likey---TWICE.mp3",
+		"genre" : "  kpop\n",
+		"id" : "d677e1d5-a13e-4922-b668-9f214a1335e1",
+		"name" : "  Likey\n",
+		"up_votes" : 0
+	},
+	{
 		"album" : "  Japon\n",
 		"artist" : " Yonezu Kenshi\n",
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Flamingo---Yonezu-Kenshi.mp3",
 		"genre" : "  jpop\n",
-		"id" : "7212e19a-2e49-4ea9-ac78-2cb9731b1f2d",
+<<<<<<< Updated upstream
+		"id" : "9da9364a-beef-4761-977b-bd046242b0bf",
+=======
+		"id" : "a3b1db3d-3000-4360-8e83-3ecce44552fd",
+>>>>>>> Stashed changes
 		"name" : "  Flamingo\n",
 		"up_votes" : 0
 	},
@@ -15,17 +109,23 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Eine-Kleine---Yonezu-Kenshi.mp3",
 		"genre" : "  jpop\n",
-		"id" : "8369b6b4-a2f8-4d68-8bce-3413ff24a197",
+<<<<<<< Updated upstream
+		"id" : "8ffb85b2-84b5-41e0-80b1-2a9671295b65",
+=======
+		"id" : "b902d929-7b8a-4f2a-a8ea-2ca692cc2d9c",
+>>>>>>> Stashed changes
 		"name" : "  Eine Kleine\n",
 		"up_votes" : 0
 	},
 	{
+<<<<<<< Updated upstream
+=======
 		"album" : "  Japon\n",
 		"artist" : " YOASOBI\n",
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_\u30e9\u30d6\u30ec\u30bf\u30fc---YOASOBI.mp3",
 		"genre" : "  jpop\n",
-		"id" : "9faa8a4a-cee9-411e-9c0d-407824e55ba0",
+		"id" : "33df7300-94a1-4401-b4f7-3488aee970f8",
 		"name" : "  \u30e9\u30d5\u3099\u30ec\u30bf\u30fc\n",
 		"up_votes" : 0
 	},
@@ -35,7 +135,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Yoru-ni-kakeru---YOASOBI.mp3",
 		"genre" : "  jpop\n",
-		"id" : "b0c64c3b-b9f2-4d2d-9a3c-514f819349df",
+		"id" : "c51f3b1d-86c2-47f2-923c-58322943f030",
 		"name" : "  Yoru ni Kakeru\n",
 		"up_votes" : 0
 	},
@@ -45,7 +145,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Lemon---Yonezu-Kenshi.mp3",
 		"genre" : "  jpop\n",
-		"id" : "19ac6adf-7af8-4d2f-921f-7491d4a21903",
+		"id" : "d61632e9-a0e8-4951-b0c5-d86d8044a1f0",
 		"name" : "  Lemon\n",
 		"up_votes" : 0
 	},
@@ -55,7 +155,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/Ye-Hua-Xiang.mp3",
 		"genre" : "  pop\n",
-		"id" : "ee1c3852-85ff-483a-854f-c1ecd97a9454",
+		"id" : "65977f92-1758-439e-b933-d5e6b462b531",
 		"name" : "  Ye Hua Xiang\n",
 		"up_votes" : 0
 	},
@@ -65,7 +165,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/Without-the-Communist-Party.mp3",
 		"genre" : "  pop\n",
-		"id" : "442f1d65-4965-4279-987c-f810dcb8d4ca",
+		"id" : "aaf3e878-d7e1-48ff-bfef-3c4de2289e12",
 		"name" : "  Without the Communist Party\n",
 		"up_votes" : 0
 	},
@@ -75,7 +175,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/Red_Sun.mp3",
 		"genre" : "  pop\n",
-		"id" : "a03a3a11-d5d3-40f7-a684-8f8ecccb7fe4",
+		"id" : "a0ac4d83-4abc-400c-a359-752e9e755390",
 		"name" : "  Red Sun in the Sky\n",
 		"up_votes" : 0
 	},
@@ -85,7 +185,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Cry-for-me---TWICE.mp3",
 		"genre" : "  kpop\n",
-		"id" : "7f52e9f0-3d86-4b6c-8078-6348c2c6efbc",
+		"id" : "2cb4100d-7748-489f-9df6-ca943d0e724f",
 		"name" : "  Cry for me\n",
 		"up_votes" : 0
 	},
@@ -95,7 +195,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/Xue_Hua_Piao.mp3",
 		"genre" : "  pop\n",
-		"id" : "9f0d97c1-5d31-487c-9302-8eddc835f73c",
+		"id" : "11f433bd-c91b-48fb-9809-4f4065ff36b8",
 		"name" : "  Xue Hua Piao\n",
 		"up_votes" : 0
 	},
@@ -105,7 +205,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/Super_Idol.mp3",
 		"genre" : "  pop\n",
-		"id" : "0fb2f989-391e-48f4-82f1-acd45c52d33f",
+		"id" : "36d9401d-0392-49c1-80bc-cc710710784a",
 		"name" : "  Super Idol\n",
 		"up_votes" : 0
 	},
@@ -115,7 +215,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Tong-Hua---Michael-Wong.mp3",
 		"genre" : "  pop\n",
-		"id" : "bb9affb0-fe4a-4f8a-8f43-c9d0289f6591",
+		"id" : "38008b2b-3e18-45a9-8d99-40488e48b8d2",
 		"name" : "  Tong Hua\n",
 		"up_votes" : 0
 	},
@@ -125,7 +225,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Idol---YOASOBI.mp3",
 		"genre" : "  jpop\n",
-		"id" : "d1c91b54-401c-4b4a-bc9f-11569fe3af78",
+		"id" : "8a32b513-9699-40a7-af4a-87d96e2042d0",
 		"name" : "  \u30a2\u30a4\u30c8\u3099\u30eb\n",
 		"up_votes" : 0
 	},
@@ -135,7 +235,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Yes-or-yes---TWICE.mp3",
 		"genre" : "  kpop\n",
-		"id" : "c368cce4-9b88-4ead-9812-ed3b4cfba837",
+		"id" : "9f76330b-3473-4350-be79-00dc663311bd",
 		"name" : "  Yes or Yes\n",
 		"up_votes" : 0
 	},
@@ -145,7 +245,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_\u6d77\u95ca\u5929\u7a7a---BEYOND.mp3",
 		"genre" : "  pop\n",
-		"id" : "5ded07f9-c3d5-4a71-a316-105228419ad7",
+		"id" : "7153a73d-f686-4ed3-b2b4-09b50af5ad27",
 		"name" : "  \u6d77\u95ca\u5929\u7a7a\n",
 		"up_votes" : 0
 	},
@@ -155,18 +255,73 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Orion---Yonezu-Kenshi.mp3",
 		"genre" : "  jpop\n",
-		"id" : "dec4e11f-4e81-46af-9953-a8a8075b9ecf",
+		"id" : "748b02d0-4f0a-4540-b587-4360d5a24fba",
 		"name" : "  Orion\n",
+		"up_votes" : 0
+	},
+	{
+>>>>>>> Stashed changes
+		"album" : "  Korea\n",
+		"artist" : " TWICE\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Fancy---TWICE.mp3",
+		"genre" : "  kpop\n",
+<<<<<<< Updated upstream
+		"id" : "103b92e9-149c-4212-81dd-4b376ba97533",
+=======
+		"id" : "47475ebc-8c26-4021-8f91-92bc95ebfb59",
+>>>>>>> Stashed changes
+		"name" : "  Fancy\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Japon\n",
+		"artist" : " YOASOBI\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Yoru-ni-kakeru---YOASOBI.mp3",
+		"genre" : "  jpop\n",
+		"id" : "b5f2c093-0587-408c-a63b-9aac9d9d7f1e",
+		"name" : "  Yoru ni Kakeru\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " Jia Fei\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Ye-Hua-Xiang.mp3",
+		"genre" : "  pop\n",
+		"id" : "ed305ba8-bcdc-4444-88a8-0e8bb0f96167",
+		"name" : "  Ye Hua Xiang\n",
 		"up_votes" : 0
 	},
 	{
 		"album" : "  Korea\n",
 		"artist" : " TWICE\n",
 		"down_votes" : 0,
-		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Fancy---TWICE.mp3",
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Cry-for-me---TWICE.mp3",
 		"genre" : "  kpop\n",
-		"id" : "abccf69f-f1e8-4139-884f-a0198611124b",
-		"name" : "  Fancy\n",
+		"id" : "f1ac0f54-2227-40b4-b787-18e634b510e9",
+		"name" : "  Cry for me\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " Michael Wong\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Tong-Hua---Michael-Wong.mp3",
+		"genre" : "  pop\n",
+		"id" : "3d56d432-719b-4824-8bbb-065c73e237b0",
+		"name" : "  Tong Hua\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " Brother Hao\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Without-the-Communist-Party.mp3",
+		"genre" : "  pop\n",
+		"id" : "cf4740d4-c68c-4973-9341-15a138df51c4",
+		"name" : "  Without the Communist Party\n",
 		"up_votes" : 0
 	},
 	{
@@ -175,7 +330,11 @@
 		"down_votes" : 0,
 		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_\u6b4c\u8bcd\u7248---BEYOND.mp3",
 		"genre" : "  pop\n",
-		"id" : "cc090171-9753-4411-a80b-d2a727218d4d",
+<<<<<<< Updated upstream
+		"id" : "b5ca59cb-aaae-4c32-ac7b-25583d14228b",
+=======
+		"id" : "19c00def-5daa-4c83-9dfc-fb9a662f4284",
+>>>>>>> Stashed changes
 		"name" : "  \u6b4c\u8bcd\u7248\n",
 		"up_votes" : 0
 	},
@@ -183,20 +342,32 @@
 		"album" : "  Korea\n",
 		"artist" : " TWICE\n",
 		"down_votes" : 0,
-		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Likey---TWICE.mp3",
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Yes-or-yes---TWICE.mp3",
 		"genre" : "  kpop\n",
-		"id" : "25e6e0a3-b5cd-4b55-9ad4-f0279272595d",
+<<<<<<< Updated upstream
+		"id" : "3a92950b-5065-4759-9370-8725699fe408",
+		"name" : "  Yes or Yes\n",
+=======
+		"id" : "0ee80b09-ec0e-45ea-a25a-e6f59a7c67c0",
 		"name" : "  Likey\n",
+>>>>>>> Stashed changes
 		"up_votes" : 0
 	},
 	{
-		"album" : "  china\n",
-		"artist" : " Justin Bibo\n",
+		"album" : "  Japon\n",
+		"artist" : " Yonezu Kenshi\n",
 		"down_votes" : 0,
+<<<<<<< Updated upstream
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Orion---Yonezu-Kenshi.mp3",
+		"genre" : "  jpop\n",
+		"id" : "338ea883-32ba-497f-a223-d7b5a5aa8930",
+		"name" : "  Orion\n",
+=======
 		"file_path" : "/home/jimmy/Downloads/PlayList/Baby-Chinese.mp3",
 		"genre" : "  pop\n",
-		"id" : "6ed6a61e-10d8-40bf-a9ea-63d152ce0c4e",
+		"id" : "14314060-8103-468a-8c32-ec3ea116f5fc",
 		"name" : "  Baby Chinese\n",
+>>>>>>> Stashed changes
 		"up_votes" : 0
 	}
 ]
