@@ -137,13 +137,33 @@ void PriorityQueue::downVote(const std::string& id) {
     throw std::invalid_argument("Node with given ID not found");
 }
 
+#include <algorithm> // Para std::trim
+#include <iostream>
+#include <jsoncpp/json/json.h>
+
+#include <iostream>
+#include <jsoncpp/json/json.h>
+
+// Función para eliminar espacios adicionales al principio y al final de una cadena
+std::string cleanString(const std::string& str) {
+    std::string result;
+
+    // Eliminar espacios al principio
+    size_t start = str.find_first_not_of(" \t\r\n");
+    if (start != std::string::npos) {
+        // Eliminar espacios al final
+        size_t end = str.find_last_not_of(" \t\r\n");
+        result = str.substr(start, end - start + 1);
+    }
+
+    return result;
+}
+
 void PriorityQueue::json_pq() const {
     Json::Value priorityQueueJson(Json::arrayValue);
 
     for (int i = 0; i < heapSize; ++i) {
-        // Limpiar el campo 'name' eliminando los espacios adicionales y saltos de línea
-        std::string cleanedName = heapArray[i].name;
-        cleanedName.erase(std::remove_if(cleanedName.begin(), cleanedName.end(), ::isspace), cleanedName.end());
+        std::string cleanedName = cleanString(heapArray[i].name);
 
         Json::Value nodeJson;
         nodeJson["id"] = heapArray[i].id;
@@ -158,6 +178,7 @@ void PriorityQueue::json_pq() const {
     std::cout << "Priority Queue JSON:" << std::endl;
     std::cout << jsonString << std::endl;
 }
+
 
 
 

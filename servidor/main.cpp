@@ -8,7 +8,6 @@
 #include "server.h"
 #include "miniaudio.h"
 #include <stdio.h>
-//#include <glog/logging.h>
 #include "INIReader.h"
 #include "priority_queue.h"
 #include <random>
@@ -17,12 +16,12 @@
 #include <fstream>
 #include <uuid.h>
 #include <unordered_set>
+//#include <glog/logging.h>
 
 using namespace std;
 namespace fs_std = std::filesystem;
 
 Playlist myPlaylist;
-Playlist randomPlaylist;
 PriorityQueue pq(10);
 
 bool isPlaying = false;
@@ -159,6 +158,7 @@ void updateSongLabels(const string& songName, const string& artistName, const st
 static gboolean updateRamUsage(gpointer data);
 static double getServerRamUsage(pid_t server_pid);
 void create_Priority_Queue();
+void create_Playlist();
 
 
 int main(int argc, char *argv[]) {
@@ -170,22 +170,7 @@ int main(int argc, char *argv[]) {
 //    google::SetLogDestination(google::GLOG_WARNING, "server.log");
 //    google::SetLogDestination(google::GLOG_FATAL, "server.log");
 
-    string songs_path = reader.Get("paths", "songs_path", "");
-
-    // Iterar sobre los archivos dentro del directorio
-    for (const auto& entry : fs_std::directory_iterator(songs_path)) {
-        if (entry.is_regular_file() && entry.path().extension() == ".mp3") {
-            // Llamar a insert_songs() con la ruta del archivo
-            myPlaylist.insertSong(entry.path().string());
-        } else {
-            //LOG(WARNING) << "El archivo " << entry.path().string() << " no es un archivo de audio" << endl;
-        }
-    }
-
-    cout << "\n";
-
-    string jsonPath = reader.Get("paths", "json_path", "");
-    myPlaylist.saveToJson(jsonPath);
+    create_Playlist();
 
     gtk_init(&argc, &argv);
 
@@ -607,44 +592,6 @@ void startServer() {
     myServer.start();
 }
 
-void createRandomPlayList() {
-    int totalSongs = 0;
-    nodo* temp = myPlaylist.getCurrentSong();
-    if (temp != nullptr) {
-        do {
-            totalSongs++;
-            temp = temp->next;
-        } while (temp != myPlaylist.getCurrentSong());
-    }
-
-    // Crear un conjunto para almacenar las rutas de archivo ya seleccionadas
-    std::set<std::string> selectedFilePaths;
-
-    // Crear la lista aleatoria evitando duplicados
-    while (selectedFilePaths.size() < 10 && selectedFilePaths.size() < totalSongs) {
-        // Generar un índice aleatorio único
-        random_device rd;
-        mt19937 gen(rd());
-        uniform_int_distribution<> dis(0, totalSongs - 1);
-        int randomIndex = dis(gen);
-
-        // Avanzar hasta el nodo correspondiente al índice aleatorio
-        temp = myPlaylist.getCurrentSong();
-        for (int i = 0; i < randomIndex; ++i) {
-            temp = temp->next;
-        }
-
-        // Verificar si la ruta de archivo ya ha sido seleccionada
-        if (selectedFilePaths.find(temp->file_path) == selectedFilePaths.end()) {
-            // Si la ruta de archivo no está en el conjunto, insertarla en la lista aleatoria
-            randomPlaylist.insertSong(temp->file_path);
-            // Agregar la ruta de archivo al conjunto de rutas seleccionadas
-            selectedFilePaths.insert(temp->file_path);
-        }
-    }
-}
-
-
 void on_CP_clicked(GtkButton *CPButton, gpointer user_data) {
     CPisOn = !CPisOn;
     const char *newLabel = CPisOn ? "ON" : "OFF";
@@ -661,18 +608,27 @@ void on_CP_clicked(GtkButton *CPButton, gpointer user_data) {
                          currentSong.genre, currentSong.upVotes, currentSong.downVotes, currentSong.duration);
 
 
-//        createRandomPlayList();
-//
-//        nodo* currentSong = randomPlaylist.getCurrentSong();
-//        updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-//                         currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
-//
         thread serverThread(startServer);
         serverThread.detach();
+
+        myPlaylist.clearPlaylist();
 
     } else {
         // Si el botón está apagado
         g_print("CPButton apagado.\n");
+
+        if (isPlaying) {
+            ma_device_stop(&device);
+            isPlaying = false;
+            stop_timer();
+            gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
+        }
+
+        create_Playlist();
+
+        nodo* currentSong = myPlaylist.getCurrentSong();
+        updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+                         currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
 
     }
 
@@ -692,6 +648,10 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
         if (pq.isEmpty()) {
             on_CP_clicked(GTK_BUTTON(CPButton), NULL);
         } else {
+            pq.sortByDifference();
+            pq.printQueue();
+            pq.json_pq();
+
             Node& currentSongPQ = pq.getNodeAtIndex(0);
             thread songThread(playAudio, currentSongPQ.filePath.c_str(), currentPosition);
             songThread.detach();
@@ -706,14 +666,16 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
         nodo* currentSong = myPlaylist.getCurrentSong();
         string songId = currentSong->id;
         myPlaylist.deleteSong(songId);
+
+        nodo* currentAfterDel = myPlaylist.getCurrentSong();
+        if (currentAfterDel == nullptr) {
+            //LOG(FATAL) << "No hay canciones en la lista" << endl;
+        } else {
+            on_PlayButton_clicked(GTK_BUTTON(PlayButton), NULL);
+        }
     }
 
-    nodo* currentAfterDel = myPlaylist.getCurrentSong();
-    if (currentAfterDel == nullptr) {
-        //LOG(FATAL) << "No hay canciones en la lista" << endl;
-    } else {
-        on_PlayButton_clicked(GTK_BUTTON(PlayButton), NULL);
-    }
+
 
 }
 
@@ -766,6 +728,21 @@ void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data) {
     float volume = (float)value / 100.0f;
 
     ma_device_set_master_volume(&device, volume);
+}
+
+void create_Playlist(){
+    string songs_path = reader.Get("paths", "songs_path", "");
+
+    // Iterar sobre los archivos dentro del directorio
+    for (const auto& entry : fs_std::directory_iterator(songs_path)) {
+        if (entry.is_regular_file() && entry.path().extension() == ".mp3") {
+            // Llamar a insert_songs() con la ruta del archivo
+            myPlaylist.insertSong(entry.path().string());
+        } else {
+            //LOG(WARNING) << "El archivo " << entry.path().string() << " no es un archivo de audio" << endl;
+        }
+    }
+
 }
 
 void create_Priority_Queue(){
