@@ -7,11 +7,13 @@
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
+#include "priority_queue.h"
+
 
 using namespace std;
 
-server::server(const std::string& ipAddress, int portNum, int bufsize)
-        : ip_address(ipAddress), port_number(portNum), buffer_size(bufsize) {}
+server::server(const std::string &ipAddress, int portNum, int bufsize, PriorityQueue &pq)
+        : ip_address(ipAddress), port_number(portNum), buffer_size(bufsize), pq(pq) {}
 
 void server::start() {
     // Crear el socket del servidor
@@ -69,8 +71,17 @@ void server::start() {
             const char* command = document["command"].GetString();
             const char* id = document["id"].GetString();
 
-            std::cout << "Comando: " << command << std::endl;
-            std::cout << "ID: " << id << std::endl;
+
+
+            if (strcmp(command, "Vote-up") == 0){
+                cout<<"veaaaaaaaa: "<<id<<endl;
+                pq.upVote(id);
+
+                pq.printQueue();
+
+            }
+
+
         }
 
         if (*buffer == '#') {

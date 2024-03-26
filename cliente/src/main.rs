@@ -63,7 +63,7 @@ fn main() {
         json!({"album": "China", "artist": "Michael Wong", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Tong-Hua---Michael-Wong.mp3", "genre": "pop", "id": "2a4b0a20-efca-4a90-abaf-ee40883fac06", "name": "Tong Hua", "up_votes": 0}),
         json!({"album": "Japon", "artist": "YOASOBI", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Idol---YOASOBI.mp3", "genre": "jpop", "id": "a8249a04-ea82-4b6b-9611-92802479407e", "name": "アイドル", "up_votes": 0}),
         json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Fancy---TWICE.mp3", "genre": "kpop", "id": "cba7e2ae-94ba-4409-982a-edb0cf15310a", "name":"Fancy", "up_votes": 0}), json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Yes-or-yes---TWICE.mp3", "genre": "kpop", "id": "9cc7ac02-c126-4e42-96cb-70bd4ccd4077", "name": "Yes or Yes", "up_votes": 0}),
-        json!({"album": "Japon", "artist": "Yonezu Kenshi", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Flamingo---Yonezu-Kenshi.mp3", "genre": "jpop", "id": "fd972c2c-71a4-42ed-b481-382834e59db3", "name": "Flamingo", "up_votes": 0}),
+        json!({"album": "Japon", "artist": "Yonezu Kenshi", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Flamingo---Yonezu-Kenshi.mp3", "genre": "jpop", "id": "fd972c2c-71a4-42ed-b481-382834e59db3", "name": "  Flamingo", "up_votes": 0}),
         json!({"album": "Japon", "artist": "YOASOBI", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_ラフレター---YOASOBI.mp3", "genre": "jpop", "id": "4be38bb8-453c-48c4-9a6a-bd7a2cfa7a9c", "name": "ラフレター", "up_votes": 0}),
         json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Cry-for-me---TWICE.mp3", "genre": "kpop", "id": "eb036c60-4c77-48f9-bf7f-0000cd5e70e1", "name": "Cry for me", "up_votes": 0}),
         json!({"album": "china", "artist": "Justin Bibo", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/Baby-Chinese.mp3", "genre": "pop", "id": "5b905406-32c1-4689-acaa-a209fc4313eb", "name": "Baby Chinese", "up_votes": 0})
@@ -201,7 +201,7 @@ fn commando_subida(nombre_cancion: &str,id_cancion: &str){
 
     let json_data = json!({
         "command": "Vote-up",
-        "id": id_cancion
+        "id": nombre_cancion
     });
     let comando = json_data.to_string();
 

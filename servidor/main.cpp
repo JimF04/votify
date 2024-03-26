@@ -10,15 +10,20 @@
 #include <stdio.h>
 //#include <glog/logging.h>
 #include "INIReader.h"
+#include "priority_queue.h"
 #include <random>
 #include <set>
 #include <iterator>
+#include <fstream>
+#include <uuid.h>
+#include <unordered_set>
 
 using namespace std;
 namespace fs_std = std::filesystem;
 
 Playlist myPlaylist;
 Playlist randomPlaylist;
+PriorityQueue pq(10);
 
 bool isPlaying = false;
 bool CPisOn = false;
@@ -153,6 +158,7 @@ void on_CP_clicked(GtkButton *button, gpointer user_data);
 void updateSongLabels(const string& songName, const string& artistName, const string& albumName, const string& genreName, int upVotes, int downVotes, int songDuration);
 static gboolean updateRamUsage(gpointer data);
 static double getServerRamUsage(pid_t server_pid);
+void create_Priority_Queue();
 
 
 int main(int argc, char *argv[]) {
@@ -384,32 +390,42 @@ static double getServerRamUsage(pid_t server_pid) {
 
 void on_upVote_clicked(GtkButton *button, gpointer user_data) {
 
-    nodo* currentSong = nullptr;
 
     if (CPisOn){
-        currentSong = randomPlaylist.getCurrentSong();
-        randomPlaylist.upVote(currentSong->id);
+
+        Node& currentSongPQ = pq.getNodeAtIndex(0);
+        pq.upVote(currentSongPQ.id);
+
+        updateSongLabels(currentSongPQ.name, currentSongPQ.artist, currentSongPQ.album,
+                 currentSongPQ.genre, currentSongPQ.upVotes, currentSongPQ.downVotes, currentSongPQ.duration);
+
     } else {
-        currentSong = myPlaylist.getCurrentSong();
+        nodo* currentSong = myPlaylist.getCurrentSong();
         myPlaylist.upVote(currentSong->id);
+
+        updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+                         currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
     }
-    updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                 currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
+
 }
 
 void on_downVote_clicked(GtkButton *button, gpointer user_data) {
 
-    nodo* currentSong = nullptr;
 
     if (CPisOn) {
-        currentSong = randomPlaylist.getCurrentSong();
-        randomPlaylist.downVote(currentSong->id);
+        Node& currentSongPQ = pq.getNodeAtIndex(0);
+        pq.downVote(currentSongPQ.id);
+
+        updateSongLabels(currentSongPQ.name, currentSongPQ.artist, currentSongPQ.album,
+                         currentSongPQ.genre, currentSongPQ.upVotes, currentSongPQ.downVotes, currentSongPQ.duration);
     } else {
-        currentSong = myPlaylist.getCurrentSong();
+        nodo* currentSong = myPlaylist.getCurrentSong();
         myPlaylist.downVote(currentSong->id);
+
+        updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+                         currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
     }
-    updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                 currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
+
 }
 
 static gboolean update_slider(gpointer user_data) {
@@ -493,10 +509,12 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
     }
 
     nodo* currentSong = nullptr;
-    if (!CPisOn)
+    if (!CPisOn) {
         currentSong = myPlaylist.getCurrentSong();
-    else
+    }else{
         currentSong = randomPlaylist.getCurrentSong();
+    }
+
 
     const char* filePath = currentSong->file_path.c_str();
 
@@ -539,16 +557,15 @@ void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
         gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
     }
 
-    nodo* nextSong = nullptr;
-    if (!CPisOn)
-        nextSong = myPlaylist.getNextSong();
-    else
-        nextSong = randomPlaylist.getNextSong();
-
-    if (nextSong != nullptr) {
+    if (!CPisOn) {
+        nodo* nextSong = myPlaylist.getNextSong();
         playSong(*nextSong);
         isPlaying = true;
         start_timer();
+
+    } else {
+
+
     }
 }
 
@@ -558,7 +575,7 @@ void startServer() {
     int portNum = stoi(reader.Get("server", "port", "8080"));
     int bufsize = stoi(reader.Get("server", "bufsize", "1024"));
 
-    server myServer(ipAddress, portNum, bufsize);
+    server myServer(ipAddress, portNum, bufsize, pq);
     myServer.start();
 }
 
@@ -609,12 +626,19 @@ void on_CP_clicked(GtkButton *CPButton, gpointer user_data) {
         // Si el botón está encendido
         g_print("CPButton encendido.\n");
 
-        createRandomPlayList();
+        create_Priority_Queue();
 
-        nodo* currentSong = randomPlaylist.getCurrentSong();
-        updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                         currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
+        Node& currentSong = pq.getNodeAtIndex(0);
+        updateSongLabels(currentSong.name, currentSong.artist, currentSong.album,
+                         currentSong.genre, currentSong.upVotes, currentSong.downVotes, currentSong.duration);
 
+
+//        createRandomPlayList();
+//
+//        nodo* currentSong = randomPlaylist.getCurrentSong();
+//        updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+//                         currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
+//
         thread serverThread(startServer);
         serverThread.detach();
 
@@ -714,3 +738,95 @@ void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data) {
     ma_device_set_master_volume(&device, volume);
 }
 
+void create_Priority_Queue(){
+    string songs_path = reader.Get("paths", "songs_path", "");
+    std::unordered_set<std::string> selectedSongs; // Conjunto para mantener un registro de las canciones seleccionadas
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, INT_MAX);
+
+    // Iterar sobre los archivos dentro del directorio
+    for (const auto& entry : fs_std::directory_iterator(songs_path)) {
+        if (entry.is_regular_file() && entry.path().extension() == ".mp3") {
+            // Seleccionar aleatoriamente 10 canciones sin repetición
+            if (selectedSongs.size() < 10) {
+                selectedSongs.insert(entry.path().string());
+            } else {
+                int randomIndex = dis(gen);
+                if (randomIndex < 10) {
+                    auto it = std::next(selectedSongs.begin(), randomIndex);
+                    selectedSongs.erase(it); // Eliminar una canción aleatoria
+                    selectedSongs.insert(entry.path().string()); // Insertar la nueva canción
+                }
+            }
+        }
+    }
+
+    for (const auto& songPath : selectedSongs) {
+        // Crear un nodo para la canción
+        Node songNode;
+        songNode.filePath = songPath;
+        songNode.downVotes = 0;
+        songNode.upVotes = 0;
+
+        // Generar un UUID para el nodo
+        uuid_t uuid;
+        uuid_generate_random(uuid);
+        char uuid_str[37];
+        uuid_unparse(uuid, uuid_str);
+        songNode.id = uuid_str;
+
+
+        // Ejecutar el comando mpg123 para obtener los metadatos
+        string command = "mpg123 -t t \"" + songPath + "\" 2>&1";
+        FILE *pipe = popen(command.c_str(), "r");
+        if (!pipe) {
+            cerr << "Error al ejecutar el comando mpg123." << endl;
+            return;
+        }
+
+        // Procesar la salida del comando para extraer los metadatos
+        char buffer[256];
+        while (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
+            string line(buffer);
+
+            // Buscar las líneas que contienen los metadatos y extraer los valores correspondientes
+            size_t pos;
+            if ((pos = line.find("Title:")) != string::npos) {
+                songNode.name = line.substr(pos + 7);
+            } else if ((pos = line.find("Artist:")) != string::npos) {
+                songNode.artist = line.substr(pos + 8);
+            } else if ((pos = line.find("Album:")) != string::npos) {
+                songNode.album = line.substr(pos + 7);
+            } else if ((pos = line.find("Genre:")) != string::npos) {
+                songNode.genre = line.substr(pos + 7);
+            }
+        }
+        pclose(pipe);
+
+        string command2 = "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 " + songPath;
+
+        // Ejecutar el comando y capturar la salida
+        FILE *pipe2 = popen(command2.c_str(), "r");
+        if (!pipe2) {
+            cerr << "Error: No se pudo ejecutar el comando." << endl;
+            return;
+        }
+
+        char buffer2[128];
+        string result = "";
+        while (!feof(pipe)) {
+            if (fgets(buffer, 128, pipe) != NULL)
+                result += buffer;
+        }
+        pclose(pipe);
+
+        // Convertir la salida (que es una cadena) a un double (la duración en segundos)
+        int duration = stod(result);
+
+        songNode.duration = duration;
+
+        pq.enqueue(songNode);
+    }
+    pq.printQueue();
+}
