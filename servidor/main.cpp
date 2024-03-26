@@ -124,7 +124,6 @@ GtkWidget *endTime;
 GtkWidget *artistBox;
 GtkWidget *upVoteButton;
 GtkWidget *downVoteButton;
-GtkWidget *Main;
 
 GtkWidget *CPButton;
 
@@ -318,12 +317,12 @@ void showSongsByArtist(const std::string& artistName, GtkWidget *songArtistBox) 
     }
     g_list_free(children);
 
-    // Crear labels para cada cancion del artista
+     //Crear labels para cada cancion del artista
     GtkWidget *label = gtk_label_new("Songs by Artist:");
     gtk_box_pack_start(GTK_BOX(songArtistBox), label, FALSE, FALSE, 0);
     gtk_widget_show(label);
 
-    GtkWidget *blanck = gtk_label_new("");
+    GtkWidget *blanck = gtk_label_new("Select Artist");
     gtk_box_pack_start(GTK_BOX(songArtistBox), blanck, FALSE, FALSE, 0);
     gtk_widget_show(blanck);
 

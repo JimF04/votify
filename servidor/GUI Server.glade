@@ -7,21 +7,22 @@
     <property name="resizable">False</property>
     <property name="default-height">600</property>
     <child>
-      <!-- n-columns=3 n-rows=3 -->
+      <!-- n-columns=3 n-rows=4 -->
       <object class="GtkGrid" id="Main">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="margin-right">20</property>
         <property name="border-width">0</property>
-        <property name="row-spacing">110</property>
+        <property name="row-spacing">55</property>
         <property name="column-spacing">10</property>
         <property name="column-homogeneous">True</property>
         <child>
           <object class="GtkBox" id="SongDataBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-top">30</property>
+            <property name="margin-top">90</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">20</property>
+            <property name="spacing">10</property>
             <property name="homogeneous">True</property>
             <property name="baseline-position">bottom</property>
             <child>
@@ -33,7 +34,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
@@ -45,7 +46,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -57,7 +58,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
             <child>
@@ -69,7 +70,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="position">4</property>
               </packing>
             </child>
           </object>
@@ -84,6 +85,29 @@
             <property name="can-focus">False</property>
             <property name="margin-top">30</property>
             <property name="orientation">vertical</property>
+            <property name="spacing">15</property>
+            <child>
+              <object class="GtkLabel" id="VotifyLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Votify</property>
+                <property name="justify">center</property>
+                <attributes>
+                  <attribute name="style" value="oblique"/>
+                  <attribute name="weight" value="bold"/>
+                  <attribute name="variant" value="normal"/>
+                  <attribute name="scale" value="1"/>
+                  <attribute name="foreground" value="#ffffccccc9c9"/>
+                  <attribute name="strikethrough-color" value="#9999c1c1f1f1"/>
+                  <attribute name="size" value="30720"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
             <child>
               <!-- n-columns=5 n-rows=1 -->
               <object class="GtkGrid" id="MusicButtonGrid">
@@ -155,7 +179,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
@@ -164,19 +188,6 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="column-spacing">6</property>
-                <child>
-                  <object class="GtkLabel" id="TimeLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="margin-right">22</property>
-                    <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Time:</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">1</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
                 <child>
                   <object class="GtkLabel" id="startTime">
                     <property name="visible">True</property>
@@ -199,11 +210,24 @@
                     <property name="top-attach">0</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkLabel" id="TimeLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-right">22</property>
+                    <property name="hexpand">True</property>
+                    <property name="label" translatable="yes">Time:</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
@@ -216,7 +240,7 @@
           <object class="GtkBox" id="VolumeBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-top">30</property>
+            <property name="margin-top">90</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkLabel" id="VolumeLabel">
@@ -244,7 +268,7 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="margin-left">100</property>
-            <property name="margin-right">100</property>
+            <property name="margin-right">200</property>
             <property name="margin-bottom">20</property>
             <property name="orientation">vertical</property>
             <property name="spacing">15</property>
@@ -254,6 +278,13 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Community Playlist</property>
+                <attributes>
+                  <attribute name="weight" value="ultrabold"/>
+                  <attribute name="underline" value="True"/>
+                  <attribute name="foreground" value="#ffffccccc9c9"/>
+                  <attribute name="underline-color" value="#ffffccccc9c9"/>
+                  <attribute name="size" value="18432"/>
+                </attributes>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -350,7 +381,7 @@
           </object>
           <packing>
             <property name="left-attach">0</property>
-            <property name="top-attach">2</property>
+            <property name="top-attach">3</property>
             <property name="width">2</property>
           </packing>
         </child>
@@ -368,7 +399,14 @@
               <object class="GtkLabel" id="MemLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Memory Usage:</property>
+                <property name="label" translatable="yes">Memory Usage</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                  <attribute name="underline" value="True"/>
+                  <attribute name="foreground" value="#ffffccccc9c9"/>
+                  <attribute name="underline-color" value="#ffffccccc9c9"/>
+                  <attribute name="size" value="18432"/>
+                </attributes>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -405,7 +443,7 @@
           </object>
           <packing>
             <property name="left-attach">2</property>
-            <property name="top-attach">2</property>
+            <property name="top-attach">3</property>
           </packing>
         </child>
         <child>
@@ -425,7 +463,7 @@
           </object>
           <packing>
             <property name="left-attach">0</property>
-            <property name="top-attach">1</property>
+            <property name="top-attach">2</property>
             <property name="width">2</property>
           </packing>
         </child>
@@ -443,7 +481,29 @@
           </object>
           <packing>
             <property name="left-attach">2</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="ArtistFeaturesLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Artists Detected In The Playlist</property>
+            <property name="justify">center</property>
+            <property name="ellipsize">start</property>
+            <property name="xalign">0.5</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+              <attribute name="underline" value="True"/>
+              <attribute name="foreground" value="#ffffccccc9c9"/>
+              <attribute name="underline-color" value="#ffffccccc9c9"/>
+              <attribute name="size" value="18432"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
             <property name="top-attach">1</property>
+            <property name="width">3</property>
           </packing>
         </child>
       </object>
