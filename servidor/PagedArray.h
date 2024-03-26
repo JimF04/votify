@@ -1,35 +1,31 @@
-//
-// Created by jimmy on 3/25/24.
-//
-
 #ifndef PAGEDARRAY_H
 #define PAGEDARRAY_H
 
-#include <iostream>
-#include <fstream>
-#include "playlist.h" // Suponiendo que esta es tu lista circular doblemente enlazada
+#include "playlist.h" // Se asume que la clase Playlist ya está implementada
 
 class PagedArray {
 public:
-    PagedArray(const std::string& iniFilePath);
+    PagedArray(const string& configFile);
     ~PagedArray();
 
     int& operator[](int index);
-    int size();
+
+    void addSong(nodo* song);
 
 private:
-    void loadPage(int pageNumber);
-    void savePage(int pageNumber);
-    bool isPageLoaded(int pageNumber);
-    void replaceLRUPage();
-
-    std::string swapFilePath;
+    bool isPageLoaded(int pageIndex);
+    void loadPage(int pageIndex);
+    void replacePage(int pageIndex);
+    void swapToDisk(int pageIndex);
+    void readPageFromDisk(int pageIndex);
+    void writePageToDisk(int pageIndex);
+    void addNewPage();
     int pageSize;
-    int pageCount;
-    int** pages;
-    int* lruTracker;
-    std::fstream swapFile;
+    string swapPath;
+    int* array;
+    bool* loadedPages;
+    int totalPages;
+    int currentPageIndex;
 };
 
 #endif
-

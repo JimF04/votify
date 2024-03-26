@@ -201,22 +201,30 @@ void Playlist::display() {
 
 
 
-void Playlist::calculateSize(nodo* current){
-    if (current != nullptr) {
-        size_t size = sizeof(current->id) +
-                      current->name.size() +
-                      current->artist.size() +
-                      current->album.size() +
-                      current->genre.size() +
-                      sizeof(current->up_votes) +
-                      sizeof(current->down_votes) +
-                      current->file_path.size() +
-                      sizeof(current->songDuration);
-        cout << "Tamaño del nodo: " << size << " bytes" << endl;
-    } else {
-        cout << "El nodo proporcionado es nulo." << endl;
+void Playlist::calculateSize(){
+    nodo *temp = head;
+    int result = 0;
+    if (head != nullptr) {
+        do {
+            size_t size = sizeof(temp->id) +
+                          temp->name.size() +
+                          temp->artist.size() +
+                          temp->album.size() +
+                          temp->genre.size() +
+                          sizeof(temp->up_votes) +
+                          sizeof(temp->down_votes) +
+                          temp->file_path.size() +
+                          sizeof(temp->songDuration);
+            if (size > result) {
+                result = size;
+            }
+            cout << "Size: " << size << endl;
+            temp = temp->next;
+        } while (temp != head);
     }
+    cout << result << endl;
 }
+
 
 
 

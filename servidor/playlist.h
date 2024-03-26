@@ -55,7 +55,7 @@ public:
     string* getUniqueArtists();
     void upVote(const string& songId);
     void downVote(const string& songId);
-    void calculateSize(nodo* current);
+    void calculateSize();
 
 private:
     nodo *head;

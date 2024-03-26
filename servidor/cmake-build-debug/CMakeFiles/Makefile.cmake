@@ -7,8 +7,8 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/share/unofficial-inih/unofficial-inihConfig.cmake"
-  "/home/jimmy/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake"
+  "/home/jimmy/.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/unofficial-inih/unofficial-inihConfig.cmake"
+  "/home/jimmy/.vcpkg-clion/vcpkg (1)/scripts/buildsystems/vcpkg.cmake"
   "/home/jimmy/Documents/GitHub/votify/servidor/CMakeLists.txt"
   "CMakeFiles/3.27.8/CMakeCCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"

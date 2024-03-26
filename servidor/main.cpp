@@ -13,6 +13,7 @@
 #include <random>
 #include <set>
 #include <iterator>
+#include "PagedArray.h"
 
 using namespace std;
 namespace fs_std = std::filesystem;
@@ -634,21 +635,22 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
 void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_data) {
     gboolean active = gtk_toggle_button_get_active(PaginateButton);
     if (active) {
-        g_print("PaginateButton activado v1\n");
+        g_print("PaginateButton ACTIVADO\n");
 
+        myPlaylist.calculateSize();
+
+        PagedArray pagedArray(ini_path);
         nodo* current = myPlaylist.getCurrentSong();
 
-        size_t size = sizeof(current->id) +
-                      current->name.size() +
-                      current->artist.size() +
-                      current->album.size() +
-                      current->genre.size() +
-                      sizeof(current->up_votes) +
-                      sizeof(current->down_votes) +
-                      current->file_path.size() +
-                      sizeof(current->songDuration);
+        int songsAdded = 0;
+        const int totalSongsToAdd = 20;
 
-        g_print("size: %zu\n", size);
+        while (current != nullptr && songsAdded < totalSongsToAdd) {
+            pagedArray.addSong(current);
+            current = myPlaylist.getNextSong();
+            songsAdded++;
+        }
+
 
     } else {
         g_print("PaginateButton desactivado\n");
