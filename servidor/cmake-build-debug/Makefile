@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/265/bin/cmake/linux/x64/bin/cmake
+CMAKE_COMMAND = /opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/265/bin/cmake/linux/x64/bin/cmake -E rm -f
+RM = /opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jimmy/Documents/GitHub/votify/servidor
+CMAKE_SOURCE_DIR = /home/jose/votify/servidor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug
+CMAKE_BINARY_DIR = /home/jose/votify/servidor/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debu
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
-	/snap/clion/265/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/snap/clion/265/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/CLion/CLion-2023.2.2/clion-2023.2.2/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/votify/servidor/cmake-build-debug/CMakeFiles /home/jose/votify/servidor/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/votify/servidor/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -177,6 +177,30 @@ playlist.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/playlist.cpp.s
 .PHONY : playlist.cpp.s
 
+priority_queue.o: priority_queue.cpp.o
+.PHONY : priority_queue.o
+
+# target to build an object file
+priority_queue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/priority_queue.cpp.o
+.PHONY : priority_queue.cpp.o
+
+priority_queue.i: priority_queue.cpp.i
+.PHONY : priority_queue.i
+
+# target to preprocess a source file
+priority_queue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/priority_queue.cpp.i
+.PHONY : priority_queue.cpp.i
+
+priority_queue.s: priority_queue.cpp.s
+.PHONY : priority_queue.s
+
+# target to generate assembly for a file
+priority_queue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/priority_queue.cpp.s
+.PHONY : priority_queue.cpp.s
+
 server.o: server.cpp.o
 .PHONY : server.o
 
@@ -216,6 +240,9 @@ help:
 	@echo "... playlist.o"
 	@echo "... playlist.i"
 	@echo "... playlist.s"
+	@echo "... priority_queue.o"
+	@echo "... priority_queue.i"
+	@echo "... priority_queue.s"
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"
