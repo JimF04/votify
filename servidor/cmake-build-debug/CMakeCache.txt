@@ -220,8 +220,8 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 //Path to a program.
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
-//The CMake toolchain file
-CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/jimmy/.vcpkg-clion/vcpkg (1)/scripts/buildsystems/vcpkg.cmake
+//No help, variable specified on the command line.
+CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=/home/jimmy/.vcpkg-clion/vcpkg (1)/scripts/buildsystems/vcpkg.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -252,6 +252,9 @@ ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
+
+//The directory containing a CMake configuration file for RapidJSON.
+RapidJSON_DIR:PATH=/home/jimmy/.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/rapidjson
 
 //Automatically copy dependencies into the output directory for
 // executables.
@@ -337,6 +340,9 @@ pkgcfg_lib_GTK3_pango-1.0:FILEPATH=/usr/lib/x86_64-linux-gnu/libpango-1.0.so
 
 //Path to a library.
 pkgcfg_lib_GTK3_pangocairo-1.0:FILEPATH=/usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so
+
+//The directory containing a CMake configuration file for rapidjson.
+rapidjson_DIR:PATH=rapidjson_DIR-NOTFOUND
 
 //Value Computed by CMake
 servidor_BINARY_DIR:STATIC=/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug

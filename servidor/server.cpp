@@ -4,9 +4,9 @@
 
 #include <arpa/inet.h>
 #include "server.h"
-#include "/home/jose/rapidjson/include/rapidjson/document.h"
-#include "/home/jose/rapidjson/include/rapidjson/writer.h"
-#include "/home/jose/rapidjson/include/rapidjson/stringbuffer.h"
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
 
 using namespace std;
 
@@ -62,25 +62,15 @@ void server::start() {
         else{
             recv(client_socket, buffer, buffer_size, 0);
 
-
+  
             rapidjson::Document document;
-            if (document.IsObject()) {
-                document.Parse(buffer);
+            document.Parse(buffer);
 
-                const char* command = document["command"].GetString();
-                const char* id = document["id"].GetString();
+            const char* command = document["command"].GetString();
+            const char* id = document["id"].GetString();
 
-                std::cout << "Comando: " << command << std::endl;
-                std::cout << "ID: " << id << std::endl;
-            } else {
-                std::cout << "El JSON no es un objeto válido." << std::endl;
-            }
-
-
-
-
-
-
+            std::cout << "Comando: " << command << std::endl;
+            std::cout << "ID: " << id << std::endl;
         }
 
         if (*buffer == '#') {

@@ -5,7 +5,7 @@
 		<Option title="servidor"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\.vcpkg-clion\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\scripts\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\scripts\buildsystems\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\share\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\share\unofficial-inih\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\.vcpkg-clion\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\scripts\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\scripts\buildsystems\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\share\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\share\unofficial-inih\;CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\share\rapidjson\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/jimmy/Documents/GitHub/votify/servidor/cmake-build-debug"/>
@@ -46,6 +46,7 @@
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/usr/include/jsoncpp"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg (1)/installed/x64-linux/include"/>
+					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/rapidjson/../../include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -90,6 +91,7 @@
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/usr/include/jsoncpp"/>
 					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg (1)/installed/x64-linux/include"/>
+					<Add directory="/home/jimmy/.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/rapidjson/../../include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -152,6 +154,12 @@
 		</Unit>
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/unofficial-inih/unofficial-inihConfig.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\share\unofficial-inih\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/rapidjson/RapidJSONConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\share\rapidjson\"/>
+		</Unit>
+		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../.vcpkg-clion/vcpkg (1)/installed/x64-linux/share/rapidjson/RapidJSONConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\.vcpkg-clion\vcpkg (1)\installed\x64-linux\share\rapidjson\"/>
 		</Unit>
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncpp-namespaced-targets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\jsoncpp\"/>

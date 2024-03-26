@@ -34,7 +34,7 @@ ma_device device;
 ma_result result;
 ma_device_config deviceConfig;
 
-string ini_path =  "/home/" + string(getenv("USER")) + "/votify/servidor/config.ini";
+string ini_path =  "/home/" + string(getenv("USER")) + "/Documents/GitHub/votify/servidor/config.ini";
 INIReader reader(ini_path);
 
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
@@ -156,7 +156,7 @@ static double getServerRamUsage(pid_t server_pid);
 
 
 int main(int argc, char *argv[]) {
-
+//
 //    google::InitGoogleLogging(argv[0]);
 //
 //    google::SetLogDestination(google::GLOG_INFO, "server.log");
@@ -615,8 +615,8 @@ void on_CP_clicked(GtkButton *CPButton, gpointer user_data) {
         updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
                          currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
 
-//        thread serverThread(startServer);
-//        serverThread.detach();
+        thread serverThread(startServer);
+        serverThread.detach();
 
     } else {
         // Si el botón está apagado
@@ -656,7 +656,7 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
     } else {
         currentAfterDel = myPlaylist.getCurrentSong();
         if (currentAfterDel == nullptr) {
-            LOG(FATAL) << "No hay canciones en la lista" << endl;
+            //LOG(FATAL) << "No hay canciones en la lista" << endl;
         } else {
             on_PlayButton_clicked(GTK_BUTTON(PlayButton), NULL);
         }

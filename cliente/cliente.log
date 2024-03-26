@@ -7,6 +7,5 @@
 [INFO] Successfully connected to server in port 50000
 [INFO] Sent list, awaiting reply...
 [INFO] Terminated.
-[INFO] Successfully connected to server in port 50000
-[INFO] Sent list, awaiting reply...
+[WARN] Failed to connect: Connection refused (os error 111)
 [INFO] Terminated.
