@@ -3,7 +3,7 @@ mod cliente_Server;
 use std::fs::File;
 use gtk::gdk::keys::constants::{b, CD, lacute};
 use gtk::prelude::*;
-use gtk::{Application, ApplicationWindow, Button, Label, Box, pango};
+use gtk::{Application, ApplicationWindow, Button, Label, Box, pango,Notebook};
 use std::sync::{Arc, Mutex};
 use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
@@ -91,20 +91,33 @@ fn main() {
             .application(app)
             .title("Votify")
             .default_width(400)
-            .default_height(400)
+            .default_height(500)
 
             .build();
 
 
+        let notebook = Notebook::new();
 
         let container = Box::new(gtk::Orientation::Vertical, 0);
         container.set_spacing(10);
+
+
+        let tab1 = Box::new(gtk::Orientation::Vertical, 0);
+        tab1.pack_start(&container,false,false,0);
+
+        notebook.append_page(&tab1, Some(&Label::new(Some("Voting"))));
+
+        let tab2 = Box::new(gtk::Orientation::Vertical, 0);
+        let prueba = Label::new(Some("letra"));
+        tab2.pack_start(&prueba,false,false,0);
+        notebook.append_page(&tab2, Some(&Label::new(Some("lyrics"))));
 
 
         let scrolled_window = ScrolledWindow::builder()
             .hscrollbar_policy(gtk::PolicyType::Never) // Opcional: desactivar la barra de desplazamiento horizontal
             .min_content_width(300) // Opcional: establecer un ancho mínimo
             .build();
+
 
         let songs_box = Box::new(gtk::Orientation::Vertical, 0);
         songs_box.set_spacing(5);
@@ -117,8 +130,8 @@ fn main() {
 
         scrolled_window.add(&songs_box);
 
-        container.pack_start(&scrolled_window, true, true, 0);
-        window.add(&container);
+        tab1.pack_start(&scrolled_window, true, true, 0);
+        window.add(&notebook);
         window.show_all();
     });
 

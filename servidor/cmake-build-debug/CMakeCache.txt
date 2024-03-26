@@ -220,8 +220,8 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 //Path to a program.
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
-//No help, variable specified on the command line.
-CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=/home/jose/.vcpkg-clion/vcpkg (2)/scripts/buildsystems/vcpkg.cmake
+//The CMake toolchain file
+CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/jose/.vcpkg-clion/vcpkg (2)/scripts/buildsystems/vcpkg.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -298,9 +298,6 @@ Z_VCPKG_CL:FILEPATH=Z_VCPKG_CL-NOTFOUND
 //The directory which contains the installed libraries for each
 // triplet
 _VCPKG_INSTALLED_DIR:PATH=/home/jose/.vcpkg-clion/vcpkg (2)/installed
-
-//The directory containing a CMake configuration file for glog.
-glog_DIR:PATH=glog_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for jsoncpp.
 jsoncpp_DIR:PATH=/home/jose/.vcpkg-clion/vcpkg (2)/installed/x64-linux/share/jsoncpp
