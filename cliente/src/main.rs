@@ -226,7 +226,7 @@ fn commando_bajar(nombre_cancion: &str, id_cancion: &str){
 fn abrir_socket_mensaje(mensaje: &str){
 
 
-    match TcpStream::connect("192.168.5.201:50000") {
+    match TcpStream::connect("127.0.0.1:50000") {
         Ok(mut stream) => {
             info!("Successfully connected to server in port 50000");
 

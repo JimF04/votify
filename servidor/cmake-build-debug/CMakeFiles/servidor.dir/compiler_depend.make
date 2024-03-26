@@ -1341,6 +1341,33 @@ CMakeFiles/servidor.dir/playlist.cpp.o: /home/jose/votify/servidor/playlist.cpp 
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h
 
 CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
+  /home/jose/rapidjson/include/rapidjson/allocators.h \
+  /home/jose/rapidjson/include/rapidjson/document.h \
+  /home/jose/rapidjson/include/rapidjson/encodedstream.h \
+  /home/jose/rapidjson/include/rapidjson/encodings.h \
+  /home/jose/rapidjson/include/rapidjson/rapidjson.h \
+  /home/jose/rapidjson/include/rapidjson/error/error.h \
+  /home/jose/rapidjson/include/rapidjson/allocators.h \
+  /home/jose/rapidjson/include/rapidjson/rapidjson.h \
+  /home/jose/rapidjson/include/rapidjson/stream.h \
+  /home/jose/rapidjson/include/rapidjson/internal/biginteger.h \
+  /home/jose/rapidjson/include/rapidjson/internal/clzll.h \
+  /home/jose/rapidjson/include/rapidjson/internal/diyfp.h \
+  /home/jose/rapidjson/include/rapidjson/internal/dtoa.h \
+  /home/jose/rapidjson/include/rapidjson/internal/ieee754.h \
+  /home/jose/rapidjson/include/rapidjson/internal/itoa.h \
+  /home/jose/rapidjson/include/rapidjson/internal/meta.h \
+  /home/jose/rapidjson/include/rapidjson/internal/pow10.h \
+  /home/jose/rapidjson/include/rapidjson/internal/stack.h \
+  /home/jose/rapidjson/include/rapidjson/internal/strfunc.h \
+  /home/jose/rapidjson/include/rapidjson/internal/strtod.h \
+  /home/jose/rapidjson/include/rapidjson/internal/swap.h \
+  /home/jose/rapidjson/include/rapidjson/memorystream.h \
+  /home/jose/rapidjson/include/rapidjson/rapidjson.h \
+  /home/jose/rapidjson/include/rapidjson/reader.h \
+  /home/jose/rapidjson/include/rapidjson/stream.h \
+  /home/jose/rapidjson/include/rapidjson/stringbuffer.h \
+  /home/jose/rapidjson/include/rapidjson/writer.h \
   /home/jose/votify/servidor/server.h \
   /usr/include/alloca.h \
   /usr/include/arpa/inet.h \
@@ -1350,9 +1377,17 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
   /usr/include/asm-generic/posix_types.h \
   /usr/include/asm-generic/socket.h \
   /usr/include/asm-generic/sockios.h \
+  /usr/include/assert.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/backward/auto_ptr.h \
   /usr/include/c++/11/backward/binders.h \
+  /usr/include/c++/11/bit \
+  /usr/include/c++/11/bits/align.h \
   /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/allocator.h \
+  /usr/include/c++/11/bits/atomic_base.h \
+  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
   /usr/include/c++/11/bits/basic_ios.h \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/basic_string.h \
@@ -1369,6 +1404,7 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
   /usr/include/c++/11/bits/functexcept.h \
   /usr/include/c++/11/bits/functional_hash.h \
   /usr/include/c++/11/bits/hash_bytes.h \
+  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/ios_base.h \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/bits/locale_classes.h \
@@ -1385,6 +1421,10 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
   /usr/include/c++/11/bits/predefined_ops.h \
   /usr/include/c++/11/bits/ptr_traits.h \
   /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_atomic.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/stl_construct.h \
@@ -1393,13 +1433,23 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
   /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
   /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/stl_uninitialized.h \
+  /usr/include/c++/11/bits/stream_iterator.h \
   /usr/include/c++/11/bits/streambuf.tcc \
   /usr/include/c++/11/bits/streambuf_iterator.h \
   /usr/include/c++/11/bits/string_view.tcc \
   /usr/include/c++/11/bits/stringfwd.h \
+  /usr/include/c++/11/bits/unique_ptr.h \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/cassert \
   /usr/include/c++/11/cctype \
   /usr/include/c++/11/cerrno \
+  /usr/include/c++/11/climits \
   /usr/include/c++/11/clocale \
+  /usr/include/c++/11/cstddef \
   /usr/include/c++/11/cstdint \
   /usr/include/c++/11/cstdio \
   /usr/include/c++/11/cstdlib \
@@ -1409,8 +1459,10 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
   /usr/include/c++/11/debug/assertions.h \
   /usr/include/c++/11/debug/debug.h \
   /usr/include/c++/11/exception \
+  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/alloc_traits.h \
   /usr/include/c++/11/ext/atomicity.h \
+  /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/ext/new_allocator.h \
   /usr/include/c++/11/ext/numeric_traits.h \
   /usr/include/c++/11/ext/string_conversions.h \
@@ -1420,23 +1472,33 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
   /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/istream \
+  /usr/include/c++/11/iterator \
+  /usr/include/c++/11/limits \
+  /usr/include/c++/11/memory \
   /usr/include/c++/11/new \
   /usr/include/c++/11/ostream \
+  /usr/include/c++/11/pstl/execution_defs.h \
+  /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/pstl_config.h \
   /usr/include/c++/11/stdexcept \
   /usr/include/c++/11/streambuf \
   /usr/include/c++/11/string \
   /usr/include/c++/11/string_view \
   /usr/include/c++/11/system_error \
+  /usr/include/c++/11/tuple \
   /usr/include/c++/11/type_traits \
   /usr/include/c++/11/typeinfo \
+  /usr/include/c++/11/utility \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
+  /usr/include/inttypes.h \
+  /usr/include/limits.h \
   /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/stddef.h \
   /usr/include/locale.h \
@@ -1473,8 +1535,11 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/in.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
   /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -1525,12 +1590,14 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -1549,12 +1616,42 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/socket.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h
 
+
+/usr/include/c++/11/cassert:
 
 /usr/include/arpa/inet.h:
+
+/home/jose/rapidjson/include/rapidjson/writer.h:
+
+/home/jose/rapidjson/include/rapidjson/stringbuffer.h:
+
+/home/jose/rapidjson/include/rapidjson/internal/swap.h:
+
+/home/jose/rapidjson/include/rapidjson/internal/strfunc.h:
+
+/home/jose/rapidjson/include/rapidjson/internal/stack.h:
+
+/home/jose/rapidjson/include/rapidjson/internal/pow10.h:
+
+/home/jose/rapidjson/include/rapidjson/internal/dtoa.h:
+
+/home/jose/rapidjson/include/rapidjson/internal/diyfp.h:
+
+/home/jose/rapidjson/include/rapidjson/internal/clzll.h:
+
+/home/jose/rapidjson/include/rapidjson/internal/biginteger.h:
+
+/home/jose/rapidjson/include/rapidjson/stream.h:
+
+/home/jose/rapidjson/include/rapidjson/rapidjson.h:
+
+/home/jose/rapidjson/include/rapidjson/encodedstream.h:
 
 /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h:
 
@@ -1619,6 +1716,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/home/jose/rapidjson/include/rapidjson/allocators.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
@@ -1830,6 +1929,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 
 /usr/include/harfbuzz/hb.h:
 
+/usr/include/inttypes.h:
+
 /usr/include/harfbuzz/hb-style.h:
 
 /usr/include/harfbuzz/hb-shape.h:
@@ -1986,6 +2087,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 
 /usr/include/gtk-3.0/gtk/gtknativedialog.h:
 
+/home/jose/rapidjson/include/rapidjson/internal/meta.h:
+
 /usr/include/gtk-3.0/gtk/gtkmountoperation.h:
 
 /usr/include/gtk-3.0/gtk/gtkmodules.h:
@@ -2072,6 +2175,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 
 /usr/include/glib-2.0/gio/gemblem.h:
 
+/home/jose/rapidjson/include/rapidjson/internal/ieee754.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
 /usr/include/glib-2.0/gio/goutputstream.h:
@@ -2117,6 +2222,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 /usr/include/gtk-3.0/gtk/gtkmenuitem.h:
 
 /usr/include/glib-2.0/gio/gdbusauthobserver.h:
+
+/home/jose/rapidjson/include/rapidjson/error/error.h:
 
 /usr/include/glib-2.0/gio/gconverter.h:
 
@@ -2260,6 +2367,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 
 /usr/include/c++/11/tuple:
 
+/home/jose/rapidjson/include/rapidjson/reader.h:
+
 /usr/include/c++/11/stdexcept:
 
 /usr/include/c++/11/bits/hash_bytes.h:
@@ -2322,6 +2431,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 
 /usr/include/atk-1.0/atk/atkdocument.h:
 
+/home/jose/rapidjson/include/rapidjson/document.h:
+
 /usr/include/x86_64-linux-gnu/bits/socket.h:
 
 /usr/include/dirent.h:
@@ -2355,6 +2466,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 /home/jose/votify/servidor/main.cpp:
 
 /usr/include/c++/11/bits/locale_classes.tcc:
+
+/home/jose/rapidjson/include/rapidjson/encodings.h:
 
 /usr/include/x86_64-linux-gnu/bits/in.h:
 
@@ -2968,6 +3081,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 
 /usr/include/glib-2.0/gio/gsocketservice.h:
 
+/home/jose/rapidjson/include/rapidjson/memorystream.h:
+
 /usr/include/gtk-3.0/gtk/gtkbuildable.h:
 
 /usr/include/glib-2.0/gio/gnotification.h:
@@ -3011,6 +3126,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 /usr/include/glib-2.0/glib/grand.h:
 
 /usr/include/glib-2.0/gio/gseekable.h:
+
+/usr/include/c++/11/climits:
 
 /usr/include/gtk-3.0/gtk/deprecated/gtkalignment.h:
 
@@ -3262,6 +3379,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 
 /usr/include/glib-2.0/glib/guri.h:
 
+/home/jose/rapidjson/include/rapidjson/internal/itoa.h:
+
 /usr/include/glib-2.0/glib/gutils.h:
 
 /usr/include/glib-2.0/glib/gversion.h:
@@ -3315,6 +3434,8 @@ CMakeFiles/servidor.dir/server.cpp.o: /home/jose/votify/servidor/server.cpp \
 /usr/include/gtk-3.0/gdk/gdkapplaunchcontext.h:
 
 /usr/include/gtk-3.0/gdk/gdkconfig.h:
+
+/home/jose/rapidjson/include/rapidjson/internal/strtod.h:
 
 /usr/include/gtk-3.0/gdk/gdkcursor.h:
 
