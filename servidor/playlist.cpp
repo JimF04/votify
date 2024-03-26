@@ -18,23 +18,14 @@ Playlist::Playlist() {
     tail = nullptr;
 }
 
-void Playlist::clearPlaylist(){
+Playlist::~Playlist() {
+    // Liberar la memoria de todos los nodos
     nodo* current = head;
     while (current != nullptr) {
         nodo* next = current->next;
         delete current;
         current = next;
-        if (current == head) {
-            break; // Se ha recorrido toda la lista circular
-        }
     }
-    head = nullptr;
-}
-
-
-Playlist::~Playlist() {
-    // Liberar la memoria de todos los nodos
-    clearPlaylist();
 }
 
 void Playlist::insertSong(const string& file_path) {

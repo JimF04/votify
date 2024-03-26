@@ -134,12 +134,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/ListaPaginada.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/ListaPaginada.h">
-			<Option target="servidor"/>
-		</Unit>
 		<Unit filename="/home/jimmy/Documents/GitHub/votify/servidor/main.cpp">
 			<Option target="servidor"/>
 		</Unit>

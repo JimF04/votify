@@ -129,30 +129,6 @@ servidor/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/build
 .PHONY : servidor/fast
 
-ListaPaginada.o: ListaPaginada.cpp.o
-.PHONY : ListaPaginada.o
-
-# target to build an object file
-ListaPaginada.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/ListaPaginada.cpp.o
-.PHONY : ListaPaginada.cpp.o
-
-ListaPaginada.i: ListaPaginada.cpp.i
-.PHONY : ListaPaginada.i
-
-# target to preprocess a source file
-ListaPaginada.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/ListaPaginada.cpp.i
-.PHONY : ListaPaginada.cpp.i
-
-ListaPaginada.s: ListaPaginada.cpp.s
-.PHONY : ListaPaginada.s
-
-# target to generate assembly for a file
-ListaPaginada.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/ListaPaginada.cpp.s
-.PHONY : ListaPaginada.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -234,9 +210,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... servidor"
-	@echo "... ListaPaginada.o"
-	@echo "... ListaPaginada.i"
-	@echo "... ListaPaginada.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
