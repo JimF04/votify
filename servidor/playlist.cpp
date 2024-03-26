@@ -199,6 +199,27 @@ void Playlist::display() {
     }
 }
 
+
+
+void Playlist::calculateSize(nodo* current){
+    if (current != nullptr) {
+        size_t size = sizeof(current->id) +
+                      current->name.size() +
+                      current->artist.size() +
+                      current->album.size() +
+                      current->genre.size() +
+                      sizeof(current->up_votes) +
+                      sizeof(current->down_votes) +
+                      current->file_path.size() +
+                      sizeof(current->songDuration);
+        cout << "Tamaño del nodo: " << size << " bytes" << endl;
+    } else {
+        cout << "El nodo proporcionado es nulo." << endl;
+    }
+}
+
+
+
 void Playlist::saveToJson(const string& jsonFilePath) {
     Json::Value playlistJson(Json::arrayValue); // Array JSON para almacenar los nodos
 

@@ -175,8 +175,7 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc /usr/include/uuid/uuid.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/json/json.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/json/config.h \
+ /usr/include/jsoncpp/json/json.h /usr/include/jsoncpp/json/config.h \
  /usr/include/c++/11/cstddef /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
@@ -188,14 +187,13 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/json/allocator.h \
- /usr/include/c++/11/cstring /usr/include/string.h /usr/include/strings.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/json/version.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/json/json_features.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/json/forwards.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/json/reader.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/json/value.h \
- /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
+ /usr/include/jsoncpp/json/allocator.h /usr/include/c++/11/cstring \
+ /usr/include/string.h /usr/include/strings.h \
+ /usr/include/jsoncpp/json/version.h \
+ /usr/include/jsoncpp/json/json_features.h \
+ /usr/include/jsoncpp/json/forwards.h /usr/include/jsoncpp/json/reader.h \
+ /usr/include/jsoncpp/json/value.h /usr/include/c++/11/map \
+ /usr/include/c++/11/bits/stl_tree.h \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h \
@@ -205,10 +203,10 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/stack /usr/include/c++/11/bits/stl_stack.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/json/writer.h \
- /usr/include/gtk-3.0/gtk/gtk.h /usr/include/gtk-3.0/gdk/gdk.h \
- /usr/include/gtk-3.0/gdk/gdkconfig.h /usr/include/glib-2.0/glib.h \
- /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
+ /usr/include/jsoncpp/json/writer.h /usr/include/gtk-3.0/gtk/gtk.h \
+ /usr/include/gtk-3.0/gdk/gdk.h /usr/include/gtk-3.0/gdk/gdkconfig.h \
+ /usr/include/glib-2.0/glib.h /usr/include/glib-2.0/glib/galloca.h \
+ /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -919,17 +917,11 @@ CMakeFiles/servidor.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/poll.h \
  /usr/include/x86_64-linux-gnu/sys/eventfd.h \
  /usr/include/x86_64-linux-gnu/bits/eventfd.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/glog/logging.h \
- /usr/include/c++/11/atomic \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/glog/export.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/glog/flags.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/gflags/gflags.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/gflags/gflags_declare.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/gflags/gflags_gflags.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/glog/platform.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/glog/types.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/glog/log_severity.h \
- /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/glog/vlog_is_on.h \
+ /usr/local/include/glog/logging.h /usr/include/c++/11/atomic \
+ /usr/local/include/glog/export.h /usr/local/include/glog/flags.h \
+ /usr/local/include/glog/platform.h /usr/local/include/glog/types.h \
+ /usr/local/include/glog/log_severity.h \
+ /usr/local/include/glog/vlog_is_on.h \
  /home/jimmy/.vcpkg-clion/vcpkg/installed/x64-linux/include/INIReader.h \
  /usr/include/c++/11/random /usr/include/c++/11/bits/random.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \

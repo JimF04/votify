@@ -634,8 +634,22 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
 void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_data) {
     gboolean active = gtk_toggle_button_get_active(PaginateButton);
     if (active) {
-        g_print("PaginateButton activado\n");
-        // Realizar acciones cuando el botón se activa
+        g_print("PaginateButton activado v1\n");
+
+        nodo* current = myPlaylist.getCurrentSong();
+
+        size_t size = sizeof(current->id) +
+                      current->name.size() +
+                      current->artist.size() +
+                      current->album.size() +
+                      current->genre.size() +
+                      sizeof(current->up_votes) +
+                      sizeof(current->down_votes) +
+                      current->file_path.size() +
+                      sizeof(current->songDuration);
+
+        g_print("size: %zu\n", size);
+
     } else {
         g_print("PaginateButton desactivado\n");
         // Realizar acciones cuando el botón se desactiva

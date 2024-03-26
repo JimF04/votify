@@ -129,6 +129,30 @@ servidor/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/build
 .PHONY : servidor/fast
 
+PagedArray.o: PagedArray.cpp.o
+.PHONY : PagedArray.o
+
+# target to build an object file
+PagedArray.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/PagedArray.cpp.o
+.PHONY : PagedArray.cpp.o
+
+PagedArray.i: PagedArray.cpp.i
+.PHONY : PagedArray.i
+
+# target to preprocess a source file
+PagedArray.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/PagedArray.cpp.i
+.PHONY : PagedArray.cpp.i
+
+PagedArray.s: PagedArray.cpp.s
+.PHONY : PagedArray.s
+
+# target to generate assembly for a file
+PagedArray.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/servidor.dir/build.make CMakeFiles/servidor.dir/PagedArray.cpp.s
+.PHONY : PagedArray.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... servidor"
+	@echo "... PagedArray.o"
+	@echo "... PagedArray.i"
+	@echo "... PagedArray.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
