@@ -1,4 +1,5 @@
 #include "priority_queue.h"
+#include <json/json.h>
 
 int PriorityQueue::parent(int index) {
     return (index - 1) / 2;
@@ -113,14 +114,13 @@ Node& PriorityQueue::getNodeAtIndex(int index) {
     return heapArray[index];
 }
 
-void PriorityQueue::upVote(const std::string& nombre) {
+void PriorityQueue::upVote(const std::string& id) {
     for (int i = 0; i < heapSize; ++i) {
 
-        std::cout << "heapArray[i].name:" << heapArray[i].name << "x:" << nombre << std::endl;
+        std::cout << "heapArray[i].name:" << heapArray[i].id << "x:" << id << std::endl;
 
-        if (heapArray[i].name == nombre) {
+        if (heapArray[i].id == id) {
             heapArray[i].upVotes++;
-            sortByDifference();
             return;
         }
     }
@@ -131,11 +131,32 @@ void PriorityQueue::downVote(const std::string& id) {
     for (int i = 0; i < heapSize; ++i) {
         if (heapArray[i].id == id) {
             heapArray[i].downVotes++;
-            sortByDifference();
             return;
         }
     }
     throw std::invalid_argument("Node with given ID not found");
+}
+
+void PriorityQueue::json_pq() const {
+    Json::Value priorityQueueJson(Json::arrayValue);
+
+    for (int i = 0; i < heapSize; ++i) {
+        // Limpiar el campo 'name' eliminando los espacios adicionales y saltos de línea
+        std::string cleanedName = heapArray[i].name;
+        cleanedName.erase(std::remove_if(cleanedName.begin(), cleanedName.end(), ::isspace), cleanedName.end());
+
+        Json::Value nodeJson;
+        nodeJson["id"] = heapArray[i].id;
+        nodeJson["name"] = cleanedName; // Utilizar el nombre limpio
+        priorityQueueJson.append(nodeJson);
+    }
+
+    Json::StreamWriterBuilder writerBuilder;
+    writerBuilder["indentation"] = "\t";
+    std::string jsonString = Json::writeString(writerBuilder, priorityQueueJson);
+
+    std::cout << "Priority Queue JSON:" << std::endl;
+    std::cout << jsonString << std::endl;
 }
 
 

@@ -41,6 +41,7 @@ public:
     Node& getNodeAtIndex(int index);
     void upVote(const std::string& id);
     void downVote(const std::string& id);
+    void json_pq() const;
 };
 
 #endif // PRIORITY_QUEUE_H

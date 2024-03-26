@@ -50,22 +50,22 @@ fn main() {
     let mut songs = vec![
         json!({"album": "China", "artist": "Brother Hao", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/Without-the-Communist-Party.mp3", "genre": "pop", "id": "6fff1d7b-61cc-4f5c-b853-6c963e6b4ba9", "name": "Without the Communist Party", "up_votes": 0}),
         json!({"album": "Japon", "artist": "Yonezu Kenshi", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Eine-Kleine---Yonezu-Kenshi.mp3", "genre": "jpop", "id": "0ee42edc-e0bc-4ed1-abde-69467f499b06", "name": "Eine Kleine", "up_votes": 0}),
-        json!({"album": "China", "artist": "BEYOND", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_海阔天空---BEYOND.mp3", "genre": "pop", "id": "ab28dea6-cc43-446c-9281-3fc88e1d2429", "name": "海阔天空", "up_votes": 0}),
+        json!({"album": "China", "artist": "BEYOND", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_海阔天空---BEYOND.mp3", "genre": "pop", "id": "10b53a87-ef9e-4305-b54c-2748a254a2dd", "name": "海阔天空", "up_votes": 0}),
         json!({"album": "china", "artist": "Zhong Xina", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/Red_Sun.mp3", "genre": "pop", "id": "ec772044-84ec-4af0-87db-ebac21d07f02", "name": "Red Sun in the Sky", "up_votes": 0}),
         json!({"album": "China", "artist": "Jia Fei", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/Ye-Hua-Xiang.mp3", "genre": "pop", "id": "0153f356-0ba2-4585-bac7-feeaa81c2bc2", "name": "Ye Hua Xiang", "up_votes": 0}),
         json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Likey---TWICE.mp3", "genre": "kpop", "id": "58e488d9-b8ac-41fe-8fb7-b107da6e6642", "name": "Likey", "up_votes": 0}),
         json!({"album": "China", "artist": "BEYOND", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_歌词版---BEYOND.mp3", "genre": "pop", "id": "ee16a253-2584-42f2-a840-74c447c69510", "name": "歌词版", "up_votes": 0}),
-        json!({"album": "Japon", "artist": "Yonezu Kenshi", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Orion---Yonezu-Kenshi.mp3", "genre": "jpop", "id": "2fa220a9-f364-4dee-9623-bf1480355109", "name": "Orion", "up_votes": 0}),
+        json!({"album": "Japon", "artist": "Yonezu Kenshi", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Orion---Yonezu-Kenshi.mp3", "genre": "jpop", "id": "8150ee7a-bb7d-42b5-a4c6-d04e6541cd02", "name": "Orion", "up_votes": 0}),
         json!({"album": "China", "artist": "Eggman", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/Xue_Hua_Piao.mp3", "genre": "pop", "id": "68ffdffa-951d-4596-9f9a-f40afcb388d9", "name": "Xue Hua Piao", "up_votes": 0}),
-        json!({"album": "China", "artist": "Tian Yiming", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/Super_Idol.mp3", "genre": "pop", "id": "05c604eb-ab6d-4409-94d4-ea96048ac9cb", "name": "Super Idol", "up_votes": 0}),
+        json!({"album": "China", "artist": "Tian Yiming", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/Super_Idol.mp3", "genre": "pop", "id": "7b2b8299-efd0-4416-bccc-d82a960ecbef", "name": "Super Idol", "up_votes": 0}),
         json!({"album": "Japon", "artist": "Yonezu Kenshi", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Lemon---Yonezu-Kenshi.mp3", "genre": "jpop", "id": "e7ee9a48-24c6-4a66-b7ac-c5216a7c3262", "name": "Lemon", "up_votes": 0}),
         json!({"album": "Japon", "artist": "YOASOBI", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Yoru-ni-kakeru---YOASOBI.mp3", "genre": "jpop", "id": "1f9bcdff-63f0-4385-af1c-71ea60a501d4", "name": "Yoru ni Kakeru", "up_votes": 0}),
         json!({"album": "China", "artist": "Michael Wong", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Tong-Hua---Michael-Wong.mp3", "genre": "pop", "id": "2a4b0a20-efca-4a90-abaf-ee40883fac06", "name": "Tong Hua", "up_votes": 0}),
         json!({"album": "Japon", "artist": "YOASOBI", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Idol---YOASOBI.mp3", "genre": "jpop", "id": "a8249a04-ea82-4b6b-9611-92802479407e", "name": "アイドル", "up_votes": 0}),
-        json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Fancy---TWICE.mp3", "genre": "kpop", "id": "cba7e2ae-94ba-4409-982a-edb0cf15310a", "name":"Fancy", "up_votes": 0}), json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Yes-or-yes---TWICE.mp3", "genre": "kpop", "id": "9cc7ac02-c126-4e42-96cb-70bd4ccd4077", "name": "Yes or Yes", "up_votes": 0}),
-        json!({"album": "Japon", "artist": "Yonezu Kenshi", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Flamingo---Yonezu-Kenshi.mp3", "genre": "jpop", "id": "fd972c2c-71a4-42ed-b481-382834e59db3", "name": "  Flamingo", "up_votes": 0}),
+        json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Fancy---TWICE.mp3", "genre": "kpop", "id": "60684364-c020-465a-bdaa-94a3ea400fec", "name":"Fancy", "up_votes": 0}), json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Yes-or-yes---TWICE.mp3", "genre": "kpop", "id": "9cc7ac02-c126-4e42-96cb-70bd4ccd4077", "name": "Yes or Yes", "up_votes": 0}),
+        json!({"album": "Japon", "artist": "Yonezu Kenshi", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Flamingo---Yonezu-Kenshi.mp3", "genre": "jpop", "id": "fdf0aff2-5c28-4e9c-b871-1c88f6bd191d", "name": "Flamingo", "up_votes": 0}),
         json!({"album": "Japon", "artist": "YOASOBI", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_ラフレター---YOASOBI.mp3", "genre": "jpop", "id": "4be38bb8-453c-48c4-9a6a-bd7a2cfa7a9c", "name": "ラフレター", "up_votes": 0}),
-        json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Cry-for-me---TWICE.mp3", "genre": "kpop", "id": "eb036c60-4c77-48f9-bf7f-0000cd5e70e1", "name": "Cry for me", "up_votes": 0}),
+        json!({"album": "Korea", "artist": "TWICE", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/tagmp3_Cry-for-me---TWICE.mp3", "genre": "kpop", "id": "c574f860-ce7d-478f-ba3f-bf0a1750e23d", "name": "Cry for me", "up_votes": 0}),
         json!({"album": "china", "artist": "Justin Bibo", "down_votes": 0, "file_path": "/home/jose/Downloads/PlayList/Baby-Chinese.mp3", "genre": "pop", "id": "5b905406-32c1-4689-acaa-a209fc4313eb", "name": "Baby Chinese", "up_votes": 0})
     ];
 
@@ -201,7 +201,7 @@ fn commando_subida(nombre_cancion: &str,id_cancion: &str){
 
     let json_data = json!({
         "command": "Vote-up",
-        "id": nombre_cancion
+        "id": id_cancion
     });
     let comando = json_data.to_string();
 

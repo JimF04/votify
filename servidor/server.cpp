@@ -8,6 +8,7 @@
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
 #include "priority_queue.h"
+#include <json/json.h>
 
 
 using namespace std;
@@ -64,21 +65,29 @@ void server::start() {
         else{
             recv(client_socket, buffer, buffer_size, 0);
 
-  
+            // Parsear el JSON
+            Json::Value root;
+            Json::Reader reader;
+            bool parsingSuccessful = reader.parse(buffer, root);
+            if (!parsingSuccessful) {
+                std::cerr << "Error al parsear el JSON: " << reader.getFormattedErrorMessages();
+            }
+
+            // Obtener los valores del JSON
+            const char* command = root["command"].asCString();
+            const char* id = root["id"].asCString();
+
+            // Imprimir los valores obtenidos
+            std::cout << "Command: " << command << std::endl;
+            std::cout << "ID: " << id << std::endl;
+
             rapidjson::Document document;
             document.Parse(buffer);
-
-            const char* command = document["command"].GetString();
-            const char* id = document["id"].GetString();
-
-
 
             if (strcmp(command, "Vote-up") == 0){
                 cout<<"veaaaaaaaa: "<<id<<endl;
                 pq.upVote(id);
-
                 pq.printQueue();
-
             }
 
 

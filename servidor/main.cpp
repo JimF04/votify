@@ -438,9 +438,16 @@ static gboolean update_slider(gpointer user_data) {
 
         gtk_range_set_value(GTK_RANGE(TimeSlider), value);
 
-        nodo* currentSong = myPlaylist.getCurrentSong();
-        if (value >= currentSong->songDuration) {
-            on_NextButton_clicked(GTK_BUTTON(NextButton), NULL);
+        if (CPisOn){
+            Node& currentSongPQ = pq.getNodeAtIndex(0);
+            if (value >= currentSongPQ.duration) {
+                on_NextButton_clicked(GTK_BUTTON(NextButton), NULL);
+            }
+        } else {
+            nodo* currentSong = myPlaylist.getCurrentSong();
+            if (value >= currentSong->songDuration) {
+                on_NextButton_clicked(GTK_BUTTON(NextButton), NULL);
+            }
         }
 
         updating_slider = FALSE;
@@ -486,16 +493,15 @@ void on_PreviousButton_clicked(GtkButton *PreviousButton, gpointer user_data) {
         gtk_range_set_value(GTK_RANGE(TimeSlider), 0);
     }
 
-    nodo* prevSong = nullptr;
-    if (!CPisOn)
-        prevSong = myPlaylist.getPreviousSong();
-    else
-        prevSong = randomPlaylist.getPreviousSong();
-
-    if (prevSong != nullptr) {
-        playSong(*prevSong);
-        isPlaying = true;
-        start_timer();
+    if (!CPisOn) {
+        nodo *prevSong = myPlaylist.getPreviousSong();
+        if (prevSong != nullptr) {
+            playSong(*prevSong);
+            isPlaying = true;
+            start_timer();
+        }
+    } else {
+        cout << "Modo comunitario activado" << endl;
     }
 }
 
@@ -508,15 +514,22 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
         stop_timer();
     }
 
-    nodo* currentSong = nullptr;
+    const char* filePath;
+    int songDuration;
+
     if (!CPisOn) {
-        currentSong = myPlaylist.getCurrentSong();
+        nodo* currentSong = myPlaylist.getCurrentSong();
+        filePath = currentSong->file_path.c_str();
+        updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
+                         currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
+        songDuration = currentSong->songDuration;
     }else{
-        currentSong = randomPlaylist.getCurrentSong();
+        Node& currentSongPQ = pq.getNodeAtIndex(0);
+        filePath = currentSongPQ.filePath.c_str();
+        updateSongLabels(currentSongPQ.name, currentSongPQ.artist, currentSongPQ.album,
+                         currentSongPQ.genre, currentSongPQ.upVotes, currentSongPQ.downVotes, currentSongPQ.duration);
+        songDuration = currentSongPQ.duration;
     }
-
-
-    const char* filePath = currentSong->file_path.c_str();
 
     if (currentPosition == 0){
         thread songThread(playAudio, filePath, currentPosition);
@@ -526,9 +539,7 @@ void on_PlayButton_clicked(GtkButton *PlayButton, gpointer user_data) {
         songThread.detach();
         currentPosition = 0;
     }
-    updateSongLabels(currentSong->name, currentSong->artist, currentSong->album,
-                     currentSong->genre, currentSong->up_votes, currentSong->down_votes, currentSong->songDuration);
-    songDuration = currentSong->songDuration;
+
     gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
     start_timer();
     isPlaying = true;
@@ -564,7 +575,24 @@ void on_NextButton_clicked(GtkButton *NextButton, gpointer user_data) {
         start_timer();
 
     } else {
+        pq.dequeue();
+        if (pq.isEmpty()) {
+            on_CP_clicked(GTK_BUTTON(CPButton), NULL);
+        } else {
+            pq.sortByDifference();
+            pq.printQueue();
+            pq.json_pq();
 
+            Node& currentSongPQ = pq.getNodeAtIndex(0);
+            thread songThread(playAudio, currentSongPQ.filePath.c_str(), currentPosition);
+            songThread.detach();
+            updateSongLabels(currentSongPQ.name, currentSongPQ.artist, currentSongPQ.album,
+                             currentSongPQ.genre, currentSongPQ.upVotes, currentSongPQ.downVotes, currentSongPQ.duration);
+            songDuration = currentSongPQ.duration;
+            gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
+            start_timer();
+            isPlaying = true;
+        }
 
     }
 }
@@ -660,31 +688,33 @@ void on_DeleteButton_clicked(GtkButton *DeleteButton, gpointer user_data) {
     }
 
     if (CPisOn) {
-        nodo* currentSong = randomPlaylist.getCurrentSong();
-        string songId = currentSong->id;
-        randomPlaylist.deleteSong(songId);
+        pq.dequeue();
+        if (pq.isEmpty()) {
+            on_CP_clicked(GTK_BUTTON(CPButton), NULL);
+        } else {
+            Node& currentSongPQ = pq.getNodeAtIndex(0);
+            thread songThread(playAudio, currentSongPQ.filePath.c_str(), currentPosition);
+            songThread.detach();
+            updateSongLabels(currentSongPQ.name, currentSongPQ.artist, currentSongPQ.album,
+                             currentSongPQ.genre, currentSongPQ.upVotes, currentSongPQ.downVotes, currentSongPQ.duration);
+            songDuration = currentSongPQ.duration;
+            gtk_range_set_range(GTK_RANGE(TimeSlider), 0, songDuration);
+            start_timer();
+            isPlaying = true;
+        }
     } else {
         nodo* currentSong = myPlaylist.getCurrentSong();
         string songId = currentSong->id;
         myPlaylist.deleteSong(songId);
     }
 
-    nodo* currentAfterDel = nullptr;
-
-    if (CPisOn) {
-        currentAfterDel = randomPlaylist.getCurrentSong();
-        if (currentAfterDel == nullptr) {
-            on_CP_clicked(GTK_BUTTON(CPButton), NULL);
-        }
-        on_PlayButton_clicked(GTK_BUTTON(PlayButton), NULL);
+    nodo* currentAfterDel = myPlaylist.getCurrentSong();
+    if (currentAfterDel == nullptr) {
+        //LOG(FATAL) << "No hay canciones en la lista" << endl;
     } else {
-        currentAfterDel = myPlaylist.getCurrentSong();
-        if (currentAfterDel == nullptr) {
-            //LOG(FATAL) << "No hay canciones en la lista" << endl;
-        } else {
-            on_PlayButton_clicked(GTK_BUTTON(PlayButton), NULL);
-        }
+        on_PlayButton_clicked(GTK_BUTTON(PlayButton), NULL);
     }
+
 }
 
 void on_PaginateButton_toggled(GtkToggleButton *PaginateButton, gpointer user_data) {
@@ -709,8 +739,8 @@ static void change_slider_value(GtkScale *scale, gdouble value) {
     }
 
     if (CPisOn) {
-        nodo* currentSong = randomPlaylist.getCurrentSong();
-        const char* filePath = currentSong->file_path.c_str();
+        Node& currentSongPQ = pq.getNodeAtIndex(0);
+        const char* filePath = currentSongPQ.filePath.c_str();
         thread SongThread(playAudio, filePath, value);
         SongThread.detach();
         gtk_range_set_value(GTK_RANGE(TimeSlider), value);
@@ -739,27 +769,26 @@ void on_VolumeSlider_value_changed(GtkRange *range, gpointer user_data) {
 }
 
 void create_Priority_Queue(){
-    string songs_path = reader.Get("paths", "songs_path", "");
+    std::string songs_path = reader.Get("paths", "songs_path", "");
+    std::unordered_set<std::string> availableSongs; // Conjunto para mantener un registro de las canciones disponibles
     std::unordered_set<std::string> selectedSongs; // Conjunto para mantener un registro de las canciones seleccionadas
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(0, INT_MAX);
 
-    // Iterar sobre los archivos dentro del directorio
+    // Iterar sobre los archivos dentro del directorio y agregarlos al conjunto de canciones disponibles
     for (const auto& entry : fs_std::directory_iterator(songs_path)) {
         if (entry.is_regular_file() && entry.path().extension() == ".mp3") {
-            // Seleccionar aleatoriamente 10 canciones sin repetición
-            if (selectedSongs.size() < 10) {
-                selectedSongs.insert(entry.path().string());
-            } else {
-                int randomIndex = dis(gen);
-                if (randomIndex < 10) {
-                    auto it = std::next(selectedSongs.begin(), randomIndex);
-                    selectedSongs.erase(it); // Eliminar una canción aleatoria
-                    selectedSongs.insert(entry.path().string()); // Insertar la nueva canción
-                }
-            }
+            availableSongs.insert(entry.path().string());
         }
+    }
+
+    // Seleccionar aleatoriamente 10 canciones sin repetición
+    while (selectedSongs.size() < 10 && !availableSongs.empty()) {
+        auto it = availableSongs.begin();
+        std::advance(it, dis(gen) % availableSongs.size());
+        selectedSongs.insert(*it);
+        availableSongs.erase(it);
     }
 
     for (const auto& songPath : selectedSongs) {
