@@ -119,14 +119,12 @@ GtkWidget *PaginateButton;
 GtkWidget *DeleteButton;
 GtkWidget *TimeSlider;
 GtkWidget *VolumeSlider;
-
 GtkWidget *startTime;
 GtkWidget *endTime;
-
 GtkWidget *artistBox;
-
 GtkWidget *upVoteButton;
 GtkWidget *downVoteButton;
+GtkWidget *Main;
 
 GtkWidget *CPButton;
 
@@ -195,6 +193,7 @@ int main(int argc, char *argv[]) {
     g_signal_connect(main_window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
     GtkWidget *TimeGrid = GTK_WIDGET(gtk_builder_get_object(builder, "TimeGrid"));
     GtkWidget *VolumeBox = GTK_WIDGET(gtk_builder_get_object(builder, "VolumeBox"));
+
 
     NameLabel = GTK_WIDGET(gtk_builder_get_object(builder, "NameLabel"));
     ArtistLabel = GTK_WIDGET(gtk_builder_get_object(builder, "ArtistLabel"));

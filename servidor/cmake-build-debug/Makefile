@@ -57,17 +57,10 @@ RM = /snap/clion/265/bin/cmake/linux/x64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
-CMAKE_SOURCE_DIR = /home/gabrielvb/Documents/GitHub/votify/servidor
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gabrielvb/Documents/GitHub/votify/servidor/cmake-build-debug
-=======
 CMAKE_SOURCE_DIR = /home/ahenao/Documents/GitHub/votify/servidor
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ahenao/Documents/GitHub/votify/servidor/cmake-build-debug
->>>>>>> 1b3e9b5dc0ac0971bc0c757077a7123ede1d3d5f
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -94,15 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-<<<<<<< HEAD
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabrielvb/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles /home/gabrielvb/Documents/GitHub/votify/servidor/cmake-build-debug//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabrielvb/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles 0
-=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ahenao/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles /home/ahenao/Documents/GitHub/votify/servidor/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ahenao/Documents/GitHub/votify/servidor/cmake-build-debug/CMakeFiles 0
->>>>>>> 1b3e9b5dc0ac0971bc0c757077a7123ede1d3d5f
 .PHONY : all
 
 # The main clean target
