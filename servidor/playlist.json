@@ -1,12 +1,110 @@
 [
 	{
 		"album" : "  Japon\n",
+<<<<<<< HEAD
+=======
+		"artist" : " Yonezu Kenshi\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Flamingo---Yonezu-Kenshi.mp3",
+		"genre" : "  jpop\n",
+		"id" : "3d8068d7-d3f7-4860-8545-a7b83a7e9270",
+		"name" : "  Flamingo\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Japon\n",
+		"artist" : " Yonezu Kenshi\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Eine-Kleine---Yonezu-Kenshi.mp3",
+		"genre" : "  jpop\n",
+		"id" : "c2db0a77-2f85-4b7f-bd4e-715a9332216d",
+		"name" : "  Eine Kleine\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Japon\n",
+>>>>>>> priority_queue
 		"artist" : " YOASOBI\n",
 		"down_votes" : 0,
 		"file_path" : "/home/ahenao/Downloads/PlayList/tagmp3_Idol---YOASOBI.mp3",
 		"genre" : "  jpop\n",
+<<<<<<< HEAD
 		"id" : "bedfead5-804f-4baf-aa89-42bf85567421",
 		"name" : "  \u30a2\u30a4\u30c8\u3099\u30eb\n",
+=======
+		"id" : "3f0b9082-6a71-4ba9-926e-0be7f160c465",
+		"name" : "  \u30e9\u30d5\u3099\u30ec\u30bf\u30fc\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Japon\n",
+		"artist" : " YOASOBI\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Yoru-ni-kakeru---YOASOBI.mp3",
+		"genre" : "  jpop\n",
+		"id" : "3cdff0c3-9a68-48da-a76a-c7e81ca828e2",
+		"name" : "  Yoru ni Kakeru\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Japon\n",
+		"artist" : " Yonezu Kenshi\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Lemon---Yonezu-Kenshi.mp3",
+		"genre" : "  jpop\n",
+		"id" : "dc46b62c-dca2-488a-b09a-1cae0da79c84",
+		"name" : "  Lemon\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " Jia Fei\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Ye-Hua-Xiang.mp3",
+		"genre" : "  pop\n",
+		"id" : "f9fae32a-f39a-406d-9677-2b960f6b600d",
+		"name" : "  Ye Hua Xiang\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " Brother Hao\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Without-the-Communist-Party.mp3",
+		"genre" : "  pop\n",
+		"id" : "71febff4-d7a1-497d-8cc7-111fca28dcfd",
+		"name" : "  Without the Communist Party\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  china\n",
+		"artist" : " Zhong Xina\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Red_Sun.mp3",
+		"genre" : "  pop\n",
+		"id" : "a81f1266-239c-4905-8c44-d97ad8bb6efc",
+		"name" : "  Red Sun in the Sky\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Korea\n",
+		"artist" : " TWICE\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Cry-for-me---TWICE.mp3",
+		"genre" : "  kpop\n",
+		"id" : "86538d73-c346-4aac-85ed-733db19f758e",
+		"name" : "  Cry for me\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " Eggman\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/Xue_Hua_Piao.mp3",
+		"genre" : "  pop\n",
+		"id" : "20df89dc-dab3-47b3-bbd8-3d22108a79c2",
+		"name" : "  Xue Hua Piao\n",
+>>>>>>> priority_queue
 		"up_votes" : 0
 	},
 	{
@@ -15,16 +113,64 @@
 		"down_votes" : 0,
 		"file_path" : "/home/ahenao/Downloads/PlayList/Super_Idol.mp3",
 		"genre" : "  pop\n",
+<<<<<<< HEAD
 		"id" : "75d057f2-29fb-4d9d-a59c-55a289d3e937",
+=======
+		"id" : "f00edfd3-89b8-4dcc-b63e-12a52f391104",
+>>>>>>> priority_queue
 		"name" : "  Super Idol\n",
 		"up_votes" : 0
 	},
 	{
+<<<<<<< HEAD
+=======
+		"album" : "  China\n",
+		"artist" : " Michael Wong\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Tong-Hua---Michael-Wong.mp3",
+		"genre" : "  pop\n",
+		"id" : "0bd13ef6-69fc-412e-bcf4-e7a9373f09be",
+		"name" : "  Tong Hua\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Japon\n",
+		"artist" : " YOASOBI\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Idol---YOASOBI.mp3",
+		"genre" : "  jpop\n",
+		"id" : "934af1de-d448-452e-97b6-723ec477287b",
+		"name" : "  \u30a2\u30a4\u30c8\u3099\u30eb\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  Korea\n",
+		"artist" : " TWICE\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_Yes-or-yes---TWICE.mp3",
+		"genre" : "  kpop\n",
+		"id" : "90ea6839-d2c0-4a35-ae9b-28c2bb567f75",
+		"name" : "  Yes or Yes\n",
+		"up_votes" : 0
+	},
+	{
+		"album" : "  China\n",
+		"artist" : " BEYOND\n",
+		"down_votes" : 0,
+		"file_path" : "/home/jimmy/Downloads/PlayList/tagmp3_\u6d77\u95ca\u5929\u7a7a---BEYOND.mp3",
+		"genre" : "  pop\n",
+		"id" : "a1f936c7-7fb6-417f-8936-314d84d5ff9d",
+		"name" : "  \u6d77\u95ca\u5929\u7a7a\n",
+		"up_votes" : 0
+	},
+	{
+>>>>>>> priority_queue
 		"album" : "  Japon\n",
 		"artist" : " Yonezu Kenshi\n",
 		"down_votes" : 0,
 		"file_path" : "/home/ahenao/Downloads/PlayList/tagmp3_Flamingo---Yonezu-Kenshi.mp3",
 		"genre" : "  jpop\n",
+<<<<<<< HEAD
 		"id" : "4b2e55a4-82c8-4e71-82c5-5943e93777b0",
 		"name" : "  Flamingo\n",
 		"up_votes" : 0
@@ -106,6 +252,9 @@
 		"file_path" : "/home/ahenao/Downloads/PlayList/tagmp3_Orion---Yonezu-Kenshi.mp3",
 		"genre" : "  jpop\n",
 		"id" : "6d306371-aaba-47c8-b338-73fe9d1908b3",
+=======
+		"id" : "1f647ef1-6cad-4be2-9729-538dfcea12e8",
+>>>>>>> priority_queue
 		"name" : "  Orion\n",
 		"up_votes" : 0
 	},
@@ -115,6 +264,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/ahenao/Downloads/PlayList/tagmp3_Cry-for-me---TWICE.mp3",
 		"genre" : "  kpop\n",
+<<<<<<< HEAD
 		"id" : "693c74bd-60e2-42de-b15e-f93f43a5d68d",
 		"name" : "  Cry for me\n",
 		"up_votes" : 0
@@ -147,6 +297,10 @@
 		"genre" : "  pop\n",
 		"id" : "7300305a-a2ba-4e29-9590-231b53fb6852",
 		"name" : "  Tong Hua\n",
+=======
+		"id" : "c17c4a82-bbc2-4361-941a-7bb0981588bc",
+		"name" : "  Fancy\n",
+>>>>>>> priority_queue
 		"up_votes" : 0
 	},
 	{
@@ -155,6 +309,7 @@
 		"down_votes" : 0,
 		"file_path" : "/home/ahenao/Downloads/PlayList/tagmp3_\u6d77\u95ca\u5929\u7a7a---BEYOND.mp3",
 		"genre" : "  pop\n",
+<<<<<<< HEAD
 		"id" : "516eb27b-a750-4cd6-b1e6-a12702d2070d",
 		"name" : "  \u6d77\u95ca\u5929\u7a7a\n",
 		"up_votes" : 0
@@ -167,6 +322,10 @@
 		"genre" : "  jpop\n",
 		"id" : "143f9b0a-4599-4bc2-8ff6-d9e5947fc211",
 		"name" : "  \u30e9\u30d5\u3099\u30ec\u30bf\u30fc\n",
+=======
+		"id" : "676fb018-b47c-48ba-a235-097d1afa0649",
+		"name" : "  \u6b4c\u8bcd\u7248\n",
+>>>>>>> priority_queue
 		"up_votes" : 0
 	},
 	{
@@ -175,14 +334,20 @@
 		"down_votes" : 0,
 		"file_path" : "/home/ahenao/Downloads/PlayList/tagmp3_Fancy---TWICE.mp3",
 		"genre" : "  kpop\n",
+<<<<<<< HEAD
 		"id" : "4b826026-9f82-422b-9187-98d72d15e789",
 		"name" : "  Fancy\n",
+=======
+		"id" : "e73a7a4c-6c65-4696-b04a-05304d84cb8c",
+		"name" : "  Likey\n",
+>>>>>>> priority_queue
 		"up_votes" : 0
 	},
 	{
 		"album" : "  Japon\n",
 		"artist" : " YOASOBI\n",
 		"down_votes" : 0,
+<<<<<<< HEAD
 		"file_path" : "/home/ahenao/Downloads/PlayList/tagmp3_Yoru-ni-kakeru---YOASOBI.mp3",
 		"genre" : "  jpop\n",
 		"id" : "3fcf971f-0d3d-4b4d-bdaf-e8b56cdca859",
@@ -197,6 +362,12 @@
 		"genre" : "  jpop\n",
 		"id" : "320c5b0c-8ef0-480a-9a71-fe60bab5f31a",
 		"name" : "  Lemon\n",
+=======
+		"file_path" : "/home/jimmy/Downloads/PlayList/Baby-Chinese.mp3",
+		"genre" : "  pop\n",
+		"id" : "30a49bc8-78b2-413d-97e3-4ba7ac65c465",
+		"name" : "  Baby Chinese\n",
+>>>>>>> priority_queue
 		"up_votes" : 0
 	}
 ]
