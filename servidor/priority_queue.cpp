@@ -137,13 +137,6 @@ void PriorityQueue::downVote(const std::string& id) {
     throw std::invalid_argument("Node with given ID not found");
 }
 
-#include <algorithm> // Para std::trim
-#include <iostream>
-#include <jsoncpp/json/json.h>
-
-#include <iostream>
-#include <jsoncpp/json/json.h>
-
 // Función para eliminar espacios adicionales al principio y al final de una cadena
 std::string cleanString(const std::string& str) {
     std::string result;
